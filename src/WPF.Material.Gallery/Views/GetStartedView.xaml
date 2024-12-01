@@ -1,0 +1,17 @@
+﻿<UserControl
+    x:Class="WPF.Material.Gallery.Views.GetStartedView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md3="https://https://github.com/pedrior/wpf-material"
+    xmlns:viewModels="clr-namespace:WPF.Material.Gallery.ViewModels"
+    d:Background="{DynamicResource Material.Colors.SurfaceContainer}"
+    d:DataContext="{d:DesignInstance {x:Type viewModels:GetStartedViewModel},
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="1080"
+    d:DesignWidth="1832"
+    FontFamily="{DynamicResource Material.Typefaces.Default}"
+    SnapsToDevicePixels="True"
+    UseLayoutRounding="True"
+    mc:Ignorable="d" />

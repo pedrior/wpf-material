@@ -1,0 +1,93 @@
+﻿<Window
+    x:Class="WPF.Material.Gallery.Views.ShellView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:WPF.Material.Gallery.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md3="https://https://github.com/pedrior/wpf-material"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:viewModels="clr-namespace:WPF.Material.Gallery.ViewModels"
+    xmlns:views="clr-namespace:WPF.Material.Gallery.Views"
+    Title="WPF Material Gallery"
+    Width="896"
+    Height="504"
+    d:DataContext="{d:DesignInstance {x:Type viewModels:ShellViewModel},
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="{DynamicResource Material.Colors.SurfaceContainer}"
+    FontFamily="{DynamicResource Material.Typefaces.Default}"
+    SnapsToDevicePixels="True"
+    UseLayoutRounding="True"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+            <views:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:GetStartedViewModel}">
+            <views:GetStartedView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ComponentsViewModel}">
+            <views:ComponentsView />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <md3:NavigationRail Grid.Column="0" Width="88">
+            <md3:NavigationRail.Resources>
+                <system:String x:Key="SwitchToDarkThemeTooltip">Switch to dark theme</system:String>
+                <system:String x:Key="SwitchToLightThemeTooltip">Switch to light theme</system:String>
+            </md3:NavigationRail.Resources>
+
+            <md3:NavigationRail.TopActions>
+                <md3:NavigationRailActions>
+                    <md3:FloatingActionButton md3:IconAssist.Icon="Search" Appearance="Tertiary" />
+                </md3:NavigationRailActions>
+            </md3:NavigationRail.TopActions>
+
+            <md3:NavigationRail.BottomActionsContent>
+                <md3:NavigationRailActions>
+                    <md3:ToggleIconButton
+                        x:Name="ThemeToggleButton"
+                        md3:IconAssist.FillOnHovering="True"
+                        md3:IconAssist.FillOnPressing="True"
+                        md3:IconAssist.Icon="DarkMode"
+                        md3:IconAssist.IconOnSelecting="LightMode"
+                        Command="{Binding SwitchAppThemeCommand, Mode=OneTime}"
+                        IsChecked="{Binding IsDarkTheme, Mode=OneTime}"
+                        ToolTip="{Binding ElementName=ThemeToggleButton, Path=IsChecked, Converter={converters:ThemeToolTipConverter OnLightTooltip={StaticResource SwitchToDarkThemeTooltip}, OnDarkTooltip={StaticResource SwitchToLightThemeTooltip}}}" />
+                </md3:NavigationRailActions>
+            </md3:NavigationRail.BottomActionsContent>
+
+            <md3:NavigationRailItem
+                md3:IconAssist.Icon="Home"
+                Command="{Binding NavigateCommand, Mode=OneTime}"
+                CommandParameter="{x:Type viewModels:HomeViewModel}"
+                Content="Home"
+                IsChecked="True" />
+
+            <md3:NavigationRailItem
+                md3:IconAssist.Icon="Apps"
+                Command="{Binding NavigateCommand, Mode=OneTime}"
+                CommandParameter="{x:Type viewModels:GetStartedViewModel}"
+                Content="Get started" />
+
+            <md3:NavigationRailItem
+                md3:IconAssist.Icon="AddCircle"
+                Command="{Binding NavigateCommand, Mode=OneTime}"
+                CommandParameter="{x:Type viewModels:ComponentsViewModel}"
+                Content="Components"
+                MouseEnter="NavigationRailItem_MouseEnter" />
+        </md3:NavigationRail>
+
+        <ContentPresenter Grid.Column="1" Content="{Binding Content, Mode=OneWay}" />
+    </Grid>
+</Window>

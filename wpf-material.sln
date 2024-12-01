@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Material.Gallery", "src\WPF.Material.Gallery\WPF.Material.Gallery.csproj", "{DC983E1F-3D30-4DDD-A37F-DE620CBC1BC2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Material", "src\WPF.Material\WPF.Material.csproj", "{C25CE3F2-F005-4179-9827-89F91763D7E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Material.Symbols.Rounded", "src\WPF.Material.Symbols.Rounded\WPF.Material.Symbols.Rounded.csproj", "{47E3C1F3-4F75-4C70-9699-CC9CC4ADA9B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Material.Symbols.Outlined", "src\WPF.Material.Symbols.Outlined\WPF.Material.Symbols.Outlined.csproj", "{04AB06EC-BFCC-487D-92EB-23F2EE8B3340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Material.Symbols.Sharp", "src\WPF.Material.Symbols.Sharp\WPF.Material.Symbols.Sharp.csproj", "{B7690494-0C97-4F28-963B-B1BFB4E7DFE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gallery", "Gallery", "{C7DF8945-2A59-43B6-86F1-5F94B396287E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC983E1F-3D30-4DDD-A37F-DE620CBC1BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC983E1F-3D30-4DDD-A37F-DE620CBC1BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC983E1F-3D30-4DDD-A37F-DE620CBC1BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC983E1F-3D30-4DDD-A37F-DE620CBC1BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C25CE3F2-F005-4179-9827-89F91763D7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C25CE3F2-F005-4179-9827-89F91763D7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C25CE3F2-F005-4179-9827-89F91763D7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C25CE3F2-F005-4179-9827-89F91763D7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E3C1F3-4F75-4C70-9699-CC9CC4ADA9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E3C1F3-4F75-4C70-9699-CC9CC4ADA9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E3C1F3-4F75-4C70-9699-CC9CC4ADA9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E3C1F3-4F75-4C70-9699-CC9CC4ADA9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04AB06EC-BFCC-487D-92EB-23F2EE8B3340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04AB06EC-BFCC-487D-92EB-23F2EE8B3340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04AB06EC-BFCC-487D-92EB-23F2EE8B3340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04AB06EC-BFCC-487D-92EB-23F2EE8B3340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7690494-0C97-4F28-963B-B1BFB4E7DFE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7690494-0C97-4F28-963B-B1BFB4E7DFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7690494-0C97-4F28-963B-B1BFB4E7DFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7690494-0C97-4F28-963B-B1BFB4E7DFE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC983E1F-3D30-4DDD-A37F-DE620CBC1BC2} = {C7DF8945-2A59-43B6-86F1-5F94B396287E}
+	EndGlobalSection
+EndGlobal

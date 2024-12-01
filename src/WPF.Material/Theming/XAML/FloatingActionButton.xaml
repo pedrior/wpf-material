@@ -1,0 +1,168 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:assists="clr-namespace:WPF.Material.Assists"
+    xmlns:controls="clr-namespace:WPF.Material.Controls"
+    xmlns:typography="clr-namespace:WPF.Material.Typography">
+
+    <Style TargetType="{x:Type controls:FloatingActionButton}">
+        <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHigh}" />
+        <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="56" />
+        <Setter Property="Height" Value="56" />
+        <Setter Property="Size" Value="Standard" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="IsExtended" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Appearance" Value="Surface" />
+        <Setter Property="assists:ShapeAssist.Style" Value="Large" />
+        <Setter Property="assists:IconAssist.Size" Value="24" />
+        <Setter Property="assists:IconAssist.Icon" Value="Add" />
+        <Setter Property="assists:TypographyAssist.Style" Value="{typography:TypeStyle Style=LabelLarge, Height=0}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:FloatingActionButton}">
+                    <controls:Container
+                        x:Name="Container"
+                        assists:ElevationAssist.Level="Level3"
+                        assists:InteractionAssist.IsDragged="{TemplateBinding assists:InteractionAssist.IsDragged}"
+                        assists:InteractionAssist.IsEnabled="{TemplateBinding IsEnabled}"
+                        assists:InteractionAssist.IsHovered="{TemplateBinding IsMouseOver}"
+                        assists:InteractionAssist.IsPressed="{TemplateBinding IsPressed}"
+                        assists:InteractionAssist.IsRippleEnabled="True"
+                        assists:ShapeAssist.Corner="{TemplateBinding assists:ShapeAssist.Corner}"
+                        assists:ShapeAssist.Family="{TemplateBinding assists:ShapeAssist.Family}"
+                        assists:ShapeAssist.Radius="{TemplateBinding assists:ShapeAssist.Radius}"
+                        assists:ShapeAssist.Style="{TemplateBinding assists:ShapeAssist.Style}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Foreground="{TemplateBinding Foreground}">
+
+                        <controls:SpacedPanel
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="8">
+
+                            <controls:SymbolIcon
+                                x:Name="Icon"
+                                VerticalAlignment="Center"
+                                Block.LineHeight="23"
+                                Block.LineStackingStrategy="BlockLineHeight"
+                                FontSize="18"
+                                FontWeight="{TemplateBinding assists:IconAssist.Weight}"
+                                Foreground="{TemplateBinding Foreground}"
+                                IsFilled="{TemplateBinding assists:IconAssist.Fill}"
+                                Symbol="{TemplateBinding assists:IconAssist.Icon}"
+                                SymbolStyle="{TemplateBinding assists:IconAssist.Style}"
+                                TextBlock.Foreground="{TemplateBinding Foreground}"
+                                TextBlock.TextAlignment="Center" />
+
+                            <ContentPresenter
+                                x:Name="Label"
+                                VerticalAlignment="Center"
+                                Block.LineHeight="20"
+                                Block.LineStackingStrategy="BlockLineHeight"
+                                Content="{TemplateBinding Content}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                RecognizesAccessKey="True"
+                                TextBlock.Foreground="{TemplateBinding Foreground}"
+                                TextBlock.TextAlignment="Center"
+                                Visibility="Collapsed" />
+                        </controls:SpacedPanel>
+                    </controls:Container>
+
+                    <ControlTemplate.Triggers>
+                        <!--  Elevation  -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Container" Property="assists:ElevationAssist.Level" Value="Level4" />
+                        </Trigger>
+
+                        <!--  Extended  -->
+                        <Trigger Property="IsExtended" Value="True">
+                            <Setter TargetName="Label" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExtended" Value="True" />
+                                <Condition Property="assists:IconAssist.Icon" Value="{x:Null}" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+
+                        <!--  Icon  -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(assists:IconAssist.IconOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(assists:IconAssist.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(assists:IconAssist.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(assists:IconAssist.IconOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(assists:IconAssist.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(assists:IconAssist.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!--  Appearance  -->
+            <Trigger Property="Appearance" Value="Primary">
+                <Setter Property="Background" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimaryContainer}" />
+            </Trigger>
+            <Trigger Property="Appearance" Value="Secondary">
+                <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
+            </Trigger>
+            <Trigger Property="Appearance" Value="Tertiary">
+                <Setter Property="Background" Value="{DynamicResource Material.Colors.TertiaryContainer}" />
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnTertiaryContainer}" />
+            </Trigger>
+
+            <!--  Extended  -->
+            <Trigger Property="IsExtended" Value="True">
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="MinWidth" Value="80" />
+                <Setter Property="Height" Value="56" />
+                <Setter Property="assists:ShapeAssist.Style" Value="Large" />
+            </Trigger>
+
+            <!--  Size  -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Size" Value="Small" />
+                    <Condition Property="IsExtended" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Width" Value="40" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="assists:ShapeAssist.Style" Value="Medium" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Size" Value="Large" />
+                    <Condition Property="IsExtended" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Width" Value="96" />
+                <Setter Property="Height" Value="96" />
+                <Setter Property="assists:ShapeAssist.Style" Value="ExtraLarge" />
+                <Setter Property="assists:IconAssist.Size" Value="36" />
+            </MultiTrigger>
+
+            <!--  Disabled  -->
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
+                <Setter Property="Background" Value="{DynamicResource Material.Colors.OnSurface}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

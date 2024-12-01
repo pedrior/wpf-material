@@ -1,0 +1,14 @@
+﻿<Application
+    x:Class="WPF.Material.Gallery.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:md3="https://https://github.com/pedrior/wpf-material">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <md3:ThemeResources Theme="{x:Static md3:Theme.Light}" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

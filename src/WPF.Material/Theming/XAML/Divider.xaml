@@ -1,0 +1,15 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPF.Material.Controls">
+
+    <Style TargetType="{x:Type controls:Divider}">
+        <Setter Property="Brush" Value="{DynamicResource Material.Colors.Outline}" />
+        <Setter Property="Thickness" Value="1" />
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TargetFramework>net8.0-windows</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\WPF.Material.Symbols.Outlined\WPF.Material.Symbols.Outlined.csproj" />
+        <ProjectReference Include="..\WPF.Material.Symbols.Rounded\WPF.Material.Symbols.Rounded.csproj" />
+        <ProjectReference Include="..\WPF.Material.Symbols.Sharp\WPF.Material.Symbols.Sharp.csproj" />
+        <ProjectReference Include="..\WPF.Material\WPF.Material.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    </ItemGroup>
+</Project>

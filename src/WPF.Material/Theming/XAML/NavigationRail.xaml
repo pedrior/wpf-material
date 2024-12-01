@@ -1,0 +1,231 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:assists="clr-namespace:WPF.Material.Assists"
+    xmlns:controls="clr-namespace:WPF.Material.Controls"
+    xmlns:typography="clr-namespace:WPF.Material.Typography">
+
+    <Style TargetType="{x:Type controls:NavigationRail}">
+        <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
+        <Setter Property="DividerForeground" Value="{DynamicResource Material.Colors.OutlineVariant}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="Alignment" Value="Top" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ShowDivider" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NavigationRail}">
+                    <controls:Container
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <ContentPresenter
+                                x:Name="TopActions"
+                                Grid.Row="0"
+                                Width="80"
+                                Margin="0,44,0,0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Content="{TemplateBinding TopActions}"
+                                ContentStringFormat="{TemplateBinding TopActionsStringFormat}"
+                                ContentTemplate="{TemplateBinding TopActionsTemplate}"
+                                ContentTemplateSelector="{TemplateBinding TopActionsTemplateSelector}" />
+
+                            <controls:SpacedPanel
+                                x:Name="Destinations"
+                                Grid.Row="1"
+                                Width="80"
+                                Margin="0,40,0,0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                IsItemsHost="True"
+                                Orientation="Vertical"
+                                Spacing="12" />
+
+                            <ContentPresenter
+                                x:Name="BottomActions"
+                                Grid.Row="2"
+                                Width="80"
+                                Margin="0,0,0,44"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Content="{TemplateBinding BottomActionsContent}"
+                                ContentStringFormat="{TemplateBinding BottomActionsStringFormat}"
+                                ContentTemplate="{TemplateBinding BottomActionsTemplate}"
+                                ContentTemplateSelector="{TemplateBinding BottomActionsTemplateSelector}" />
+
+                            <controls:Divider
+                                x:Name="Divider"
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Brush="{TemplateBinding DividerForeground}"
+                                Orientation="Vertical"
+                                Visibility="Collapsed" />
+                        </Grid>
+                    </controls:Container>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowDivider" Value="True">
+                            <Setter TargetName="Divider" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="Alignment" Value="Middle">
+                            <Setter TargetName="Destinations" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Destinations" Property="Grid.RowSpan" Value="3" />
+                            <Setter TargetName="Destinations" Property="Margin" Value="0" />
+                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Center" />
+                        </Trigger>
+                        <Trigger Property="Alignment" Value="Bottom">
+                            <Setter TargetName="Destinations" Property="Margin" Value="0,0,0,56" />
+                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Bottom" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:NavigationRailActions}">
+        <Setter Property="Width" Value="80" />
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NavigationRailActions}">
+                    <controls:SpacedPanel
+                        IsItemsHost="True"
+                        Orientation="Vertical"
+                        Spacing="4" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:NavigationRailItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+        <Setter Property="Height" Value="56" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="IsChecked" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="assists:IconAssist.Size" Value="24" />
+        <Setter Property="assists:IconAssist.FillOnPressing" Value="True" />
+        <Setter Property="assists:IconAssist.FillOnSelecting" Value="True" />
+        <Setter Property="assists:IconAssist.WeightOnHovering" Value="DemiBold" />
+        <Setter Property="assists:IconAssist.WeightOnPressing" Value="Normal" />
+        <Setter Property="assists:IconAssist.WeightOnSelecting" Value="DemiBold" />
+        <Setter Property="assists:TypographyAssist.Style" Value="{typography:TypeStyle Style=LabelMedium, Height=0, Weight=DemiBold}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NavigationRailItem}">
+                    <Grid x:Name="Content" Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <controls:Container
+                            x:Name="Container"
+                            Grid.Row="0"
+                            Margin="12,0"
+                            assists:InteractionAssist.IsDragged="{TemplateBinding assists:InteractionAssist.IsDragged}"
+                            assists:InteractionAssist.IsEnabled="{TemplateBinding IsEnabled}"
+                            assists:InteractionAssist.IsHovered="{TemplateBinding IsMouseOver}"
+                            assists:InteractionAssist.IsPressed="{TemplateBinding IsPressed}"
+                            assists:InteractionAssist.IsRippleCentered="True"
+                            assists:InteractionAssist.IsRippleEnabled="True"
+                            assists:ShapeAssist.Family="{TemplateBinding assists:ShapeAssist.Family}"
+                            assists:ShapeAssist.Style="Full"
+                            Background="Transparent"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Foreground="{TemplateBinding Foreground}">
+
+                            <controls:SymbolIcon
+                                x:Name="Icon"
+                                VerticalAlignment="Center"
+                                FontSize="{TemplateBinding assists:IconAssist.Size}"
+                                FontWeight="{TemplateBinding assists:IconAssist.Weight}"
+                                Foreground="{TemplateBinding Foreground}"
+                                IsFilled="{TemplateBinding assists:IconAssist.Fill}"
+                                Symbol="{TemplateBinding assists:IconAssist.Icon}"
+                                SymbolStyle="{TemplateBinding assists:IconAssist.Style}" />
+                        </controls:Container>
+
+                        <ContentPresenter
+                            x:Name="Label"
+                            Grid.Row="1"
+                            Height="16"
+                            Margin="0,4,0,0"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                            RecognizesAccessKey="True"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            TextBlock.TextAlignment="Center" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!--  Hide label  -->
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="Label" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <!--  Selected  -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Container" Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
+                        </Trigger>
+
+                        <!--  Un-bold  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="False" />
+                                <Condition Property="IsPressed" Value="False" />
+                                <Condition Property="IsChecked" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="assists:TypographyAssist.Style" Value="{typography:TypeStyle Style=LabelMedium, Height=0}" />
+                        </MultiTrigger>
+
+                        <!--  Icon  -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(assists:IconAssist.IconOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(assists:IconAssist.FillOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(assists:IconAssist.WeightOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(assists:IconAssist.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(assists:IconAssist.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </MultiTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(assists:IconAssist.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(assists:IconAssist.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!--  Selected  -->
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
