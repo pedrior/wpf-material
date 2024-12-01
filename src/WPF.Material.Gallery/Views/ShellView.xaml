@@ -84,8 +84,7 @@
                 md3:IconAssist.Icon="AddCircle"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:ComponentsViewModel}"
-                Content="Components"
-                MouseEnter="NavigationRailItem_MouseEnter" />
+                Content="Components" />
         </md3:NavigationRail>
 
         <ContentPresenter Grid.Column="1" Content="{Binding Content, Mode=OneWay}" />
