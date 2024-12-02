@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using WPF.Material.Gallery.ViewModels;
 using WPF.Material.Gallery.Views;
-using WPF.Material.Theming;
+using WPF.Material.Styles;
 
 namespace WPF.Material.Gallery;
 

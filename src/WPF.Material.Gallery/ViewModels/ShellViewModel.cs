@@ -1,4 +1,4 @@
-﻿using WPF.Material.Theming;
+﻿using WPF.Material.Styles;
 
 namespace WPF.Material.Gallery.ViewModels;
 

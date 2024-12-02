@@ -49,7 +49,7 @@
 
             <md3:NavigationRail.TopActions>
                 <md3:NavigationRailActions>
-                    <md3:FloatingActionButton md3:IconAssist.Icon="Search" Appearance="Tertiary" />
+                    <md3:FloatingActionButton md3:Icon.Icon="Search" Appearance="Tertiary" />
                 </md3:NavigationRailActions>
             </md3:NavigationRail.TopActions>
 
@@ -57,10 +57,10 @@
                 <md3:NavigationRailActions>
                     <md3:ToggleIconButton
                         x:Name="ThemeToggleButton"
-                        md3:IconAssist.FillOnHovering="True"
-                        md3:IconAssist.FillOnPressing="True"
-                        md3:IconAssist.Icon="DarkMode"
-                        md3:IconAssist.IconOnSelecting="LightMode"
+                        md3:Icon.FillOnHovering="True"
+                        md3:Icon.FillOnPressing="True"
+                        md3:Icon.Icon="DarkMode"
+                        md3:Icon.IconOnSelecting="LightMode"
                         Command="{Binding SwitchAppThemeCommand, Mode=OneTime}"
                         IsChecked="{Binding IsDarkTheme, Mode=OneTime}"
                         ToolTip="{Binding ElementName=ThemeToggleButton, Path=IsChecked, Converter={converters:ThemeToolTipConverter OnLightTooltip={StaticResource SwitchToDarkThemeTooltip}, OnDarkTooltip={StaticResource SwitchToLightThemeTooltip}}}" />
@@ -68,20 +68,20 @@
             </md3:NavigationRail.BottomActionsContent>
 
             <md3:NavigationRailItem
-                md3:IconAssist.Icon="Home"
+                md3:Icon.Icon="Home"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:HomeViewModel}"
                 Content="Home"
                 IsChecked="True" />
 
             <md3:NavigationRailItem
-                md3:IconAssist.Icon="Apps"
+                md3:Icon.Icon="Apps"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:GetStartedViewModel}"
                 Content="Get started" />
 
             <md3:NavigationRailItem
-                md3:IconAssist.Icon="AddCircle"
+                md3:Icon.Icon="AddCircle"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:ComponentsViewModel}"
                 Content="Components" />
