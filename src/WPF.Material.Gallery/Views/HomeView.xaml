@@ -14,34 +14,4 @@
     FontFamily="{DynamicResource Material.Typefaces.Default}"
     SnapsToDevicePixels="True"
     UseLayoutRounding="True"
-    mc:Ignorable="d">
-
-    <md3:SpacedPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Orientation="Vertical"
-        Spacing="12">
-        <md3:WrapPanel HorizontalSpacing="12" VerticalSpacing="12">
-            <md3:FloatingActionButton md3:Icon.Icon="Edit" Size="Small" />
-            <md3:FloatingActionButton md3:Icon.Icon="Edit" Size="Standard" />
-            <md3:FloatingActionButton md3:Icon.Icon="Edit" Size="Large" />
-        </md3:WrapPanel>
-        <md3:WrapPanel HorizontalSpacing="12" VerticalSpacing="12">
-            <md3:FloatingActionButton
-                md3:Icon.Icon="Edit"
-                Content="Compose"
-                IsExtended="True"
-                Size="Small" />
-            <md3:FloatingActionButton
-                md3:Icon.Icon="Edit"
-                Content="Compose"
-                IsExtended="True"
-                Size="Standard" />
-            <md3:FloatingActionButton
-                md3:Icon.Icon="Edit"
-                Content="Compose"
-                IsExtended="True"
-                Size="Large" />
-        </md3:WrapPanel>
-    </md3:SpacedPanel>
-</UserControl>
+    mc:Ignorable="d" />
