@@ -124,6 +124,9 @@
         <Setter Property="foundations:Icon.WeightOnPressing" Value="Normal" />
         <Setter Property="foundations:Icon.WeightOnSelecting" Value="DemiBold" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelMedium, Height=0, Weight=DemiBold}" />
+        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
+        <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
+        <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:NavigationRailItem}">
@@ -133,33 +136,32 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <components:Container
-                            x:Name="Container"
+                        <components:Ripple
+                            x:Name="PART_Ripple"
                             Grid.Row="0"
                             Margin="12,0"
-                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                            foundations:Interaction.IsEnabled="{TemplateBinding IsEnabled}"
-                            foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
-                            foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
                             foundations:Interaction.IsRippleCentered="True"
-                            foundations:Interaction.IsRippleEnabled="True"
-                            styles:Shape.Family="{TemplateBinding styles:Shape.Family}"
-                            styles:Shape.Style="Full"
-                            Background="Transparent"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
+                            ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}"
                             Foreground="{TemplateBinding Foreground}">
 
-                            <components:SymbolIcon
-                                x:Name="Icon"
-                                VerticalAlignment="Center"
-                                FontSize="{TemplateBinding foundations:Icon.Size}"
-                                FontWeight="{TemplateBinding foundations:Icon.Weight}"
-                                Foreground="{TemplateBinding Foreground}"
-                                IsFilled="{TemplateBinding foundations:Icon.Fill}"
-                                Symbol="{TemplateBinding foundations:Icon.Icon}"
-                                SymbolStyle="{TemplateBinding foundations:Icon.Style}" />
-                        </components:Container>
+                            <components:Container
+                                x:Name="Container"
+                                Background="Transparent"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                ShapeStyle="Full">
+
+                                <components:SymbolIcon
+                                    x:Name="Icon"
+                                    VerticalAlignment="Center"
+                                    FontSize="{TemplateBinding foundations:Icon.Size}"
+                                    FontWeight="{TemplateBinding foundations:Icon.Weight}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    IsFilled="{TemplateBinding foundations:Icon.Fill}"
+                                    Symbol="{TemplateBinding foundations:Icon.Icon}"
+                                    SymbolStyle="{TemplateBinding foundations:Icon.Style}" />
+                            </components:Container>
+                        </components:Ripple>
 
                         <ContentPresenter
                             x:Name="Label"

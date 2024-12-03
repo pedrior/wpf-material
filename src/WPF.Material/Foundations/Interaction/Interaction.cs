@@ -12,7 +12,7 @@ public static class Interaction
         "IsHovered",
         typeof(bool),
         typeof(Interaction),
-        new PropertyMetadata(false));
+        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
 
     /// <summary>
     /// Identifies the IsPressed attached property.
@@ -21,7 +21,7 @@ public static class Interaction
         "IsPressed",
         typeof(bool),
         typeof(Interaction),
-        new PropertyMetadata(false));
+        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
 
     /// <summary>
     /// Identifies the IsDragged attached property.
@@ -30,7 +30,7 @@ public static class Interaction
         "IsDragged",
         typeof(bool),
         typeof(Interaction),
-        new PropertyMetadata(false));
+        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
 
     /// <summary>
     /// Identifies the IsEnabled attached property.
@@ -39,8 +39,17 @@ public static class Interaction
         "IsEnabled",
         typeof(bool),
         typeof(Interaction),
-        new PropertyMetadata(true));
-    
+        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits));
+
+    /// <summary>
+    /// Identifies the IsEnabled attached property.
+    /// </summary>
+    public static readonly DependencyProperty IsInteractiveProperty = DependencyProperty.RegisterAttached(
+        "IsInteractive",
+        typeof(bool),
+        typeof(Interaction),
+        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits));
+
     /// <summary>
     /// Identifies the IsRippleEnabled attached property.
     /// </summary>
@@ -148,6 +157,27 @@ public static class Interaction
     /// The current value of the <see cref="IsEnabledProperty"/> attached property on the specified dependency object.
     /// </returns>
     public static bool GetIsEnabled(DependencyObject element) => (bool)element.GetValue(IsEnabledProperty);
+    
+    /// <summary>
+    /// Sets the value of the <see cref="IsInteractiveProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to set the value of the <see cref="IsInteractiveProperty"/> property.
+    /// </param>
+    /// <param name="value">The new value to set the property to.</param>
+    public static void SetIsInteractive(DependencyObject element, bool value) => 
+        element.SetValue(IsInteractiveProperty, value);
+
+    /// <summary>
+    /// Gets the value of the <see cref="IsInteractiveProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to retrieve the value of the <see cref="IsInteractiveProperty"/> property.
+    /// </param>
+    /// <returns>
+    /// The current value of the <see cref="IsInteractiveProperty"/> attached property on the specified dependency object.
+    /// </returns>
+    public static bool GetIsInteractive(DependencyObject element) => (bool)element.GetValue(IsInteractiveProperty);
     
     /// <summary>
     /// Sets the value of the <see cref="IsRippleEnabledProperty"/> attached property for a specified dependency object.

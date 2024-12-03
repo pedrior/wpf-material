@@ -5,13 +5,13 @@ namespace WPF.Material.Components;
 /// <summary>
 /// Represents a selectable item in a <see cref="NavigationRail"/>.
 /// </summary>
-[TemplatePart(Name = PartContainer, Type = typeof(Container))]
+[TemplatePart(Name = PartRipple, Type = typeof(Container))]
 public class NavigationRailItem : NavigationItem
 {
-    private const string PartContainer = "Container";
+    private const string PartRipple = "PART_Ripple";
 
-   private Container container = null!;
-    
+    private Ripple? ripple;
+
     static NavigationRailItem()
     {
         DefaultStyleKeyProperty.OverrideMetadata(
@@ -23,28 +23,28 @@ public class NavigationRailItem : NavigationItem
     {
         base.OnApplyTemplate();
 
-        container = GetTemplateChild(PartContainer) as Container
-                    ?? throw new InvalidOperationException($"Missing required template part: {PartContainer}");
+        ripple = GetTemplateChild(PartRipple) as Ripple ??
+                 throw new NullReferenceException($"Missing required template part '{PartRipple}'.");
     }
 
     protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
     {
         base.OnMouseLeftButtonDown(e);
-        
-        container.RippleController.StartAndKeep();
+
+        ripple?.Start(keep: true);
     }
 
     protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
     {
         base.OnMouseLeftButtonUp(e);
 
-        container.RippleController.Release();
+        ripple?.Release();
     }
 
     protected override void OnMouseLeave(MouseEventArgs e)
     {
         base.OnMouseLeave(e);
-        
-        container.RippleController.Release();
+
+        ripple?.Release();
     }
 }

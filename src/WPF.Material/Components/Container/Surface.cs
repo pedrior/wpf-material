@@ -1,148 +1,295 @@
-﻿using WPF.Material.Styles;
-using WPF.Material.Shapes;
+﻿using WPF.Material.Shapes;
 
 namespace WPF.Material.Components;
 
-internal class Surface : FrameworkElement
+/// <summary>
+/// Renders a surface with a customizable shape, background, and border.
+/// </summary>
+public class Surface : FrameworkElement
 {
-    public static readonly DependencyProperty BackgroundProperty = Control.BackgroundProperty.AddOwner(
+    /// <summary>
+    /// Identifies the <see cref="Background"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty BackgroundProperty = DependencyProperty.Register(
+        nameof(Background),
+        typeof(Brush),
         typeof(Surface),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
-    public static readonly DependencyProperty BorderThicknessProperty = Control.BorderThicknessProperty.AddOwner(
+    /// <summary>
+    /// Identifies the <see cref="BorderBrush"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty BorderBrushProperty = DependencyProperty.Register(
+        nameof(BorderBrush),
+        typeof(Brush),
+        typeof(Surface),
+        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
+
+    /// <summary>
+    /// Identifies the <see cref="BorderThickness"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty BorderThicknessProperty = DependencyProperty.Register(
+        nameof(BorderThickness),
+        typeof(Thickness),
         typeof(Surface),
         new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsRender));
 
+    /// <summary>
+    /// Identifies the <see cref="ShapeFamily"/> dependency property.
+    /// </summary>
     public static readonly DependencyProperty ShapeFamilyProperty = DependencyProperty.Register(
         nameof(ShapeFamily),
         typeof(ShapeFamily),
         typeof(Surface),
         new FrameworkPropertyMetadata(ShapeFamily.Rounded, FrameworkPropertyMetadataOptions.AffectsRender));
-    
+
+    /// <summary>
+    /// Identifies the <see cref="ShapeStyle"/> dependency property.
+    /// </summary>
     public static readonly DependencyProperty ShapeStyleProperty = DependencyProperty.Register(
         nameof(ShapeStyle),
         typeof(ShapeStyle),
         typeof(Surface),
         new FrameworkPropertyMetadata(ShapeStyle.None, FrameworkPropertyMetadataOptions.AffectsRender));
-    
+
+    /// <summary>
+    /// Identifies the <see cref="ShapeCorner"/> dependency property.
+    /// </summary>
     public static readonly DependencyProperty ShapeCornerProperty = DependencyProperty.Register(
         nameof(ShapeCorner),
         typeof(ShapeCorner),
         typeof(Surface),
         new FrameworkPropertyMetadata(ShapeCorner.All, FrameworkPropertyMetadataOptions.AffectsRender));
 
+    /// <summary>
+    /// Identifies the <see cref="ShapeRadius"/> dependency property.
+    /// </summary>
     public static readonly DependencyProperty ShapeRadiusProperty = DependencyProperty.Register(
         nameof(ShapeRadius),
         typeof(CornerRadius?),
         typeof(Surface),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
-    
+
+    /// <summary>
+    /// Identifies the <see cref="UseStyleOnRadiusOverride"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty UseStyleOnRadiusOverrideProperty = DependencyProperty.Register(
+        nameof(UseStyleOnRadiusOverride),
+        typeof(bool),
+        typeof(Surface),
+        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.AffectsRender));
+
+    /// <summary>
+    /// Identifies the <see cref="UseCornersOnRadiusOverride"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty UseCornersOnRadiusOverrideProperty = DependencyProperty.Register(
+        nameof(UseCornersOnRadiusOverride),
+        typeof(ShapeCorner),
+        typeof(Surface),
+        new FrameworkPropertyMetadata(ShapeCorner.All, FrameworkPropertyMetadataOptions.AffectsRender));
+
     private static readonly DependencyPropertyKey RenderedGeometryPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(RenderedGeometry),
         typeof(Geometry),
         typeof(Surface),
-        new PropertyMetadata(Geometry.Empty));
+        new FrameworkPropertyMetadata(Geometry.Empty));
 
-    public static readonly DependencyProperty RenderedGeometryProperty = RenderedGeometryPropertyKey.DependencyProperty;
+    /// <summary>
+    /// Identifies the <see cref="RenderedGeometry"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty RenderedGeometryProperty = 
+        RenderedGeometryPropertyKey.DependencyProperty;
 
-    private static readonly RoutedEvent RenderedEvent  = EventManager.RegisterRoutedEvent(
-        nameof(Rendered),
-        RoutingStrategy.Bubble, 
-        typeof(RoutedEventHandler),
-        typeof(Surface)); 
+    public event EventHandler? Rendered;
 
+    /// <summary>
+    /// Gets or sets a <see cref="Brush"/> that describes the background of the surface.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
     public Brush? Background
     {
-        get => (Brush)GetValue(BackgroundProperty);
+        get => (Brush?)GetValue(BackgroundProperty);
         set => SetValue(BackgroundProperty, value);
     }
-    
+
+    /// <summary>
+    /// Gets or sets a <see cref="Brush"/> that describes the border of the surface.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
+    public Brush? BorderBrush
+    {
+        get => (Brush?)GetValue(BorderBrushProperty);
+        set => SetValue(BorderBrushProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets the border thickness of the surface.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
     public Thickness BorderThickness
     {
         get => (Thickness)GetValue(BorderThicknessProperty);
         set => SetValue(BorderThicknessProperty, value);
     }
-    
+
+    /// <summary>
+    /// Gets or sets the shape family of the surface.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
     public ShapeFamily ShapeFamily
     {
         get => (ShapeFamily)GetValue(ShapeFamilyProperty);
         set => SetValue(ShapeFamilyProperty, value);
     }
 
+    /// <summary>
+    /// Gets or sets the shape style of the surface. A style can be used to apply a predefined set of corner radii.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
     public ShapeStyle ShapeStyle
     {
         get => (ShapeStyle)GetValue(ShapeStyleProperty);
         set => SetValue(ShapeStyleProperty, value);
     }
-    
+
+    /// <summary>
+    /// Gets or sets a value that specifies which corners of the surface should have a radius applied.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
     public ShapeCorner ShapeCorner
     {
         get => (ShapeCorner)GetValue(ShapeCornerProperty);
         set => SetValue(ShapeCornerProperty, value);
     }
 
+    /// <summary>
+    /// Gets or sets a custom radius for the surface. If set when <see cref="UseCornersOnRadiusOverride"/> is set to
+    /// <see cref="ShapeCorner.All"/>, the <see cref="ShapeStyle"/> will be  ignored; otherwise, the surface will have
+    /// a combination of the custom radius and the style radius. See <see cref="UseStyleOnRadiusOverride"/> and
+    /// <see cref="UseCornersOnRadiusOverride"/> properties for possible combinations.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
     public CornerRadius? ShapeRadius
     {
         get => (CornerRadius?)GetValue(ShapeRadiusProperty);
         set => SetValue(ShapeRadiusProperty, value);
     }
 
+    /// <summary>
+    /// Gets or sets a value that specifies whether the <see cref="ShapeStyle"/> should be used when a custom radius is
+    /// set. If set to <see langword="true"/>, the style radius will be used in combination with the custom radius when
+    /// <see cref="UseCornersOnRadiusOverride"/> is not set to <see cref="ShapeCorner.All"/>.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
+    public bool UseStyleOnRadiusOverride
+    {
+        get => (bool)GetValue(UseStyleOnRadiusOverrideProperty);
+        set => SetValue(UseStyleOnRadiusOverrideProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets a value that specifies which corners of the surface should have a radius applied when a custom
+    /// radius is set. If set to <see cref="ShapeCorner.All"/>, the custom radius will be applied to all corners; if
+    /// set to <see cref="ShapeCorner.None"/>, the custom radius will be ignored.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Appearance)]
+    public ShapeCorner UseCornersOnRadiusOverride
+    {
+        get => (ShapeCorner)GetValue(UseCornersOnRadiusOverrideProperty);
+        set => SetValue(UseCornersOnRadiusOverrideProperty, value);
+    }
+
+    /// <summary>
+    /// Gets a <see cref="Geometry"/> that represents the rendered surface.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Common)]
     public Geometry RenderedGeometry
     {
         get => (Geometry)GetValue(RenderedGeometryProperty);
         private set => SetValue(RenderedGeometryPropertyKey, value);
     }
 
-    public event RoutedEventHandler Rendered
-    {
-        add => AddHandler(RenderedEvent, value);
-        remove => RemoveHandler(RenderedEvent, value);
-    }
-
     protected override void OnRender(DrawingContext context)
     {
-        var width = ActualWidth;
-        var height = ActualHeight;
-        
+        base.OnRender(context);
+
+        var width = RenderSize.Width;
+        var height = RenderSize.Height;
+
+        var borderBrush = BorderBrush;
+        var thickness = borderBrush is null
+            ? 0.0
+            : Math.Abs(BorderThickness.Left);
+
+        width = Math.Abs(width - thickness);
+        height = Math.Abs(height - thickness);
+
         if (width is 0.0 || height is 0.0)
         {
             // Nothing to render
             return;
         }
-        
-        var thickness = Math.Abs(BorderThickness.Left);
-        var halfThickness = thickness * 0.5;
-        
-        var isStroked = thickness >= 0.0;
-        
-        var innerWidth = Math.Abs(width - thickness);
-        var innerHeight = Math.Abs(height - thickness);
+
+        var isStroked = thickness >= 1.0;
 
         var bounds = new Rect(
-            halfThickness,
-            halfThickness,
-            innerWidth,
-            innerHeight);
-        
-        var radius = ShapeRadius is not null
-            ? ShapeHelper.ClampCornerRadius(
-                ShapeRadius.Value,
-                ShapeStyle,
-                innerWidth,
-                innerHeight,
-                useStyleRadius: Shape.GetUseStyleOnRadiusOverride(this),
-                cornersOverride: Shape.GetUseCornersOnRadiusOverride(this))
-            : ShapeHelper.GetRadiusForStyle(ShapeStyle, ShapeCorner, innerWidth, innerHeight);
+            thickness * 0.5,
+            thickness * 0.5,
+            width,
+            height);
 
-        var pen = isStroked ? new Pen(null, thickness) : null;
+        var radius = GetActualCornerRadius(bounds.Width, bounds.Height);
         var geometry = CreateGeometry(ShapeFamily, bounds, radius, isStroked);
 
+        var pen = isStroked
+            ? new Pen(BorderBrush, thickness)
+            : null;
+
+        // Render our geometry (borders and background)
         context.DrawGeometry(Background, pen, geometry);
 
-        RenderedGeometry = geometry;
-        OnRendered(new RoutedEventArgs(RenderedEvent));
+        var renderBounds = new Rect(RenderSize);
+        var renderRadius = isStroked
+            ? radius.AddScalar(thickness * 0.5)
+            : radius;
+
+        // Creates the geometry that represents the surface, including the border
+        RenderedGeometry = CreateGeometry(ShapeFamily, renderBounds, renderRadius, isStroked);
+
+        OnRendered();
     }
-    
+
+    private CornerRadius GetActualCornerRadius(double width, double height)
+    {
+        CornerRadius radius;
+        if (ShapeRadius is null)
+        {
+            radius = ShapeHelper.GetRadiusForStyle(ShapeStyle, ShapeCorner, width, height);
+        }
+        else
+        {
+            radius = ShapeHelper.ClampCornerRadius(
+                ShapeRadius.Value,
+                ShapeStyle,
+                width,
+                height,
+                UseStyleOnRadiusOverride,
+                UseCornersOnRadiusOverride);
+        }
+
+        return radius;
+    }
+
     private static StreamGeometry CreateGeometry(ShapeFamily family, Rect bounds, CornerRadius radius, bool isStroked)
     {
         var geometry = new StreamGeometry();
@@ -159,13 +306,13 @@ internal class Surface : FrameworkElement
         }
 
         geometry.Freeze();
-
         return geometry;
     }
 
     private static void DrawRectangle(StreamGeometryContext context, Rect bounds, CornerRadius radius, bool isStroked)
     {
         var p0 = new Point(radius.TopLeft + bounds.X, bounds.Y);
+
         var p1 = new Point(bounds.Width + bounds.X - radius.TopRight, bounds.Y);
         var p2 = new Point(bounds.Width + bounds.X, bounds.Height + bounds.Y - radius.BottomLeft);
         var p3 = new Point(radius.BottomRight + bounds.X, bounds.Height + bounds.Y);
@@ -194,6 +341,7 @@ internal class Surface : FrameworkElement
     private static void DrawOctagon(StreamGeometryContext context, Rect bounds, CornerRadius radius, bool isStroked)
     {
         var p0 = new Point(radius.TopLeft + bounds.X, bounds.Y);
+
         var p1 = new Point(bounds.Width + bounds.X - radius.TopRight, bounds.Y);
         var p2 = new Point(bounds.Width + bounds.X, radius.TopRight + bounds.Y);
         var p3 = new Point(bounds.Width + bounds.X, bounds.Height - radius.BottomLeft + bounds.Y);
@@ -202,7 +350,8 @@ internal class Surface : FrameworkElement
         var p6 = new Point(bounds.X, bounds.Height - radius.BottomRight + bounds.Y);
         var p7 = new Point(bounds.X, radius.TopLeft + bounds.Y);
 
-        context.BeginFigure(p0, isFilled: true, isStroked);
+        context.BeginFigure(p0, isFilled: true, isClosed: true);
+
         LineTo(context, p1, isStroked);
         LineTo(context, p2, isStroked);
         LineTo(context, p3, isStroked);
@@ -217,18 +366,18 @@ internal class Surface : FrameworkElement
 
     private static void ArcTo(StreamGeometryContext context, Point point, double size, bool isStroked)
     {
-        if (Math.Abs(size) >= double.Epsilon)
+        if (size > 0.0)
         {
             context.ArcTo(
                 point,
                 new Size(size, size),
-                rotationAngle: 0,
+                rotationAngle: 0.0,
                 isLargeArc: false,
                 sweepDirection: SweepDirection.Clockwise,
                 isStroked,
                 isSmoothJoin: false);
         }
     }
-    
-    private void OnRendered(RoutedEventArgs e) => RaiseEvent(e);
+
+    protected virtual void OnRendered() => Rendered?.Invoke(this, EventArgs.Empty);
 }

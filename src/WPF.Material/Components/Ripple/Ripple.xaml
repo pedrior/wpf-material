@@ -25,8 +25,9 @@
 
                         <Canvas
                             x:Name="Canvas"
-                            Clip="{TemplateBinding CanvaClip}"
+                            Clip="{TemplateBinding ClippingGeometry}"
                             IsHitTestVisible="False">
+
                             <Ellipse x:Name="PART_Ellipse" Fill="{TemplateBinding Foreground}" />
                         </Canvas>
                     </components:NaivePanel>

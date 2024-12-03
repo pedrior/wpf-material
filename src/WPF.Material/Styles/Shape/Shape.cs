@@ -50,7 +50,7 @@ public static class Shape
         "UseStyleOnRadiusOverride",
         typeof(bool),
         typeof(Shape),
-        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(true));
 
     /// <summary>
     /// Identifies the UseCornersOnRadiusOverride attached property.
@@ -60,7 +60,7 @@ public static class Shape
             "UseCornersOnRadiusOverride",
             typeof(ShapeCorner),
             typeof(Shape),
-            new FrameworkPropertyMetadata(ShapeCorner.All, FrameworkPropertyMetadataOptions.Inherits));
+            new PropertyMetadata(ShapeCorner.All));
 
     /// <summary>
     /// Sets the value of the <see cref="FamilyProperty"/> attached property for a specified dependency object.
