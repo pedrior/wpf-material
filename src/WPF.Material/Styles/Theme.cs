@@ -1,6 +1,4 @@
-﻿using WPF.Material.Styles;
-
-namespace WPF.Material.Styles;
+﻿namespace WPF.Material.Styles;
 
 /// <summary>
 /// Represents a Material Design 3 theme, which defines the color scheme and typeface of the application. You can use

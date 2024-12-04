@@ -1,11 +1,7 @@
-﻿using WPF.Material.Styles;
-using WPF.Material.Controls;
-using WPF.Material.Foundations;
-
-namespace WPF.Material.Components;
+﻿namespace WPF.Material.Components;
 
 /// <summary>
-/// Represents a control that displays a <see cref="Controls.Symbol"/> as an icon.
+/// Represents a control that displays a <see cref="Components.Symbol"/> as an icon.
 /// </summary>
 public class SymbolIcon : Control
 {

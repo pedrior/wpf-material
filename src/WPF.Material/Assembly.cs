@@ -5,6 +5,9 @@ global using System.Windows.Controls;
 global using System.Windows.Data;
 global using System.Windows.Media;
 global using WPF.Material.Common;
+global using WPF.Material.Components;
+global using WPF.Material.Foundations;
+global using WPF.Material.Styles;
 using System.Windows.Markup;
 
 [assembly: XmlnsPrefix("https://https://github.com/pedrior/wpf-material", "md3")]

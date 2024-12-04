@@ -1,4 +1,4 @@
-﻿namespace WPF.Material.Shapes;
+﻿namespace WPF.Material.Styles;
 
 /// <summary>
 /// Represents the styles of a shape.

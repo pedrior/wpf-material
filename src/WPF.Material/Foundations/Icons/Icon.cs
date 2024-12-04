@@ -1,7 +1,4 @@
-﻿using WPF.Material.Components;
-using WPF.Material.Controls;
-
-namespace WPF.Material.Foundations;
+﻿namespace WPF.Material.Foundations;
 
 /// <summary>
 /// Provides attached properties for managing the iconography aspects of a component.

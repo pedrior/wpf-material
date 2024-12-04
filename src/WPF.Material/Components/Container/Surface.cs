@@ -1,6 +1,4 @@
-﻿using WPF.Material.Shapes;
-
-namespace WPF.Material.Components;
+﻿namespace WPF.Material.Components;
 
 /// <summary>
 /// Renders a surface with a customizable shape, background, and border.

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace WPF.Material.Shapes;
+namespace WPF.Material.Styles;
 
 internal static class ShapeHelper
 {

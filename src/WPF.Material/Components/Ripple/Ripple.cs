@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using WPF.Material.Foundations;
 
 namespace WPF.Material.Components;
 

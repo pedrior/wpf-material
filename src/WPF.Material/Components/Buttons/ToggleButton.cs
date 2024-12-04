@@ -1,6 +1,4 @@
-﻿using WPF.Material.Styles;
-
-namespace WPF.Material.Components;
+﻿namespace WPF.Material.Components;
 
 /// <summary>
 /// Represents a toggle button that is part of a <see cref="ToggleButtonGroup"/>.
@@ -29,7 +27,7 @@ public class ToggleButton : System.Windows.Controls.Primitives.ToggleButton
     
     /// <summary>
     /// Gets or sets a value indicating whether the icon should be shown. When the button is checked, the
-    /// <see cref="IconAssist.IconOnSelectingProperty"/> will be used, otherwise the <see cref="IconAssist.IconProperty"/>.
+    /// <see cref="Icon.IconOnSelectingProperty"/> will be used, otherwise the <see cref="Icon.IconProperty"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]

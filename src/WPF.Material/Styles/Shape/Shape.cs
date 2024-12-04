@@ -1,6 +1,4 @@
-﻿using WPF.Material.Shapes;
-
-namespace WPF.Material.Styles;
+﻿namespace WPF.Material.Styles;
 
 /// <summary>
 /// Provides attached properties for managing the shape aspects of a component.

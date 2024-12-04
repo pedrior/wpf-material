@@ -1,6 +1,4 @@
-﻿using WPF.Material.Shapes;
-
-namespace WPF.Material.Components;
+﻿namespace WPF.Material.Components;
 
 /// <summary>
 /// Provides a container for a single content.

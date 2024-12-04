@@ -1,5 +1,4 @@
 ﻿using System.Windows.Markup;
-using WPF.Material.Styles;
 
 namespace WPF.Material.Components;
 

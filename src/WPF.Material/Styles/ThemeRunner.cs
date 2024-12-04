@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using WPF.Material.Styles;
 
 namespace WPF.Material.Styles;
 

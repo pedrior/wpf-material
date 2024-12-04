@@ -1,4 +1,4 @@
-﻿namespace WPF.Material.Shapes;
+﻿namespace WPF.Material.Styles;
 
 /// <summary>
 /// Identifies the families that a shape can belong to.

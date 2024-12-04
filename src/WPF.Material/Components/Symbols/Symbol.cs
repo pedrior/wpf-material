@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated at: 22/09/2024 13:05:27 +00:00
-namespace WPF.Material.Controls
+namespace WPF.Material.Components
 {
     
     /// <summary>
