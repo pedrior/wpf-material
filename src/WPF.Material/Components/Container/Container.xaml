@@ -135,41 +135,21 @@
                         <Trigger Property="styles:Elevation.Level" Value="None">
                             <Setter TargetName="Panel" Property="Effect" Value="{x:Null}" />
                         </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="styles:Elevation.Level" Value="Level1" />
-                                <Condition Property="foundations:Interaction.IsEnabled" Value="True" />
-                            </MultiTrigger.Conditions>
+                        <Trigger Property="styles:Elevation.Level" Value="Level1">
                             <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation1}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="styles:Elevation.Level" Value="Level2" />
-                                <Condition Property="foundations:Interaction.IsEnabled" Value="True" />
-                            </MultiTrigger.Conditions>
+                        </Trigger>
+                        <Trigger Property="styles:Elevation.Level" Value="Level2">
                             <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation2}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="styles:Elevation.Level" Value="Level3" />
-                                <Condition Property="foundations:Interaction.IsEnabled" Value="True" />
-                            </MultiTrigger.Conditions>
+                        </Trigger>
+                        <Trigger Property="styles:Elevation.Level" Value="Level3">
                             <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation3}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="styles:Elevation.Level" Value="Level4" />
-                                <Condition Property="foundations:Interaction.IsEnabled" Value="True" />
-                            </MultiTrigger.Conditions>
+                        </Trigger>
+                        <Trigger Property="styles:Elevation.Level" Value="Level4">
                             <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation4}" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="styles:Elevation.Level" Value="Level5" />
-                                <Condition Property="foundations:Interaction.IsEnabled" Value="True" />
-                            </MultiTrigger.Conditions>
+                        </Trigger>
+                        <Trigger Property="styles:Elevation.Level" Value="Level5">
                             <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
-                        </MultiTrigger>
+                        </Trigger>
 
                         <Trigger Property="BorderThicknessContributesToContentMargin" Value="True">
                             <Setter TargetName="Content" Property="Margin">
