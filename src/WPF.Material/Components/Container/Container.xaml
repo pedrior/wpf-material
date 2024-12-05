@@ -74,7 +74,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Container}">
-                    <components:NaivePanel x:Name="Panel">
+                    <components:NaivePanel>
                         <components:Surface
                             x:Name="PART_Surface"
                             Background="{TemplateBinding Background}"
@@ -133,22 +133,22 @@
                         </Trigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="None">
-                            <Setter TargetName="Panel" Property="Effect" Value="{x:Null}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Null}" />
                         </Trigger>
                         <Trigger Property="styles:Elevation.Level" Value="Level1">
-                            <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation1}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation1}" />
                         </Trigger>
                         <Trigger Property="styles:Elevation.Level" Value="Level2">
-                            <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation2}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation2}" />
                         </Trigger>
                         <Trigger Property="styles:Elevation.Level" Value="Level3">
-                            <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation3}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation3}" />
                         </Trigger>
                         <Trigger Property="styles:Elevation.Level" Value="Level4">
-                            <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation4}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation4}" />
                         </Trigger>
                         <Trigger Property="styles:Elevation.Level" Value="Level5">
-                            <Setter TargetName="Panel" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
                         </Trigger>
 
                         <Trigger Property="BorderThicknessContributesToContentMargin" Value="True">
