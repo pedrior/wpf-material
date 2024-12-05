@@ -127,14 +127,10 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.16" />
                         </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsEnabled" Value="False" />
-                                <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
-                            </MultiTrigger.Conditions>
+                        <Trigger Property="foundations:Interaction.IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.38" />
                             <Setter TargetName="PART_Surface" Property="Opacity" Value="0.12" />
-                        </MultiTrigger>
+                        </Trigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="None">
                             <Setter TargetName="Panel" Property="Effect" Value="{x:Null}" />
