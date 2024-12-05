@@ -133,9 +133,7 @@
                                 <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Content" Property="Opacity" Value="0.38" />
-                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.12" />
-                            <Setter TargetName="PART_Surface" Property="Opacity" Value="0.0" />
-                            <Setter TargetName="StateLayer" Property="Tint" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
+                            <Setter TargetName="PART_Surface" Property="Opacity" Value="0.12" />
                         </MultiTrigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="None">
