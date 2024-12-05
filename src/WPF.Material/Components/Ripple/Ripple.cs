@@ -5,7 +5,7 @@ using System.Windows.Shapes;
 namespace WPF.Material.Components;
 
 /// <summary>
-/// Represents a <see cref="ContentControl"/> that provides a ripple effect over its content when clicked.
+/// Provides a ripple effect over a content when the user interacts with it.
 /// </summary>
 [TemplatePart(Name = PartEllipse, Type = typeof(Ellipse))]
 [EditorBrowsable(EditorBrowsableState.Never)]
@@ -52,34 +52,22 @@ public class Ripple : ContentControl
 
     private Storyboard? enterAnimation;
     private Storyboard? exitAnimation;
-    
+
     private bool isPressed;
+    private bool isHolding;
     private bool isWaitingForExit;
-    
-    private bool keepState;
-    
+
     static Ripple()
     {
         DefaultStyleKeyProperty.OverrideMetadata(
             typeof(Ripple),
             new FrameworkPropertyMetadata(typeof(Ripple)));
-        
+
         Interaction.IsRippleEnabledProperty.OverrideMetadata(
             typeof(Ripple),
             new FrameworkPropertyMetadata(
                 defaultValue: true,
                 propertyChangedCallback: IsRippleEnabledAttachedPropertyChanged));
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Ripple"/> class.
-    /// </summary>
-    public Ripple()
-    {
-        EventManager.RegisterClassHandler(
-            typeof(ContentControl),
-            Mouse.MouseUpEvent,
-            new MouseButtonEventHandler(MouseUpHandler));
     }
 
     /// <summary>
@@ -118,7 +106,7 @@ public class Ripple : ContentControl
 
         ellipse = GetTemplateChild(PartEllipse) as Ellipse
                   ?? throw new InvalidOperationException($"Missing required template part: {PartEllipse}");
-        
+
         ellipse.RenderTransformOrigin = new Point(0.5, 0.5);
         ellipse.RenderTransform = new ScaleTransform(0.0, 0.0);
 
@@ -130,20 +118,38 @@ public class Ripple : ContentControl
 
     protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
     {
-        e.Handled = false;
-        isPressed = true;
+        IsPressed(isPressed);
 
         Start();
+
+        base.OnMouseLeftButtonDown(e);
     }
 
-    internal void Start(bool keep = false)
+    protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+    {
+        if (isHolding)
+        {
+            return;
+        }
+
+        IsPressed(false);
+
+        if (isWaitingForExit)
+        {
+            BeginExitAnimation();
+        }
+
+        base.OnMouseLeftButtonUp(e);
+    }
+
+    internal void Start(bool hold = false)
     {
         if (!Interaction.GetIsRippleEnabled(this))
         {
             return;
         }
 
-        keepState = keep;
+        isHolding = hold;
 
         var origin = Interaction.GetIsRippleCentered(this)
             ? new Point(ActualWidth * 0.5, ActualHeight * 0.5)
@@ -159,33 +165,21 @@ public class Ripple : ContentControl
 
     internal void Release()
     {
-        if (!keepState)
+        if (!isHolding)
         {
             return;
         }
 
-        isPressed = false;
-        keepState = false;
+        IsPressed(false);
 
+        isHolding = false;
         if (isWaitingForExit)
         {
             BeginExitAnimation();
         }
     }
 
-    private void MouseUpHandler(object sender, MouseEventArgs e)
-    {
-        if (keepState)
-        {
-            return;
-        }
-
-        isPressed = false;
-        if (isWaitingForExit)
-        {
-            BeginExitAnimation();
-        }
-    }
+    private void IsPressed(bool value) => isPressed = value;
 
     private void SetEllipseSize(double size)
     {
@@ -197,7 +191,7 @@ public class Ripple : ContentControl
     {
         var x = Math.Max(origin.X, ActualWidth - origin.X);
         var y = Math.Max(origin.Y, ActualHeight - origin.Y);
-        
+
         return Math.Sqrt(x * x + y * y) * 3.0;
     }
 
@@ -266,9 +260,6 @@ public class Ripple : ContentControl
             KeyFrames =
             {
                 new EasingDoubleKeyFrame(0.1, ZeroDuration)
-                // new EasingDoubleKeyFrame(0.01, AnimationDuration100),
-                // new EasingDoubleKeyFrame(0.06, AnimationDuration100),
-                // new EasingDoubleKeyFrame(0.14, AnimationDuration300)
             }
         };
 
@@ -288,7 +279,7 @@ public class Ripple : ContentControl
 
         Timeline.SetDesiredFrameRate(enterAnimation, desiredFrameRate);
 
-        enterAnimation!.Completed += EnterAnimationCompleted;
+        enterAnimation.Completed += EnterAnimationCompleted;
 
         enterAnimation.Freeze();
     }
@@ -329,7 +320,7 @@ public class Ripple : ContentControl
 
     private void EnterAnimationCompleted(object? sender, EventArgs e)
     {
-        if (isPressed || keepState)
+        if (isPressed || isHolding)
         {
             isWaitingForExit = true;
         }
@@ -349,10 +340,7 @@ public class Ripple : ContentControl
     {
         StopAnimation(enterAnimation); // Avoid flickering
 
-        animation?.Begin(
-            ellipse,
-            HandoffBehavior.SnapshotAndReplace,
-            isControllable: true);
+        animation?.Begin(ellipse, isControllable: true);
     }
 
     private void StopAnimation(Storyboard? animation) => animation?.Stop(ellipse);

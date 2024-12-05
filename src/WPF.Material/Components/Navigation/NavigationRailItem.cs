@@ -31,7 +31,7 @@ public class NavigationRailItem : NavigationItem
     {
         base.OnMouseLeftButtonDown(e);
 
-        ripple?.Start(keep: true);
+        ripple?.Start(hold: true);
     }
 
     protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
