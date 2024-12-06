@@ -64,6 +64,7 @@ public sealed class ThemeResources : ResourceDictionary
         string[] resources =
         {
             "Buttons/Buttons.xaml",
+            "Cards/Card.xaml",
             "Container/Container.xaml",
             "Divider/Divider.xaml",
             "Navigation/Navigation.xaml",
