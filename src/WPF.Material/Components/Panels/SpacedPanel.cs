@@ -389,6 +389,9 @@ public class SpacedPanel : Panel
         var stretchableChildWidth = stretchableChildrenCount > 0 ? remainingWidth / stretchableChildrenCount : 0.0;
         var stretchableChildHeight = stretchableChildrenCount > 0 ? remainingHeight / stretchableChildrenCount : 0.0;
         
+        stretchableChildWidth = Math.Max(0.0, stretchableChildWidth);
+        stretchableChildHeight = Math.Max(0.0, stretchableChildHeight);
+        
         for (var i = 0; i < childrenCount; i++)
         {
             var child = children[i];
