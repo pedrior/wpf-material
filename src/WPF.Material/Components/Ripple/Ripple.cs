@@ -118,21 +118,26 @@ public class Ripple : ContentControl
 
     protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
     {
-        IsPressed(isPressed);
+        CaptureMouse();
 
-        Start();
-
+        if (IsMouseCaptured)
+        {
+            SetIsPressed(true);
+            Start();
+        }
+        
         base.OnMouseLeftButtonDown(e);
     }
 
     protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
     {
-        if (isHolding)
+        if (isHolding || !IsMouseCaptured)
         {
             return;
         }
-
-        IsPressed(false);
+        
+        SetIsPressed(false);
+        ReleaseMouseCapture();
 
         if (isWaitingForExit)
         {
@@ -170,7 +175,7 @@ public class Ripple : ContentControl
             return;
         }
 
-        IsPressed(false);
+        SetIsPressed(false);
 
         isHolding = false;
         if (isWaitingForExit)
@@ -179,7 +184,7 @@ public class Ripple : ContentControl
         }
     }
 
-    private void IsPressed(bool value) => isPressed = value;
+    private void SetIsPressed(bool value) => isPressed = value;
 
     private void SetEllipseSize(double size)
     {
