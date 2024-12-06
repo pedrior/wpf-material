@@ -102,20 +102,28 @@ public class SheetPresenter : FrameworkElement
     {
         SetContainerBinding(sheet, HorizontalAlignmentProperty);
         SetContainerBinding(sheet, Control.BackgroundProperty);
-        SetContainerBinding(sheet, Shape.FamilyProperty);
-        SetContainerBinding(sheet, Shape.StyleProperty);
-        SetContainerBinding(sheet, Shape.CornerProperty);
-        SetContainerBinding(sheet, Shape.RadiusProperty);
-        SetContainerBinding(sheet, Shape.UseStyleOnRadiusOverrideProperty);
-        SetContainerBinding(sheet, Shape.UseCornersOnRadiusOverrideProperty);
         SetContainerBinding(sheet, Elevation.LevelProperty);
+        
+        SetContainerBinding(sheet, Container.ShapeFamilyProperty, Shape.FamilyProperty);
+        SetContainerBinding(sheet, Container.ShapeStyleProperty, Shape.StyleProperty);
+        SetContainerBinding(sheet, Container.ShapeCornerProperty, Shape.CornerProperty);
+        SetContainerBinding(sheet, Container.ShapeRadiusProperty, Shape.RadiusProperty);
+        SetContainerBinding(
+            sheet,
+            Container.UseStyleOnRadiusOverrideProperty,
+            Shape.UseStyleOnRadiusOverrideProperty);
+        
+        SetContainerBinding(
+            sheet,
+            Container.UseCornersOnRadiusOverrideProperty,
+            Shape.UseCornersOnRadiusOverrideProperty);
     }
 
-    private void SetContainerBinding(object source, DependencyProperty property) =>
-        BindingOperations.SetBinding(container, property, new Binding
+    private void SetContainerBinding(object source, DependencyProperty targetDp, DependencyProperty? sourceDp = null) =>
+        BindingOperations.SetBinding(container, targetDp, new Binding
         {
             Source = source,
-            Path = new PropertyPath(property)
+            Path = new PropertyPath(sourceDp ?? targetDp)
         });
 
     private void ClearContainerBindings() => BindingOperations.ClearAllBindings(container);
