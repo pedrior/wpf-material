@@ -65,6 +65,7 @@ public sealed class ThemeResources : ResourceDictionary
         {
             "Buttons/Buttons.xaml",
             "Cards/Card.xaml",
+            "CheckBox/CheckBox.xaml",
             "Container/Container.xaml",
             "Divider/Divider.xaml",
             "Navigation/Navigation.xaml",
