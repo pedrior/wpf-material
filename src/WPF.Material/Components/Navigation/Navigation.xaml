@@ -23,52 +23,45 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <ContentPresenter
-                                x:Name="TopActions"
-                                Grid.Row="0"
-                                Margin="0,44,0,0"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                Content="{TemplateBinding TopActions}"
-                                ContentStringFormat="{TemplateBinding TopActionsStringFormat}"
-                                ContentTemplate="{TemplateBinding TopActionsTemplate}"
-                                ContentTemplateSelector="{TemplateBinding TopActionsTemplateSelector}" />
-
-                            <components:SpacedPanel
-                                x:Name="Destinations"
-                                Grid.Row="1"
-                                Margin="0,40,0,0"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                IsItemsHost="True"
-                                Orientation="Vertical"
-                                Spacing="12" />
-
-                            <ContentPresenter
-                                x:Name="BottomActions"
-                                Grid.Row="2"
-                                Margin="0,0,0,44"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                Content="{TemplateBinding BottomActionsContent}"
-                                ContentStringFormat="{TemplateBinding BottomActionsStringFormat}"
-                                ContentTemplate="{TemplateBinding BottomActionsTemplate}"
-                                ContentTemplateSelector="{TemplateBinding BottomActionsTemplateSelector}" />
-
+                        <components:NaivePanel>
                             <components:Divider
                                 x:Name="Divider"
-                                Grid.Row="0"
-                                Grid.RowSpan="3"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Stretch"
                                 Brush="{TemplateBinding DividerForeground}"
                                 Orientation="Vertical"
                                 Visibility="Collapsed" />
-                        </Grid>
+
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <components:SpacedPanel Orientation="Vertical">
+                                    <ContentPresenter
+                                        Margin="0,44,0,0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Content="{TemplateBinding TopActions}"
+                                        ContentStringFormat="{TemplateBinding TopActionsStringFormat}"
+                                        ContentTemplate="{TemplateBinding TopActionsTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding TopActionsTemplateSelector}" />
+
+                                    <components:SpacedPanel
+                                        x:Name="Destinations"
+                                        Margin="0,40,0,0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="Top"
+                                        components:SpacedPanel.StretchVertically="True"
+                                        IsItemsHost="True"
+                                        Orientation="Vertical"
+                                        Spacing="12" />
+
+                                    <ContentPresenter
+                                        Margin="0,12,0,44"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Content="{TemplateBinding BottomActionsContent}"
+                                        ContentStringFormat="{TemplateBinding BottomActionsStringFormat}"
+                                        ContentTemplate="{TemplateBinding BottomActionsTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding BottomActionsTemplateSelector}" />
+                                </components:SpacedPanel>
+                            </ScrollViewer>
+                        </components:NaivePanel>
                     </components:Container>
 
                     <ControlTemplate.Triggers>
@@ -76,13 +69,9 @@
                             <Setter TargetName="Divider" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="Alignment" Value="Middle">
-                            <Setter TargetName="Destinations" Property="Grid.Row" Value="0" />
-                            <Setter TargetName="Destinations" Property="Grid.RowSpan" Value="3" />
-                            <Setter TargetName="Destinations" Property="Margin" Value="0" />
                             <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Center" />
                         </Trigger>
                         <Trigger Property="Alignment" Value="Bottom">
-                            <Setter TargetName="Destinations" Property="Margin" Value="0,0,0,56" />
                             <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Bottom" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -126,17 +115,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:NavigationRailItem}">
-                    <Grid x:Name="Content" Background="Transparent">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <components:SpacedPanel
+                        Background="Transparent"
+                        Orientation="Vertical"
+                        Spacing="4">
 
                         <components:Ripple
                             x:Name="PART_Ripple"
-                            Grid.Row="0"
                             Width="56"
                             HorizontalAlignment="Center"
+                            components:SpacedPanel.StretchVertically="True"
                             foundations:Interaction.IsRippleCentered="True"
                             ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}"
                             Foreground="{TemplateBinding Foreground}">
@@ -162,9 +150,7 @@
 
                         <ContentPresenter
                             x:Name="Label"
-                            Grid.Row="1"
                             Height="16"
-                            Margin="0,4,0,0"
                             VerticalAlignment="Center"
                             Content="{TemplateBinding Content}"
                             ContentStringFormat="{TemplateBinding ContentStringFormat}"
@@ -173,7 +159,7 @@
                             RecognizesAccessKey="True"
                             TextBlock.Foreground="{TemplateBinding Foreground}"
                             TextBlock.TextAlignment="Center" />
-                    </Grid>
+                    </components:SpacedPanel>
 
                     <ControlTemplate.Triggers>
                         <!--  Hide label  -->
