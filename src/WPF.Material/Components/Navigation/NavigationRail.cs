@@ -96,6 +96,15 @@ public class NavigationRail : ItemsControl
         new PropertyMetadata(false));
 
     /// <summary>
+    /// Identifies the <see cref="TargetSubDestinationsSheet"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty TargetSubDestinationsSheetProperty = DependencyProperty.Register(
+        nameof(TargetSubDestinationsSheet),
+        typeof(Sheet),
+        typeof(NavigationRail),
+        new PropertyMetadata(null));
+
+    /// <summary>
     /// Identifies the <see cref="DividerForeground"/> dependency property.
     /// </summary>
     public static readonly DependencyProperty DividerForegroundProperty = DependencyProperty.Register(
@@ -252,6 +261,18 @@ public class NavigationRail : ItemsControl
         get => (bool)GetValue(ShowDividerProperty);
         set => SetValue(ShowDividerProperty, value);
     }
+    
+    /// <summary>
+    /// Gets or sets a <see cref="Sheet"/> component that displays sub-destinations related to the selected item if
+    /// <see cref="NavigationItem.RequestSubDestinationsSheet"/> is set to <see langword="true"/>.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Common)]
+    public Sheet? TargetSubDestinationsSheet
+    {
+        get => (Sheet?)GetValue(TargetSubDestinationsSheetProperty);
+        set => SetValue(TargetSubDestinationsSheetProperty, value);
+    }
 
     /// <summary>
     /// Gets or sets the <see cref="Brush"/> that paints the vertical divider.
@@ -307,5 +328,11 @@ public class NavigationRail : ItemsControl
         
         SelectedIndex = selectedIndex;
         OnSelectionChanged(new RoutedEventArgs(SelectionChangedEvent, this));
+
+        // Attempt to open the sub-destinations sheet if the target sheet is set and the item requests it.
+        if (TargetSubDestinationsSheet is not null)
+        {
+            TargetSubDestinationsSheet.IsOpen = navItem.RequestSubDestinationsSheet;
+        }
     }
 }
