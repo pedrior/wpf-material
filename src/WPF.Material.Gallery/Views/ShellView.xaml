@@ -38,10 +38,17 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <md3:NavigationRail Grid.Column="0" Width="88">
+        <md3:NavigationRail
+            Grid.Column="0"
+            Width="88"
+            Panel.ZIndex="1"
+            ShowDivider="{Binding ElementName=NavigationRailSideSheet, Path=IsOpen}"
+            TargetSubDestinationsSheet="{Binding ElementName=NavigationRailSideSheet}">
+
             <md3:NavigationRail.Resources>
                 <system:String x:Key="SwitchToDarkThemeTooltip">Switch to dark theme</system:String>
                 <system:String x:Key="SwitchToLightThemeTooltip">Switch to light theme</system:String>
@@ -81,12 +88,37 @@
                 Content="Get started" />
 
             <md3:NavigationRailItem
+                md3:Icon.Icon="Book"
+                Command="{Binding NavigateCommand, Mode=OneTime}"
+                CommandParameter="{x:Type viewModels:ComponentsViewModel}"
+                Content="Foundations"
+                RequestSubDestinationsSheet="True" />
+
+            <md3:NavigationRailItem
+                md3:Icon.Icon="Palette"
+                Command="{Binding NavigateCommand, Mode=OneTime}"
+                CommandParameter="{x:Type viewModels:ComponentsViewModel}"
+                Content="Styles"
+                RequestSubDestinationsSheet="True" />
+
+            <md3:NavigationRailItem
                 md3:Icon.Icon="AddCircle"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:ComponentsViewModel}"
-                Content="Components" />
+                Content="Components"
+                RequestSubDestinationsSheet="True" />
         </md3:NavigationRail>
 
-        <ContentPresenter Grid.Column="1" Content="{Binding Content, Mode=OneWay}" />
+        <md3:SheetPresenter Grid.Column="1" Panel.ZIndex="0">
+            <md3:SideSheet
+                x:Name="NavigationRailSideSheet"
+                HorizontalAlignment="Left"
+                md3:Elevation.Level="Level1"
+                md3:Shape.Corner="TopRight, BottomRight"
+                md3:Shape.Style="Large"
+                ShowDivider="False" />
+        </md3:SheetPresenter>
+
+        <ContentPresenter Grid.Column="2" Content="{Binding Content, Mode=OneWay}" />
     </Grid>
 </Window>
