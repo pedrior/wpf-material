@@ -48,7 +48,7 @@ public static class Interaction
         "IsInteractive",
         typeof(bool),
         typeof(Interaction),
-        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(true));
 
     /// <summary>
     /// Identifies the IsRippleEnabled attached property.
