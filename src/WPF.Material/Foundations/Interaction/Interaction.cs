@@ -57,7 +57,7 @@ public static class Interaction
         "IsRippleEnabled",
         typeof(bool),
         typeof(Interaction),
-        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(true));
 
     /// <summary>
     /// Identifies the IsRippleCentered attached property.
@@ -66,7 +66,7 @@ public static class Interaction
         "IsRippleCentered",
         typeof(bool),
         typeof(Interaction),
-        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(false));
 
     /// <summary>
     /// Identifies the IsRippleUnbounded attached property.
@@ -75,7 +75,7 @@ public static class Interaction
         "IsRippleUnbounded",
         typeof(bool),
         typeof(Interaction),
-        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(false));
 
     /// <summary>
     /// Sets the value of the <see cref="IsHoveredProperty"/> attached property for a specified dependency object.

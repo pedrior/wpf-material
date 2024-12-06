@@ -11,6 +11,9 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="foundations:Interaction.IsRippleEnabled" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleEnabled)}" />
+        <Setter Property="foundations:Interaction.IsRippleCentered" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleCentered)}" />
+        <Setter Property="foundations:Interaction.IsRippleUnbounded" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleUnbounded)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Ripple}">
