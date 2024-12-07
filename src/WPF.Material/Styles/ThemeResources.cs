@@ -70,6 +70,8 @@ public sealed class ThemeResources : ResourceDictionary
             "Divider/Divider.xaml",
             "Navigation/Navigation.xaml",
             "Ripple/Ripple.xaml",
+            "ScrollBar/ScrollBar.xaml",
+            "ScrollViewer/ScrollViewer.xaml",
             "Sheets/Sheets.xaml",
             "Symbols/Symbols.xaml",
             "Tooltips/Tooltips.xaml"
