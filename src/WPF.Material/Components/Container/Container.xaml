@@ -55,15 +55,17 @@
         ShadowDepth="6" />
 
     <Style TargetType="{x:Type components:Container}">
-        <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
-        <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{x:Null}" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="ShapeFamily" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Shape.Family)}" />
         <Setter Property="ShapeStyle" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Shape.Style)}" />
@@ -104,13 +106,36 @@
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Content="{TemplateBinding Content}"
-                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                            RecognizesAccessKey="True"
                             TextElement.Foreground="{TemplateBinding Foreground}" />
                     </components:NaivePanel>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="styles:Elevation.Level" Value="None">
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Null}" />
+                        </Trigger>
+
+                        <Trigger Property="styles:Elevation.Level" Value="Level1">
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation1}" />
+                        </Trigger>
+
+                        <Trigger Property="styles:Elevation.Level" Value="Level2">
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation2}" />
+                        </Trigger>
+
+                        <Trigger Property="styles:Elevation.Level" Value="Level3">
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation3}" />
+                        </Trigger>
+
+                        <Trigger Property="styles:Elevation.Level" Value="Level4">
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation4}" />
+                        </Trigger>
+
+                        <Trigger Property="styles:Elevation.Level" Value="Level5">
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
+                        </Trigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="foundations:Interaction.IsHovered" Value="True" />
@@ -118,6 +143,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.08" />
                         </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="foundations:Interaction.IsPressed" Value="True" />
@@ -125,6 +151,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
                         </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="foundations:Interaction.IsDragged" Value="True" />
@@ -132,6 +159,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.16" />
                         </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="foundations:Interaction.IsFocused" Value="True" />
@@ -139,28 +167,10 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
                         </MultiTrigger>
+
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.38" />
                             <Setter TargetName="PART_Surface" Property="Opacity" Value="0.12" />
-                        </Trigger>
-
-                        <Trigger Property="styles:Elevation.Level" Value="None">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Null}" />
-                        </Trigger>
-                        <Trigger Property="styles:Elevation.Level" Value="Level1">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation1}" />
-                        </Trigger>
-                        <Trigger Property="styles:Elevation.Level" Value="Level2">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation2}" />
-                        </Trigger>
-                        <Trigger Property="styles:Elevation.Level" Value="Level3">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation3}" />
-                        </Trigger>
-                        <Trigger Property="styles:Elevation.Level" Value="Level4">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation4}" />
-                        </Trigger>
-                        <Trigger Property="styles:Elevation.Level" Value="Level5">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
                         </Trigger>
 
                         <Trigger Property="BorderThicknessContributesToContentMargin" Value="True">

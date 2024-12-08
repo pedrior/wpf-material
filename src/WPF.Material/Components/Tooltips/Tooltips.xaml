@@ -10,11 +10,15 @@
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.InverseOnSurface}" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="MaxWidth" Value="320" />
         <Setter Property="MinHeight" Value="24" />
         <Setter Property="Padding" Value="8,4" />
-        <Setter Property="HasDropShadow" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="ToolTipService.InitialShowDelay" Value="1000" />
         <Setter Property="styles:Shape.Style" Value="ExtraSmall" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=BodySmall}" />
         <Setter Property="foundations:Interaction.IsInteractive" Value="False" />
@@ -23,15 +27,25 @@
                 <ControlTemplate TargetType="{x:Type ToolTip}">
                     <components:Container
                         Padding="{TemplateBinding Padding}"
-                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         Content="{TemplateBinding Content}"
-                        ContentStringFormat="{TemplateBinding ContentStringFormat}"
                         ContentTemplate="{TemplateBinding ContentTemplate}"
-                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                        Foreground="{TemplateBinding Foreground}" />
+                        Foreground="{TemplateBinding Foreground}">
+
+                        <components:Container.Resources>
+                            <Style TargetType="ContentPresenter">
+                                <Style.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+                                    </Style>
+                                </Style.Resources>
+                            </Style>
+                        </components:Container.Resources>
+                    </components:Container>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

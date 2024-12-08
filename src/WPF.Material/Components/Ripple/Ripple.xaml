@@ -9,7 +9,9 @@
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="foundations:Interaction.IsRippleEnabled" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleEnabled)}" />
         <Setter Property="foundations:Interaction.IsRippleCentered" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleCentered)}" />
@@ -19,12 +21,11 @@
                 <ControlTemplate TargetType="{x:Type components:Ripple}">
                     <components:NaivePanel>
                         <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Content="{TemplateBinding Content}"
-                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
 
                         <Canvas
                             x:Name="Canvas"

@@ -10,6 +10,7 @@
         <Setter Property="Height" Value="48" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="foundations:Layout.ContainerWidth" Value="40" />
         <Setter Property="foundations:Layout.ContainerHeight" Value="40" />
@@ -41,12 +42,10 @@
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
-                        <!--  Checked  -->
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="CheckBox" />
                         </Trigger>
 
-                        <!--  Indeterminate  -->
                         <Trigger Property="IsChecked" Value="{x:Null}">
                             <Setter TargetName="Icon" Property="Symbol" Value="IndeterminateCheckBox" />
                         </Trigger>
@@ -56,17 +55,14 @@
         </Setter>
 
         <Style.Triggers>
-            <!--  Checked  -->
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
             </Trigger>
 
-            <!--  Indeterminate  -->
             <Trigger Property="IsChecked" Value="{x:Null}">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
             </Trigger>
 
-            <!--  Disabled  -->
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
             </Trigger>

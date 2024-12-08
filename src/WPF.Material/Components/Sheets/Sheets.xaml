@@ -12,9 +12,12 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="MinWidth" Value="252" />
         <Setter Property="MaxWidth" Value="400" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="UndockedMargin" Value="16" />
         <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="None" />
         <Setter Property="styles:Shape.Corner" Value="All" />
         <Setter Property="Template">
@@ -26,9 +29,7 @@
                             VerticalAlignment="Stretch"
                             components:SpacedPanel.StretchVertically="True"
                             Content="{TemplateBinding Content}"
-                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
 
                         <components:Divider
                             x:Name="Divider"
@@ -44,9 +45,11 @@
                         <Trigger Property="IsDocked" Value="False">
                             <Setter TargetName="Divider" Property="Visibility" Value="Collapsed" />
                         </Trigger>
+
                         <Trigger Property="ShowDivider" Value="False">
                             <Setter TargetName="Divider" Property="Visibility" Value="Collapsed" />
                         </Trigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="ShowDivider" Value="true" />
@@ -64,6 +67,7 @@
                 <Setter Property="styles:Shape.Style" Value="Large" />
                 <Setter Property="styles:Shape.Corner" Value="All" />
             </Trigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsDocked" Value="True" />
@@ -71,6 +75,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="styles:Shape.Corner" Value="TopLeft, BottomLeft" />
             </MultiTrigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsDocked" Value="True" />

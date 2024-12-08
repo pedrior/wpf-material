@@ -12,6 +12,8 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="foundations:Icon.IconOnSelecting" Value="Check" />
         <Setter Property="styles:Shape.Corner" Value="All" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
@@ -24,17 +26,14 @@
                     <components:Ripple ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}" Foreground="{TemplateBinding Foreground}">
                         <components:Container
                             x:Name="Container"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
 
-                            <components:SpacedPanel
-                                x:Name="Panel"
-                                Margin="16,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Spacing="8">
-
+                            <components:SpacedPanel x:Name="Panel" Spacing="8">
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     Block.LineHeight="23"
@@ -52,12 +51,9 @@
                                     Block.LineHeight="20"
                                     Block.LineStackingStrategy="BlockLineHeight"
                                     Content="{TemplateBinding Content}"
-                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                     RecognizesAccessKey="True"
-                                    TextBlock.Foreground="{TemplateBinding Foreground}"
-                                    TextBlock.TextAlignment="Center" />
+                                    TextElement.Foreground="{TemplateBinding Foreground}" />
                             </components:SpacedPanel>
                         </components:Container>
                     </components:Ripple>
@@ -75,7 +71,7 @@
 
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="foundations:Interaction.IsHovered" Value="True" />
                                 <Condition Property="ShowIcon" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -84,7 +80,7 @@
 
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsPressed" Value="True" />
+                                <Condition Property="foundations:Interaction.IsPressed" Value="True" />
                                 <Condition Property="ShowIcon" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -124,22 +120,23 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <!--  Checked  -->
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
             </Trigger>
 
-            <!--  Density  -->
             <Trigger Property="foundations:Layout.Density" Value="Level0">
                 <Setter Property="Height" Value="40" />
             </Trigger>
+
             <Trigger Property="foundations:Layout.Density" Value="Level1">
                 <Setter Property="Height" Value="36" />
             </Trigger>
+
             <Trigger Property="foundations:Layout.Density" Value="Level2">
                 <Setter Property="Height" Value="32" />
             </Trigger>
+
             <Trigger Property="foundations:Layout.Density" Value="Level3">
                 <Setter Property="Height" Value="28" />
             </Trigger>
@@ -155,11 +152,14 @@
         <Setter Property="IsMultiSelect" Value="False" />
         <Setter Property="RequireSelection" Value="False" />
         <Setter Property="IsUniformWidth" Value="True" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
@@ -174,9 +174,11 @@
                         <Trigger Property="components:SegmentedButtons.IsFirstItem" Value="True">
                             <Setter Property="styles:Shape.Style" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type components:SegmentedButtons}, AncestorLevel=1}, Path=(styles:Shape.Style)}" />
                         </Trigger>
+
                         <Trigger Property="components:SegmentedButtons.IsLastItem" Value="True">
                             <Setter Property="styles:Shape.Style" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type components:SegmentedButtons}, AncestorLevel=1}, Path=(styles:Shape.Style)}" />
                         </Trigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="components:SegmentedButtons.IsFirstItem" Value="True" />
@@ -184,6 +186,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="styles:Shape.UseCornersOnRadiusOverride" Value="None" />
                         </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="components:SegmentedButtons.IsFirstItem" Value="True" />
@@ -193,6 +196,7 @@
                             <Setter Property="styles:Shape.Corner" Value="TopLeft, BottomLeft" />
                             <Setter Property="styles:Shape.UseCornersOnRadiusOverride" Value="TopRight, BottomRight" />
                         </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="components:SegmentedButtons.IsFirstItem" Value="False" />
@@ -202,6 +206,7 @@
                             <Setter Property="styles:Shape.Corner" Value="TopRight, BottomRight" />
                             <Setter Property="styles:Shape.UseCornersOnRadiusOverride" Value="TopLeft, BottomLeft" />
                         </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="components:SegmentedButtons.IsFirstItem" Value="True" />
@@ -211,6 +216,7 @@
                             <Setter Property="styles:Shape.Corner" Value="TopLeft, TopRight" />
                             <Setter Property="styles:Shape.UseCornersOnRadiusOverride" Value="BottomLeft, BottomRight" />
                         </MultiTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="components:SegmentedButtons.IsFirstItem" Value="False" />

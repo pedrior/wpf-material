@@ -9,16 +9,17 @@
         <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHigh}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Width" Value="56" />
         <Setter Property="Height" Value="56" />
         <Setter Property="Size" Value="Standard" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Padding" Value="16" />
         <Setter Property="IsExtended" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Appearance" Value="Surface" />
         <Setter Property="styles:Shape.Style" Value="Large" />
@@ -34,17 +35,16 @@
                     <components:Ripple ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}" Foreground="{TemplateBinding Foreground}">
                         <components:Container
                             x:Name="Container"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                             styles:Elevation.Level="Level3"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Foreground="{TemplateBinding Foreground}">
 
-                            <components:SpacedPanel
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Spacing="8">
-
+                            <components:SpacedPanel Spacing="8">
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     VerticalAlignment="Center"
@@ -55,37 +55,27 @@
                                     Foreground="{TemplateBinding Foreground}"
                                     IsFilled="{TemplateBinding foundations:Icon.Fill}"
                                     Symbol="{TemplateBinding foundations:Icon.Icon}"
-                                    SymbolStyle="{TemplateBinding foundations:Icon.Style}"
-                                    TextBlock.Foreground="{TemplateBinding Foreground}"
-                                    TextBlock.TextAlignment="Center" />
+                                    SymbolStyle="{TemplateBinding foundations:Icon.Style}" />
 
                                 <ContentPresenter
-                                    x:Name="Label"
+                                    x:Name="Content"
                                     VerticalAlignment="Center"
                                     Block.LineHeight="20"
                                     Block.LineStackingStrategy="BlockLineHeight"
                                     Content="{TemplateBinding Content}"
-                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                     RecognizesAccessKey="True"
-                                    TextBlock.Foreground="{TemplateBinding Foreground}"
-                                    TextBlock.TextAlignment="Center"
+                                    TextElement.Foreground="{TemplateBinding Foreground}"
                                     Visibility="Collapsed" />
                             </components:SpacedPanel>
                         </components:Container>
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
-                        <!--  Elevation  -->
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Container" Property="styles:Elevation.Level" Value="Level4" />
+                        <Trigger Property="IsExtended" Value="True">
+                            <Setter TargetName="Content" Property="Visibility" Value="Visible" />
                         </Trigger>
 
-                        <!--  Extended  -->
-                        <Trigger Property="IsExtended" Value="True">
-                            <Setter TargetName="Label" Property="Visibility" Value="Visible" />
-                        </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExtended" Value="True" />
@@ -94,13 +84,14 @@
                             <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
                         </MultiTrigger>
 
-                        <!--  Icon  -->
-                        <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
+                            <Setter TargetName="Container" Property="styles:Elevation.Level" Value="Level4" />
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
+
+                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -110,29 +101,21 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <!--  Appearance  -->
             <Trigger Property="Appearance" Value="Primary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimaryContainer}" />
             </Trigger>
+
             <Trigger Property="Appearance" Value="Secondary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
             </Trigger>
+
             <Trigger Property="Appearance" Value="Tertiary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.TertiaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnTertiaryContainer}" />
             </Trigger>
 
-            <!--  Extended  -->
-            <Trigger Property="IsExtended" Value="True">
-                <Setter Property="Width" Value="Auto" />
-                <Setter Property="MinWidth" Value="80" />
-                <Setter Property="Height" Value="56" />
-                <Setter Property="styles:Shape.Style" Value="Large" />
-            </Trigger>
-
-            <!--  Size  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Size" Value="Small" />
@@ -143,6 +126,7 @@
                 <Setter Property="Padding" Value="8" />
                 <Setter Property="styles:Shape.Style" Value="Medium" />
             </MultiTrigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Size" Value="Large" />
@@ -154,10 +138,16 @@
                 <Setter Property="foundations:Icon.Size" Value="36" />
             </MultiTrigger>
 
-            <!--  Disabled  -->
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.OnSurface}" />
+            </Trigger>
+
+            <Trigger Property="IsExtended" Value="True">
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="MinWidth" Value="80" />
+                <Setter Property="Height" Value="56" />
+                <Setter Property="styles:Shape.Style" Value="Large" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -14,10 +14,4 @@
     FontFamily="{DynamicResource Material.Typefaces.Default}"
     SnapsToDevicePixels="True"
     UseLayoutRounding="True"
-    mc:Ignorable="d">
-
-    <md3:SegmentedButtons HorizontalAlignment="Center" VerticalAlignment="Center">
-        <md3:SegmentedButtonItem Content="Item" />
-        <md3:SegmentedButtonItem Content="Item" />
-    </md3:SegmentedButtons>
-</UserControl>
+    mc:Ignorable="d" />

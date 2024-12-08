@@ -10,8 +10,14 @@
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.OutlineVariant}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="Medium" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
@@ -30,23 +36,19 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Content="{TemplateBinding Content}"
-                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                            TextElement.Foreground="{TemplateBinding Foreground}" />
+                            Foreground="{TemplateBinding Foreground}" />
                     </components:Ripple>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <!--  Filled  -->
             <Trigger Property="Appearance" Value="Filled">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHighest}" />
                 <Setter Property="BorderBrush" Value="{x:Null}" />
                 <Setter Property="BorderThickness" Value="0" />
             </Trigger>
 
-            <!--  Elevated  -->
             <Trigger Property="Appearance" Value="Elevated">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerLow}" />
                 <Setter Property="BorderBrush" Value="{x:Null}" />
@@ -54,21 +56,18 @@
                 <Setter Property="styles:Elevation.Level" Value="Level1" />
             </Trigger>
 
-            <!--  Hovered  -->
-            <Trigger Property="IsMouseOver" Value="True">
+            <Trigger Property="foundations:Interaction.IsHovered" Value="True">
                 <Setter Property="styles:Elevation.Level" Value="Level1" />
             </Trigger>
 
-            <!--  Outlined && Focused  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Appearance" Value="Outlined" />
-                    <Condition Property="IsKeyboardFocused" Value="True" />
+                    <Condition Property="foundations:Interaction.IsFocused" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
             </MultiTrigger>
 
-            <!--  Outlined && Disabled  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Appearance" Value="Outlined" />
@@ -77,16 +76,14 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
             </MultiTrigger>
 
-            <!--  Filled && Hovered  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Appearance" Value="Filled" />
-                    <Condition Property="IsMouseOver" Value="True" />
+                    <Condition Property="foundations:Interaction.IsHovered" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="styles:Elevation.Level" Value="Level1" />
             </MultiTrigger>
 
-            <!--  Filled && Disabled  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Appearance" Value="Filled" />
@@ -95,16 +92,14 @@
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceVariant}" />
             </MultiTrigger>
 
-            <!--  Elevated && Hovered  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Appearance" Value="Elevated" />
-                    <Condition Property="IsMouseOver" Value="True" />
+                    <Condition Property="foundations:Interaction.IsHovered" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="styles:Elevation.Level" Value="Level2" />
             </MultiTrigger>
 
-            <!--  Elevated && Disabled  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Appearance" Value="Elevated" />
@@ -113,11 +108,9 @@
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
             </MultiTrigger>
 
-            <!--  Clickable  -->
-            <Trigger Property="IsClickable" Value="True">
-                <Setter Property="Cursor" Value="Hand" />
-            </Trigger>
             <Trigger Property="IsClickable" Value="False">
+                <Setter Property="Cursor" Value="Arrow" />
+                <Setter Property="Focusable" Value="False" />
                 <Setter Property="foundations:Interaction.IsInteractive" Value="False" />
                 <Setter Property="foundations:Interaction.IsRippleEnabled" Value="False" />
             </Trigger>

@@ -9,12 +9,15 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Appearance" Value="Standard" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="48" />
         <Setter Property="Width" Value="48" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="foundations:Layout.ContainerWidth" Value="40" />
         <Setter Property="foundations:Layout.ContainerHeight" Value="40" />
@@ -36,33 +39,32 @@
 
                         <components:Container
                             x:Name="Container"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Foreground="{TemplateBinding Foreground}">
 
                             <components:SymbolIcon
                                 x:Name="Icon"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
                                 FontSize="{TemplateBinding foundations:Icon.Size}"
                                 FontWeight="{TemplateBinding foundations:Icon.Weight}"
                                 Foreground="{TemplateBinding Foreground}"
                                 IsFilled="{TemplateBinding foundations:Icon.Fill}"
                                 Symbol="{TemplateBinding foundations:Icon.Icon}"
-                                SymbolStyle="{TemplateBinding foundations:Icon.Style}"
-                                TextBlock.Foreground="{TemplateBinding Foreground}"
-                                TextBlock.TextAlignment="Center" />
+                                SymbolStyle="{TemplateBinding foundations:Icon.Style}" />
                         </components:Container>
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
-                        <!--  Icon  -->
-                        <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
+
+                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -72,34 +74,30 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <!--  Standard  -->
             <Trigger Property="Appearance" Value="Standard">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
             </Trigger>
 
-            <!--  Filled  -->
             <Trigger Property="Appearance" Value="Filled">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.Primary}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimary}" />
             </Trigger>
 
-            <!--  Tonal  -->
             <Trigger Property="Appearance" Value="Tonal">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
             </Trigger>
 
-            <!--  Outlined  -->
             <Trigger Property="Appearance" Value="Outlined">
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
             </Trigger>
 
-            <!--  Disabled  -->
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
             </Trigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEnabled" Value="False" />
@@ -107,6 +105,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.OnSurface}" />
             </MultiTrigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEnabled" Value="False" />
@@ -114,6 +113,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.OnSurface}" />
             </MultiTrigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEnabled" Value="False" />

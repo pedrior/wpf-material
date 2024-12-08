@@ -11,5 +11,6 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
     </Style>
 </ResourceDictionary>

@@ -8,15 +8,20 @@
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsFilled" Value="False" />
         <Setter Property="SymbolStyle" Value="Rounded" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:SymbolIcon}">
                     <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                         FontSize="{TemplateBinding FontSize}"
                         FontWeight="{TemplateBinding FontWeight}"
                         Foreground="{TemplateBinding Foreground}"

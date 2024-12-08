@@ -11,10 +11,13 @@
         <Setter Property="Width" Value="80" />
         <Setter Property="MinWidth" Value="80" />
         <Setter Property="Alignment" Value="Top" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="ShowDivider" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:NavigationRail}">
@@ -68,9 +71,11 @@
                         <Trigger Property="ShowDivider" Value="True">
                             <Setter TargetName="Divider" Property="Visibility" Value="Visible" />
                         </Trigger>
+
                         <Trigger Property="Alignment" Value="Middle">
                             <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Center" />
                         </Trigger>
+
                         <Trigger Property="Alignment" Value="Bottom">
                             <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Bottom" />
                         </Trigger>
@@ -101,6 +106,7 @@
         <Setter Property="Height" Value="56" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="IsChecked" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.FillOnPressing" Value="True" />
@@ -134,6 +140,7 @@
                                 Background="Transparent"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                Foreground="{TemplateBinding Foreground}"
                                 ShapeStyle="Full">
 
                                 <components:SymbolIcon
@@ -151,54 +158,50 @@
                         <ContentPresenter
                             x:Name="Label"
                             Height="16"
-                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
                             Content="{TemplateBinding Content}"
-                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                             RecognizesAccessKey="True"
-                            TextBlock.Foreground="{TemplateBinding Foreground}"
-                            TextBlock.TextAlignment="Center" />
+                            TextElement.Foreground="{TemplateBinding Foreground}" />
                     </components:SpacedPanel>
 
                     <ControlTemplate.Triggers>
-                        <!--  Hide label  -->
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter TargetName="Label" Property="Visibility" Value="Collapsed" />
                         </Trigger>
 
-                        <!--  Selected  -->
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Container" Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                         </Trigger>
 
-                        <!--  Un-bold  -->
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="False" />
-                                <Condition Property="IsPressed" Value="False" />
+                                <Condition Property="foundations:Interaction.IsHovered" Value="False" />
+                                <Condition Property="foundations:Interaction.IsPressed" Value="False" />
                                 <Condition Property="IsChecked" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelMedium, Height=0}" />
                         </MultiTrigger>
 
-                        <!--  Icon  -->
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
+
+                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
                             <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="False" />
-                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="foundations:Interaction.IsHovered" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                         </MultiTrigger>
-                        <Trigger Property="IsPressed" Value="True">
+
+                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
@@ -207,7 +210,6 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <!--  Selected  -->
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
             </Trigger>
