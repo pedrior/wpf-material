@@ -1,9 +1,9 @@
 ﻿namespace WPF.Material.Components;
 
 /// <summary>
-/// Represents a toggle button that is part of a <see cref="ToggleButtonGroup"/>.
+/// Represents a toggle button that is part of a <see cref="SegmentedButtons"/>.
 /// </summary>
-public class ToggleButton : System.Windows.Controls.Primitives.ToggleButton
+public class SegmentedButtonItem : System.Windows.Controls.Primitives.ToggleButton
 {
     /// <summary>
     /// Identifies the <see cref="ShowIcon"/> dependency property.
@@ -11,17 +11,17 @@ public class ToggleButton : System.Windows.Controls.Primitives.ToggleButton
     public static readonly DependencyProperty ShowIconProperty = DependencyProperty.Register(
         nameof(ShowIcon),
         typeof(bool),
-        typeof(ToggleButton),
+        typeof(SegmentedButtonItem),
         new PropertyMetadata(true));
     
-    static ToggleButton()
+    static SegmentedButtonItem()
     {
         DefaultStyleKeyProperty.OverrideMetadata(
-            typeof(ToggleButton),
-            new FrameworkPropertyMetadata(typeof(ToggleButton)));
+            typeof(SegmentedButtonItem),
+            new FrameworkPropertyMetadata(typeof(SegmentedButtonItem)));
         
         IsThreeStateProperty.OverrideMetadata(
-            typeof(ToggleButton),
+            typeof(SegmentedButtonItem),
             new FrameworkPropertyMetadata(false, null, CoerceIsThreeState));
     }
     
@@ -39,7 +39,7 @@ public class ToggleButton : System.Windows.Controls.Primitives.ToggleButton
     
     protected override void OnToggle()
     {
-        if (Parent is ToggleButtonGroup group)
+        if (Parent is SegmentedButtons group)
         {
             group.ToggleItem(this);
         }

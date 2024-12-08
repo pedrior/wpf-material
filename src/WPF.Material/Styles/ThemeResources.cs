@@ -63,17 +63,21 @@ public sealed class ThemeResources : ResourceDictionary
     {
         string[] resources =
         {
-            "Buttons/Buttons.xaml",
+            "Button/Button.xaml",
             "Cards/Card.xaml",
             "CheckBox/CheckBox.xaml",
             "Container/Container.xaml",
             "Divider/Divider.xaml",
-            "Navigation/Navigation.xaml",
+            "FloatingActionButton/FloatingActionButton.xaml",
+            "IconButton/IconButton.xaml",
+            "NavigationRail/NavigationRail.xaml",
             "Ripple/Ripple.xaml",
             "ScrollBar/ScrollBar.xaml",
             "ScrollViewer/ScrollViewer.xaml",
             "Sheets/Sheets.xaml",
             "Symbols/Symbols.xaml",
+            "SegmentedButtons/SegmentedButtons.xaml",
+            "ToggleIconButton/ToggleIconButton.xaml",
             "Tooltips/Tooltips.xaml"
         };
 

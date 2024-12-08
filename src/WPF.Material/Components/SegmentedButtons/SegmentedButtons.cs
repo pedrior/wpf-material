@@ -5,7 +5,7 @@ namespace WPF.Material.Components;
 /// <summary>
 /// Represents a group of segmented toggle buttons that allows users to select one or multiple options.
 /// </summary>
-public class ToggleButtonGroup : ItemsControl
+public class SegmentedButtons : ItemsControl
 {
     /// <summary>
     /// Identifies the <see cref="RequireSelection"/> dependency property.
@@ -13,7 +13,7 @@ public class ToggleButtonGroup : ItemsControl
     public static readonly DependencyProperty RequireSelectionProperty = DependencyProperty.Register(
         nameof(RequireSelection),
         typeof(bool),
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(false));
 
     /// <summary>
@@ -22,21 +22,21 @@ public class ToggleButtonGroup : ItemsControl
     public static readonly DependencyProperty IsMultiSelectProperty = DependencyProperty.Register(
         nameof(IsMultiSelect),
         typeof(bool),
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(false));
 
     /// <summary>
     /// Identifies the <see cref="Spacing"/> dependency property.
     /// </summary>
     public static readonly DependencyProperty SpacingProperty = SpacedPanel.SpacingProperty.AddOwner(
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(0.0, null, CoerceSpacing));
 
     /// <summary>
     /// Identifies the <see cref="Orientation"/> dependency property.
     /// </summary>
     public static readonly DependencyProperty OrientationProperty = SpacedPanel.OrientationProperty.AddOwner(
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(Orientation.Horizontal));
 
     /// <summary>
@@ -45,13 +45,13 @@ public class ToggleButtonGroup : ItemsControl
     public static readonly DependencyProperty IsUniformWidthProperty = DependencyProperty.Register(
         nameof(IsUniformWidth),
         typeof(bool),
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(false));
 
     private static readonly DependencyPropertyKey HasSelectedItemsPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(HasSelectedItems),
         typeof(bool),
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(false));
     
     /// <summary>
@@ -62,34 +62,34 @@ public class ToggleButtonGroup : ItemsControl
     internal static readonly DependencyProperty IsFirstItemProperty = DependencyProperty.RegisterAttached(
         "IsFirstItem",
         typeof(bool),
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(false));
 
     internal static readonly DependencyProperty IsLastItemProperty = DependencyProperty.RegisterAttached(
         "IsLastItem",
         typeof(bool),
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(false));
 
     internal static readonly DependencyProperty GroupOrientationProperty = DependencyProperty.RegisterAttached(
         "GroupOrientation",
         typeof(Orientation),
-        typeof(ToggleButtonGroup),
+        typeof(SegmentedButtons),
         new PropertyMetadata(Orientation.Horizontal));
 
     private readonly HashSet<int> selectedIndices = new();
 
     /// <summary>
-    /// Initializes static members of the <see cref="ToggleButtonGroup"/> class.
+    /// Initializes static members of the <see cref="SegmentedButtons"/> class.
     /// </summary>
-    static ToggleButtonGroup()
+    static SegmentedButtons()
     {
         DefaultStyleKeyProperty.OverrideMetadata(
-            typeof(ToggleButtonGroup),
-            new FrameworkPropertyMetadata(typeof(ToggleButtonGroup)));
+            typeof(SegmentedButtons),
+            new FrameworkPropertyMetadata(typeof(SegmentedButtons)));
     }
 
-    public ToggleButtonGroup()
+    public SegmentedButtons()
     {
         ItemContainerGenerator.StatusChanged += ItemContainerGeneratorStatusChanged;
         ItemContainerGenerator.ItemsChanged += ItemContainerGeneratorItemsChanged;
@@ -192,7 +192,7 @@ public class ToggleButtonGroup : ItemsControl
         InvalidateItemsGroupInformation();
     }
 
-    internal void ToggleItem(ToggleButton item)
+    internal void ToggleItem(SegmentedButtonItem item)
     {
         var index = ItemContainerGenerator.IndexFromContainer(item);
         if (index is -1)
@@ -210,7 +210,7 @@ public class ToggleButtonGroup : ItemsControl
         }
     }
 
-    private void HandleToggleItemInMultiSelectMode(ToggleButton item, int itemIndex)
+    private void HandleToggleItemInMultiSelectMode(SegmentedButtonItem item, int itemIndex)
     {
         if (IsItemSelected(itemIndex))
         {
@@ -225,7 +225,7 @@ public class ToggleButtonGroup : ItemsControl
         }
     }
     
-    private void HandleToggleItemInSingleSelectMode(ToggleButton item, int itemIndex)
+    private void HandleToggleItemInSingleSelectMode(SegmentedButtonItem item, int itemIndex)
     {
         if (IsItemSelected(itemIndex))
         {
@@ -249,13 +249,13 @@ public class ToggleButtonGroup : ItemsControl
 
     private void SetItemSelected(int itemIndex, bool isSelected)
     {
-        if (ItemContainerGenerator.ContainerFromIndex(itemIndex) is ToggleButton item)
+        if (ItemContainerGenerator.ContainerFromIndex(itemIndex) is SegmentedButtonItem item)
         {
             SetItemSelected(item, itemIndex, isSelected);
         }
     }
 
-    private void SetItemSelected(ToggleButton item, int itemIndex, bool isSelected)
+    private void SetItemSelected(SegmentedButtonItem item, int itemIndex, bool isSelected)
     {
         item.IsChecked = isSelected;
         if (isSelected)
@@ -274,7 +274,7 @@ public class ToggleButtonGroup : ItemsControl
     {
         for (var i = 0; i < Items.Count; i++)
         {
-            if (ItemContainerGenerator.ContainerFromIndex(i) is not ToggleButton { IsChecked: true } item)
+            if (ItemContainerGenerator.ContainerFromIndex(i) is not SegmentedButtonItem { IsChecked: true } item)
             {
                 continue;
             }
@@ -301,7 +301,7 @@ public class ToggleButtonGroup : ItemsControl
     {
         for (var i = 0; i < Items.Count; i++)
         {
-            if (ItemContainerGenerator.ContainerFromIndex(i) is not ToggleButton item)
+            if (ItemContainerGenerator.ContainerFromIndex(i) is not SegmentedButtonItem item)
             {
                 continue;
             }

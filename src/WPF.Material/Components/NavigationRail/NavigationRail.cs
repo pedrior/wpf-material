@@ -264,7 +264,7 @@ public class NavigationRail : ItemsControl
     
     /// <summary>
     /// Gets or sets a <see cref="Sheet"/> component that displays sub-destinations related to the selected item if
-    /// <see cref="NavigationItem.RequestSubDestinationsSheet"/> is set to <see langword="true"/>.
+    /// <see cref="NavigationRailItem.RequestSubDestinationsSheet"/> is set to <see langword="true"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Common)]
@@ -298,7 +298,7 @@ public class NavigationRail : ItemsControl
 
     protected virtual void OnSelectionChanged(RoutedEventArgs e) => RaiseEvent(e);
 
-    internal void Toggle(NavigationItem navItem)
+    internal void Toggle(NavigationRailItem navItem)
     {
         if (navItem.IsChecked is true)
         {
@@ -306,7 +306,7 @@ public class NavigationRail : ItemsControl
         }
 
         var items = Items
-            .OfType<NavigationItem>()
+            .OfType<NavigationRailItem>()
             .ToArray();
 
         var selectedIndex = -1;
