@@ -107,6 +107,8 @@ public class Card : ContentControl
     {
         e.Handled = true;
 
+        Focus();
+
         if (IsClickable && e.ButtonState is MouseButtonState.Pressed)
         {
             CaptureMouse();
