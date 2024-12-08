@@ -22,6 +22,15 @@ public static class Interaction
         typeof(bool),
         typeof(Interaction),
         new PropertyMetadata(false));
+    
+    /// <summary>
+    /// Identifies the IsFocused attached property.
+    /// </summary>
+    public static readonly DependencyProperty IsFocusedProperty = DependencyProperty.RegisterAttached(
+        "IsFocused",
+        typeof(bool),
+        typeof(Interaction),
+        new PropertyMetadata(false));
 
     /// <summary>
     /// Identifies the IsDragged attached property.
@@ -107,6 +116,26 @@ public static class Interaction
     /// The current value of the <see cref="IsPressedProperty"/> attached property on the specified dependency object.
     /// </returns>
     public static bool GetIsPressed(DependencyObject element) => (bool)element.GetValue(IsPressedProperty);
+    
+    /// <summary>
+    /// Sets the value of the <see cref="IsFocusedProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to set the value of the <see cref="IsFocusedProperty"/> property.
+    /// </param>
+    /// <param name="value">The new value to set the property to.</param>
+    public static void SetIsFocused(DependencyObject element, bool value) => element.SetValue(IsFocusedProperty, value);
+
+    /// <summary>
+    /// Gets the value of the <see cref="IsFocusedProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to retrieve the value of the <see cref="IsFocusedProperty"/> property.
+    /// </param>
+    /// <returns>
+    /// The current value of the <see cref="IsFocusedProperty"/> attached property on the specified dependency object.
+    /// </returns>
+    public static bool GetIsFocused(DependencyObject element) => (bool)element.GetValue(IsFocusedProperty);
 
     /// <summary>
     /// Sets the value of the <see cref="IsDraggedProperty"/> attached property for a specified dependency object.

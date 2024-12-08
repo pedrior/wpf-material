@@ -74,6 +74,7 @@
         <Setter Property="styles:Elevation.Level" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Elevation.Level)}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsHovered)}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsPressed)}" />
+        <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsFocused)}" />
         <Setter Property="foundations:Interaction.IsInteractive" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsInteractive)}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -130,6 +131,13 @@
                                 <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.16" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="foundations:Interaction.IsFocused" Value="True" />
+                                <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.38" />
