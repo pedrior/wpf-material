@@ -12,7 +12,7 @@ public static class Interaction
         "IsHovered",
         typeof(bool),
         typeof(Interaction),
-        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(false));
 
     /// <summary>
     /// Identifies the IsPressed attached property.
@@ -21,7 +21,7 @@ public static class Interaction
         "IsPressed",
         typeof(bool),
         typeof(Interaction),
-        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(false));
 
     /// <summary>
     /// Identifies the IsDragged attached property.
@@ -30,7 +30,7 @@ public static class Interaction
         "IsDragged",
         typeof(bool),
         typeof(Interaction),
-        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(false));
 
     /// <summary>
     /// Identifies the IsEnabled attached property.
