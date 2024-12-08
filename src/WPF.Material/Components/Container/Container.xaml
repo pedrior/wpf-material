@@ -71,6 +71,7 @@
         <Setter Property="ShapeRadius" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Shape.Radius)}" />
         <Setter Property="UseStyleOnRadiusOverride" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Shape.UseStyleOnRadiusOverride)}" />
         <Setter Property="UseCornersOnRadiusOverride" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Shape.UseCornersOnRadiusOverride)}" />
+        <Setter Property="styles:Elevation.Level" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Elevation.Level)}" />
         <Setter Property="foundations:Interaction.IsInteractive" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsInteractive)}" />
         <Setter Property="Template">
             <Setter.Value>
