@@ -70,6 +70,14 @@ public class Ripple : ContentControl
                 propertyChangedCallback: IsRippleEnabledAttachedPropertyChanged));
     }
 
+    public Ripple()
+    {
+        EventManager.RegisterClassHandler(
+            typeof(ContentControl),
+            Mouse.MouseUpEvent,
+            new MouseButtonEventHandler(MouseUpHandler));
+    }
+
     /// <summary>
     /// Gets or sets the <see cref="Geometry"/> used to clip the ripple effect.
     /// </summary>
@@ -118,33 +126,10 @@ public class Ripple : ContentControl
 
     protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
     {
-        CaptureMouse();
-
-        if (IsMouseCaptured)
-        {
-            SetIsPressed(true);
-            Start();
-        }
+        SetIsPressed(true);
+        Start();
         
         base.OnMouseLeftButtonDown(e);
-    }
-
-    protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
-    {
-        if (isHolding || !IsMouseCaptured)
-        {
-            return;
-        }
-        
-        SetIsPressed(false);
-        ReleaseMouseCapture();
-
-        if (isWaitingForExit)
-        {
-            BeginExitAnimation();
-        }
-
-        base.OnMouseLeftButtonUp(e);
     }
 
     internal void Start(bool hold = false)
@@ -178,6 +163,21 @@ public class Ripple : ContentControl
         SetIsPressed(false);
 
         isHolding = false;
+        if (isWaitingForExit)
+        {
+            BeginExitAnimation();
+        }
+    }
+    
+    private void MouseUpHandler(object sender, MouseButtonEventArgs e)
+    {
+        if (isHolding || e.ChangedButton is not MouseButton.Left 
+                      || e.LeftButton is not MouseButtonState.Released)
+        {
+            return;
+        }
+
+        isPressed = false;
         if (isWaitingForExit)
         {
             BeginExitAnimation();
