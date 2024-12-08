@@ -129,7 +129,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.16" />
                         </MultiTrigger>
-                        <Trigger Property="foundations:Interaction.IsEnabled" Value="False">
+                        <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.38" />
                             <Setter TargetName="PART_Surface" Property="Opacity" Value="0.12" />
                         </Trigger>

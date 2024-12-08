@@ -21,7 +21,6 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">
@@ -201,7 +200,6 @@
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.Icon" Value="Add" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">
@@ -355,7 +353,6 @@
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.Icon" Value="Add" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0, Size=24}" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">
@@ -475,7 +472,6 @@
         <Setter Property="foundations:Layout.ContainerWidth" Value="40" />
         <Setter Property="foundations:Layout.ContainerHeight" Value="40" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0, Size=24}" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">
@@ -641,7 +637,6 @@
         <Setter Property="foundations:Icon.IconOnSelecting" Value="Check" />
         <Setter Property="styles:Shape.Corner" Value="All" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">
@@ -787,7 +782,6 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="styles:Shape.Style" Value="Full" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style BasedOn="{StaticResource {x:Type components:ToggleButton}}" TargetType="{x:Type components:ToggleButton}">
@@ -797,12 +791,7 @@
                     <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type components:ToggleButtonGroup}, AncestorLevel=1}, Path=BorderThickness}" />
                     <Setter Property="styles:Shape.Radius" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type components:ToggleButtonGroup}, AncestorLevel=1}, Path=(styles:Shape.Radius)}" />
                     <Setter Property="components:ToggleButtonGroup.GroupOrientation" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type components:ToggleButtonGroup}, AncestorLevel=1}, Path=Orientation}" />
-                    <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type components:ToggleButtonGroup}, AncestorLevel=1}, Path=(foundations:Interaction.IsEnabled)}" />
                     <Style.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="foundations:Interaction.IsEnabled" Value="False" />
-                        </Trigger>
-
                         <Trigger Property="components:ToggleButtonGroup.IsFirstItem" Value="True">
                             <Setter Property="styles:Shape.Style" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type components:ToggleButtonGroup}, AncestorLevel=1}, Path=(styles:Shape.Style)}" />
                         </Trigger>

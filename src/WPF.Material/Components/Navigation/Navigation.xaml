@@ -109,7 +109,6 @@
         <Setter Property="foundations:Icon.WeightOnPressing" Value="Normal" />
         <Setter Property="foundations:Icon.WeightOnSelecting" Value="DemiBold" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelMedium, Height=0, Weight=DemiBold}" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">

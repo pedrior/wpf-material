@@ -14,7 +14,6 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="Medium" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">

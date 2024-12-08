@@ -35,15 +35,6 @@ public static class Interaction
     /// <summary>
     /// Identifies the IsEnabled attached property.
     /// </summary>
-    public static readonly DependencyProperty IsEnabledProperty = DependencyProperty.RegisterAttached(
-        "IsEnabled",
-        typeof(bool),
-        typeof(Interaction),
-        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits));
-
-    /// <summary>
-    /// Identifies the IsEnabled attached property.
-    /// </summary>
     public static readonly DependencyProperty IsInteractiveProperty = DependencyProperty.RegisterAttached(
         "IsInteractive",
         typeof(bool),
@@ -136,27 +127,6 @@ public static class Interaction
     /// The current value of the <see cref="IsDraggedProperty"/> attached property on the specified dependency object.
     /// </returns>
     public static bool GetIsDragged(DependencyObject element) => (bool)element.GetValue(IsDraggedProperty);
-
-    /// <summary>
-    /// Sets the value of the <see cref="IsEnabledProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to set the value of the <see cref="IsEnabledProperty"/> property.
-    /// </param>
-    /// <param name="value">The new value to set the property to.</param>
-    public static void SetIsEnabled(DependencyObject element, bool value) =>
-        element.SetValue(IsEnabledProperty, value);
-
-    /// <summary>
-    /// Gets the value of the <see cref="IsEnabledProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to retrieve the value of the <see cref="IsEnabledProperty"/> property.
-    /// </param>
-    /// <returns>
-    /// The current value of the <see cref="IsEnabledProperty"/> attached property on the specified dependency object.
-    /// </returns>
-    public static bool GetIsEnabled(DependencyObject element) => (bool)element.GetValue(IsEnabledProperty);
     
     /// <summary>
     /// Sets the value of the <see cref="IsInteractiveProperty"/> attached property for a specified dependency object.

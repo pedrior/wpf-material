@@ -13,7 +13,6 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="foundations:Layout.ContainerWidth" Value="40" />
         <Setter Property="foundations:Layout.ContainerHeight" Value="40" />
-        <Setter Property="foundations:Interaction.IsEnabled" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="Template">
