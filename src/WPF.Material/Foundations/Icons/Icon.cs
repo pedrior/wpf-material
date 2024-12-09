@@ -12,7 +12,7 @@ public static class Icon
         "Icon",
         typeof(Symbol?),
         typeof(Icon),
-        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(null));
 
     /// <summary>
     /// Identifies the Size attached property.
@@ -57,7 +57,7 @@ public static class Icon
         "IconOnHovering",
         typeof(Symbol?),
         typeof(Icon),
-        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(null));
 
     /// <summary>
     /// Identifies the IconOnPressing attached property.
@@ -66,7 +66,7 @@ public static class Icon
         "IconOnPressing",
         typeof(Symbol?),
         typeof(Icon),
-        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        new PropertyMetadata(null));
 
     /// <summary>
     /// Identifies the IconOnSelecting attached property.

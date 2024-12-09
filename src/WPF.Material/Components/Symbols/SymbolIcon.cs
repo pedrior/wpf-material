@@ -75,15 +75,14 @@ public class SymbolIcon : Control
         set => SetValue(IsFilledProperty, value);
     }
 
-    private static object? CoerceSymbol(DependencyObject element, object? value)
-    {
-        // If the incoming symbol is null, we try to get the symbol previously set. If the symbol is still null,
-        // try to get the fallback symbol from the Icon attached properties.
-        var symbol = value ?? element.GetValue(SymbolProperty);
+    private static object? CoerceSymbol(DependencyObject element, object? value) => 
+        value ?? TryGetFallbackSymbolFromElement(element);
 
-        // We're not covering the hovering and pressing states here, as they are interactive states that are triggered
-        // by mouse or keyboard input. Also, returning null here is fine, as the CodepointToSymbolConverter will handle
-        // the null value and return a DependencyProperty.UnsetValue, which will be ignored by the converter.
-        return symbol ?? Icon.GetIcon(element) ?? Icon.GetIconOnSelecting(element);
+    private static object? TryGetFallbackSymbolFromElement(DependencyObject element)
+    {
+        // We've received a mull symbol, let's try to get a fallback symbol from the element, if any.
+        // This is useful when we are using the SymbolIcon in a template of a selectable control and the
+        // rest or selection icon is missing.
+        return element.GetValue(SymbolProperty) ?? Icon.GetIcon(element) ?? Icon.GetIconOnSelecting(element);
     }
 }

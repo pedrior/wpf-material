@@ -146,6 +146,8 @@
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     VerticalAlignment="Center"
+                                    foundations:Icon.Icon="{TemplateBinding foundations:Icon.Icon}"
+                                    foundations:Icon.IconOnSelecting="{TemplateBinding foundations:Icon.IconOnSelecting}"
                                     FontSize="{TemplateBinding foundations:Icon.Size}"
                                     FontWeight="{TemplateBinding foundations:Icon.Weight}"
                                     Foreground="{TemplateBinding Foreground}"
