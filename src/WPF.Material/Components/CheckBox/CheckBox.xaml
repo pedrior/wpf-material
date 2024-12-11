@@ -17,8 +17,8 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="foundations:Layout.ContainerWidth" Value="40" />
-        <Setter Property="foundations:Layout.ContainerHeight" Value="40" />
+        <Setter Property="foundations:Layout.InnerWidth" Value="40" />
+        <Setter Property="foundations:Layout.InnerHeight" Value="40" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
@@ -35,8 +35,8 @@
                             <components:SpacedPanel Margin="{TemplateBinding Padding}">
                                 <components:Ripple
                                     x:Name="PART_Ripple"
-                                    Width="{TemplateBinding foundations:Layout.ContainerWidth}"
-                                    Height="{TemplateBinding foundations:Layout.ContainerHeight}"
+                                    Width="{TemplateBinding foundations:Layout.InnerWidth}"
+                                    Height="{TemplateBinding foundations:Layout.InnerHeight}"
                                     ClippingGeometry="{Binding ElementName=PART_Container, Path=RenderedGeometry}"
                                     Foreground="{TemplateBinding Foreground}">
 

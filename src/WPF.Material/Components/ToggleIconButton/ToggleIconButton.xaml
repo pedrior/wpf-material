@@ -24,8 +24,8 @@
         <Setter Property="foundations:Icon.Icon" Value="Add" />
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="styles:Shape.Style" Value="Full" />
-        <Setter Property="foundations:Layout.ContainerWidth" Value="40" />
-        <Setter Property="foundations:Layout.ContainerHeight" Value="40" />
+        <Setter Property="foundations:Layout.InnerWidth" Value="40" />
+        <Setter Property="foundations:Layout.InnerHeight" Value="40" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0, Size=24}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
@@ -34,8 +34,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:ToggleIconButton}">
                     <components:Ripple
-                        Width="{TemplateBinding foundations:Layout.ContainerWidth}"
-                        Height="{TemplateBinding foundations:Layout.ContainerHeight}"
+                        Width="{TemplateBinding foundations:Layout.InnerWidth}"
+                        Height="{TemplateBinding foundations:Layout.InnerHeight}"
                         ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}"
                         Foreground="{TemplateBinding Foreground}">
 

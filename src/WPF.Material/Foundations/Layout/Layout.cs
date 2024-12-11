@@ -24,19 +24,19 @@ public static class Layout
         new FrameworkPropertyMetadata(Density.Level0, FrameworkPropertyMetadataOptions.Inherits));
 
     /// <summary>
-    /// Identifies the ContainerWidth attached property.
+    /// Identifies the InnerWidth attached property.
     /// </summary>
-    public static readonly DependencyProperty ContainerWidthProperty = DependencyProperty.RegisterAttached(
-        "ContainerWidth",
+    public static readonly DependencyProperty InnerWidthProperty = DependencyProperty.RegisterAttached(
+        "InnerWidth",
         typeof(double),
         typeof(Layout),
         new PropertyMetadata(default(double)));
 
     /// <summary>
-    /// Identifies the ContainerHeight attached property.
+    /// Identifies the InnerHeight attached property.
     /// </summary>
-    public static readonly DependencyProperty ContainerHeightProperty = DependencyProperty.RegisterAttached(
-        "ContainerHeight",
+    public static readonly DependencyProperty InnerHeightProperty = DependencyProperty.RegisterAttached(
+        "InnerHeight",
         typeof(double),
         typeof(Layout),
         new PropertyMetadata(default(double)));
@@ -84,46 +84,46 @@ public static class Layout
     public static Density GetDensity(DependencyObject element) => (Density)element.GetValue(DensityProperty);
     
     /// <summary>
-    /// Sets the value of the <see cref="ContainerWidthProperty"/> attached property for a specified dependency object.
+    /// Sets the value of the <see cref="InnerWidthProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
-    /// The dependency object for which to set the value of the <see cref="ContainerWidthProperty"/> property.
+    /// The dependency object for which to set the value of the <see cref="InnerWidthProperty"/> property.
     /// </param>
     /// <param name="value">The new value to set the property to.</param>
-    public static void SetContainerWidth(DependencyObject element, double value) =>
-        element.SetValue(ContainerWidthProperty, value);
+    public static void SetInnerWidth(DependencyObject element, double value) =>
+        element.SetValue(InnerWidthProperty, value);
 
     /// <summary>
-    /// Gets the value of the <see cref="ContainerWidthProperty"/> attached property for a specified dependency object.
+    /// Gets the value of the <see cref="InnerWidthProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
-    /// The dependency object for which to retrieve the value of the <see cref="ContainerWidthProperty"/> property.
+    /// The dependency object for which to retrieve the value of the <see cref="InnerWidthProperty"/> property.
     /// </param>
     /// <returns>
-    /// The current value of the <see cref="ContainerWidthProperty"/> attached property on the specified dependency object.
+    /// The current value of the <see cref="InnerWidthProperty"/> attached property on the specified dependency object.
     /// </returns>
-    public static double GetContainerWidth(DependencyObject element) =>
-        (double)element.GetValue(ContainerWidthProperty);
+    public static double GetInnerWidth(DependencyObject element) =>
+        (double)element.GetValue(InnerWidthProperty);
 
     /// <summary>
-    /// Sets the value of the <see cref="ContainerHeightProperty"/> attached property for a specified dependency object.
+    /// Sets the value of the <see cref="InnerHeightProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
-    /// The dependency object for which to set the value of the <see cref="ContainerHeightProperty"/> property.
+    /// The dependency object for which to set the value of the <see cref="InnerHeightProperty"/> property.
     /// </param>
     /// <param name="value">The new value to set the property to.</param>
-    public static void SetContainerHeight(DependencyObject element, double value) =>
-        element.SetValue(ContainerHeightProperty, value);
+    public static void SetInnerHeight(DependencyObject element, double value) =>
+        element.SetValue(InnerHeightProperty, value);
 
     /// <summary>
-    /// Gets the value of the <see cref="ContainerHeightProperty"/> attached property for a specified dependency object.
+    /// Gets the value of the <see cref="InnerHeightProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
-    /// The dependency object for which to retrieve the value of the <see cref="ContainerHeightProperty"/> property.
+    /// The dependency object for which to retrieve the value of the <see cref="InnerHeightProperty"/> property.
     /// </param>
     /// <returns>
-    /// The current value of the <see cref="ContainerHeightProperty"/> attached property on the specified dependency object.
+    /// The current value of the <see cref="InnerHeightProperty"/> attached property on the specified dependency object.
     /// </returns>
-    public static double GetContainerHeight(DependencyObject element) =>
-        (double)element.GetValue(ContainerHeightProperty);
+    public static double GetInnerHeight(DependencyObject element) =>
+        (double)element.GetValue(InnerHeightProperty);
 }
