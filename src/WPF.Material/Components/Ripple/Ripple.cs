@@ -132,7 +132,7 @@ public class Ripple : ContentControl
         base.OnMouseLeftButtonDown(e);
     }
 
-    internal void Start(bool hold = false)
+    internal void Start(bool hold = false, bool isCentered = false)
     {
         if (!Interaction.GetIsRippleEnabled(this))
         {
@@ -141,7 +141,7 @@ public class Ripple : ContentControl
 
         isHolding = hold;
 
-        var origin = Interaction.GetIsRippleCentered(this)
+        var origin = isCentered || Interaction.GetIsRippleCentered(this)
             ? new Point(ActualWidth * 0.5, ActualHeight * 0.5)
             : Mouse.GetPosition(this);
 
