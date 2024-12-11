@@ -12,6 +12,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsFilled" Value="False" />
         <Setter Property="SymbolStyle" Value="Rounded" />
+        <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
