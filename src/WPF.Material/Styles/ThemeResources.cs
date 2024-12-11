@@ -64,7 +64,7 @@ public sealed class ThemeResources : ResourceDictionary
         string[] resources =
         {
             "Button/Button.xaml",
-            "Cards/Card.xaml",
+            "Card/Card.xaml",
             "CheckBox/CheckBox.xaml",
             "Container/Container.xaml",
             "Divider/Divider.xaml",
@@ -74,11 +74,11 @@ public sealed class ThemeResources : ResourceDictionary
             "Ripple/Ripple.xaml",
             "ScrollBar/ScrollBar.xaml",
             "ScrollViewer/ScrollViewer.xaml",
-            "Sheets/Sheets.xaml",
-            "Symbols/Symbols.xaml",
             "SegmentedButtons/SegmentedButtons.xaml",
+            "SideSheet/SideSheet.xaml",
+            "SymbolIcon/SymbolIcon.xaml",
             "ToggleIconButton/ToggleIconButton.xaml",
-            "Tooltips/Tooltips.xaml"
+            "ToolTip/ToolTip.xaml"
         };
 
         foreach (var resource in resources)
