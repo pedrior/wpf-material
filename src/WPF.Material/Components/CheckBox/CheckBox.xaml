@@ -59,7 +59,6 @@
 
                                 <ContentPresenter
                                     x:Name="Content"
-                                    Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     components:SpacedPanel.StretchHorizontally="True"
