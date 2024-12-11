@@ -17,6 +17,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="foundations:Layout.InnerWidth" Value="40" />
         <Setter Property="foundations:Layout.InnerHeight" Value="40" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
@@ -32,7 +33,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
 
-                            <components:SpacedPanel Margin="{TemplateBinding Padding}">
+                            <components:SpacedPanel Margin="{TemplateBinding Padding}" Spacing="{TemplateBinding foundations:Layout.Spacing}">
                                 <components:Ripple
                                     x:Name="PART_Ripple"
                                     Width="{TemplateBinding foundations:Layout.InnerWidth}"

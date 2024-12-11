@@ -22,6 +22,7 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
+        <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />
@@ -39,7 +40,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Foreground="{TemplateBinding Foreground}">
 
-                            <components:SpacedPanel Spacing="8">
+                            <components:SpacedPanel Spacing="{TemplateBinding foundations:Layout.Spacing}">
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     VerticalAlignment="Center"

@@ -14,9 +14,10 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="foundations:Icon.IconOnSelecting" Value="Check" />
         <Setter Property="styles:Shape.Corner" Value="All" />
         <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
+        <Setter Property="foundations:Icon.IconOnSelecting" Value="Check" />
+        <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />
@@ -33,7 +34,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
 
-                            <components:SpacedPanel x:Name="Panel" Spacing="8">
+                            <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     Block.LineHeight="23"

@@ -18,6 +18,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="foundations:Layout.Spacing" Value="12" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:NavigationRail}">
@@ -53,7 +54,7 @@
                                         components:SpacedPanel.StretchVertically="True"
                                         IsItemsHost="True"
                                         Orientation="Vertical"
-                                        Spacing="12" />
+                                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
 
                                     <ContentPresenter
                                         Margin="0,12,0,44"
@@ -87,6 +88,7 @@
 
     <Style TargetType="{x:Type components:NavigationRailActions}">
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="foundations:Layout.Spacing" Value="4" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:NavigationRailActions}">
@@ -94,7 +96,7 @@
                         HorizontalAlignment="Center"
                         IsItemsHost="True"
                         Orientation="Vertical"
-                        Spacing="4" />
+                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -108,13 +110,14 @@
         <Setter Property="IsChecked" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelMedium, Height=0, Weight=DemiBold}" />
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.FillOnPressing" Value="True" />
         <Setter Property="foundations:Icon.FillOnSelecting" Value="True" />
         <Setter Property="foundations:Icon.WeightOnHovering" Value="DemiBold" />
         <Setter Property="foundations:Icon.WeightOnPressing" Value="Normal" />
         <Setter Property="foundations:Icon.WeightOnSelecting" Value="DemiBold" />
-        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelMedium, Height=0, Weight=DemiBold}" />
+        <Setter Property="foundations:Layout.Spacing" Value="4" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />
@@ -124,7 +127,7 @@
                     <components:SpacedPanel
                         Background="Transparent"
                         Orientation="Vertical"
-                        Spacing="4">
+                        Spacing="{TemplateBinding foundations:Layout.Spacing}">
 
                         <components:Ripple
                             x:Name="PART_Ripple"

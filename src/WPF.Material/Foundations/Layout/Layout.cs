@@ -42,6 +42,15 @@ public static class Layout
         new PropertyMetadata(default(double)));
 
     /// <summary>
+    /// Identifies the Spacing attached property.
+    /// </summary>
+    public static readonly DependencyProperty SpacingProperty = DependencyProperty.RegisterAttached(
+        "Spacing",
+        typeof(double),
+        typeof(Layout),
+        new PropertyMetadata(0.0));
+
+    /// <summary>
     /// Sets the value of the <see cref="IsDenseProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
@@ -126,4 +135,24 @@ public static class Layout
     /// </returns>
     public static double GetInnerHeight(DependencyObject element) =>
         (double)element.GetValue(InnerHeightProperty);
+    
+    /// <summary>
+    /// Sets the value of the <see cref="SpacingProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to set the value of the <see cref="SpacingProperty"/> property.
+    /// </param>
+    /// <param name="value">The new value to set the property to.</param>
+    public static void SetSpacing(DependencyObject element, double value) => element.SetValue(SpacingProperty, value);
+
+    /// <summary>
+    /// Gets the value of the <see cref="SpacingProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to retrieve the value of the <see cref="SpacingProperty"/> property.
+    /// </param>
+    /// <returns>
+    /// The current value of the <see cref="SpacingProperty"/> attached property on the specified dependency object.
+    /// </returns>
+    public static double GetSpacing(DependencyObject element) => (double)element.GetValue(SpacingProperty);
 }
