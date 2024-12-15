@@ -26,7 +26,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Card}">
-                    <components:Ripple ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}" Foreground="{TemplateBinding Foreground}">
+                    <components:Ripple Foreground="{TemplateBinding Foreground}" RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
                         <components:Container
                             x:Name="Container"
                             Padding="{TemplateBinding Padding}"
@@ -112,7 +112,7 @@
                 <Setter Property="Cursor" Value="Arrow" />
                 <Setter Property="Focusable" Value="False" />
                 <Setter Property="foundations:Interaction.IsInteractive" Value="False" />
-                <Setter Property="foundations:Interaction.IsRippleEnabled" Value="False" />
+                <Setter Property="foundations:Interaction.IsRippleAnimated" Value="False" />
             </Trigger>
         </Style.Triggers>
     </Style>

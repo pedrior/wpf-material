@@ -134,9 +134,11 @@
                             Width="56"
                             HorizontalAlignment="Center"
                             components:SpacedPanel.StretchVertically="True"
-                            foundations:Interaction.IsRippleCentered="True"
-                            ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}"
-                            Foreground="{TemplateBinding Foreground}">
+                            Foreground="{TemplateBinding Foreground}"
+                            IsCentered="True"
+                            ReleaseMode="Manual"
+                            RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}"
+                            TriggerMode="Manual">
 
                             <components:Container
                                 x:Name="Container"

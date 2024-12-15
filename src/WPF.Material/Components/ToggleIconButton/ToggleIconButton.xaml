@@ -36,8 +36,8 @@
                     <components:Ripple
                         Width="{TemplateBinding foundations:Layout.InnerWidth}"
                         Height="{TemplateBinding foundations:Layout.InnerHeight}"
-                        ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}"
-                        Foreground="{TemplateBinding Foreground}">
+                        Foreground="{TemplateBinding Foreground}"
+                        RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
 
                         <components:Container
                             x:Name="Container"

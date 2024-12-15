@@ -51,13 +51,13 @@ public static class Interaction
         new PropertyMetadata(true));
 
     /// <summary>
-    /// Identifies the IsRippleEnabled attached property.
+    /// Identifies the IsRippleAnimated attached property.
     /// </summary>
-    public static readonly DependencyProperty IsRippleEnabledProperty = DependencyProperty.RegisterAttached(
-        "IsRippleEnabled",
+    public static readonly DependencyProperty IsRippleAnimatedProperty = DependencyProperty.RegisterAttached(
+        "IsRippleAnimated",
         typeof(bool),
         typeof(Interaction),
-        new PropertyMetadata(true));
+        new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.Inherits));
 
     /// <summary>
     /// Identifies the IsRippleCentered attached property.
@@ -179,26 +179,26 @@ public static class Interaction
     public static bool GetIsInteractive(DependencyObject element) => (bool)element.GetValue(IsInteractiveProperty);
     
     /// <summary>
-    /// Sets the value of the <see cref="IsRippleEnabledProperty"/> attached property for a specified dependency object.
+    /// Sets the value of the <see cref="IsRippleAnimatedProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
-    /// The dependency object for which to set the value of the <see cref="IsRippleEnabledProperty"/> property.
+    /// The dependency object for which to set the value of the <see cref="IsRippleAnimatedProperty"/> property.
     /// </param>
     /// <param name="value">The new value to set the property to.</param>
-    public static void SetIsRippleEnabled(DependencyObject element, bool value) => 
-        element.SetValue(IsRippleEnabledProperty, value);
+    public static void SetIsRippleAnimated(DependencyObject element, bool value) => 
+        element.SetValue(IsRippleAnimatedProperty, value);
 
     /// <summary>
-    /// Gets the value of the <see cref="IsRippleEnabledProperty"/> attached property for a specified dependency object.
+    /// Gets the value of the <see cref="IsRippleAnimatedProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
-    /// The dependency object for which to retrieve the value of the <see cref="IsRippleEnabledProperty"/> property.
+    /// The dependency object for which to retrieve the value of the <see cref="IsRippleAnimatedProperty"/> property.
     /// </param>
     /// <returns>
-    /// The current value of the <see cref="IsRippleEnabledProperty"/> attached property on the specified dependency object.
+    /// The current value of the <see cref="IsRippleAnimatedProperty"/> attached property on the specified dependency object.
     /// </returns>
-    public static bool GetIsRippleEnabled(DependencyObject element) =>
-        (bool)element.GetValue(IsRippleEnabledProperty);
+    public static bool GetIsRippleAnimated(DependencyObject element) =>
+        (bool)element.GetValue(IsRippleAnimatedProperty);
 
     /// <summary>
     /// Sets the value of the <see cref="IsRippleCenteredProperty"/> attached property for a specified dependency object.

@@ -38,8 +38,10 @@
                                     x:Name="PART_Ripple"
                                     Width="{TemplateBinding foundations:Layout.InnerWidth}"
                                     Height="{TemplateBinding foundations:Layout.InnerHeight}"
-                                    ClippingGeometry="{Binding ElementName=PART_Container, Path=RenderedGeometry}"
-                                    Foreground="{TemplateBinding Foreground}">
+                                    Foreground="{TemplateBinding Foreground}"
+                                    ReleaseMode="Manual"
+                                    RippleOutline="{Binding ElementName=PART_Container, Path=RenderedGeometry}"
+                                    TriggerMode="Manual">
 
                                     <components:Container
                                         x:Name="PART_Container"

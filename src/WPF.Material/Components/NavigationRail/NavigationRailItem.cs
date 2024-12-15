@@ -52,7 +52,7 @@ public class NavigationRailItem : System.Windows.Controls.Primitives.ToggleButto
     {
         base.OnMouseLeftButtonDown(e);
 
-        ripple?.Start(hold: true);
+        ripple?.Start(e.GetPosition(ripple));
     }
 
     protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)

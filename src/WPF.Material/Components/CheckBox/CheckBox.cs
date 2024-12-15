@@ -68,15 +68,9 @@ public class CheckBox : System.Windows.Controls.CheckBox
         panel.MouseLeave += OnPanelMouseLeave;
     }
 
-    private void OnPanelMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-    {
-        // We only want to start the ripple manually if the user hasn't clicked the checkbox itself.
-        if (IsPanelHitTestVisible && e.Source is not Container { Name: PartContainer })
-        {
-            ripple!.Start(hold: true, isCentered: true);
-        }
-    }
-    
+    private void OnPanelMouseLeftButtonDown(object sender, MouseButtonEventArgs e) => 
+        ripple!.Start(e.GetPosition(ripple));
+
     private void OnPanelMouseLeftButtonUp(object sender, MouseButtonEventArgs e) => ripple!.Release();
 
     private void OnPanelMouseLeave(object sender, MouseEventArgs e) => ripple!.Release();

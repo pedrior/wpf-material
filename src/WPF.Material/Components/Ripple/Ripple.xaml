@@ -13,9 +13,9 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="foundations:Interaction.IsRippleEnabled" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleEnabled)}" />
-        <Setter Property="foundations:Interaction.IsRippleCentered" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleCentered)}" />
-        <Setter Property="foundations:Interaction.IsRippleUnbounded" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleUnbounded)}" />
+        <Setter Property="IsAnimated" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleAnimated)}" />
+        <Setter Property="IsCentered" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleCentered)}" />
+        <Setter Property="IsUnbounded" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsRippleUnbounded)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Ripple}">
@@ -27,17 +27,16 @@
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}" />
 
-                        <Canvas
-                            x:Name="Canvas"
-                            Clip="{TemplateBinding ClippingGeometry}"
-                            IsHitTestVisible="False">
-
-                            <Ellipse x:Name="PART_Ellipse" Fill="{TemplateBinding Foreground}" />
+                        <Canvas x:Name="Canvas" Clip="{TemplateBinding RippleOutline}">
+                            <Ellipse
+                                x:Name="PART_Ellipse"
+                                Fill="{TemplateBinding Foreground}"
+                                IsHitTestVisible="False" />
                         </Canvas>
                     </components:NaivePanel>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="foundations:Interaction.IsRippleUnbounded" Value="True">
+                        <Trigger Property="IsUnbounded" Value="True">
                             <Setter TargetName="Canvas" Property="Clip" Value="{x:Null}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

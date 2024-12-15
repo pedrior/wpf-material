@@ -24,7 +24,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:SegmentedButtonItem}">
-                    <components:Ripple ClippingGeometry="{Binding ElementName=Container, Path=RenderedGeometry}" Foreground="{TemplateBinding Foreground}">
+                    <components:Ripple Foreground="{TemplateBinding Foreground}" RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
                         <components:Container
                             x:Name="Container"
                             Padding="{TemplateBinding Padding}"
