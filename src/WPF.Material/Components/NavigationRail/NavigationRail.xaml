@@ -109,7 +109,7 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="IsChecked" Value="False" />
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="foundations:Icon.Size" Value="24" />
@@ -181,15 +181,6 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Container" Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                         </Trigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsHovered" Value="False" />
-                                <Condition Property="foundations:Interaction.IsPressed" Value="False" />
-                                <Condition Property="IsChecked" Value="False" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="FontWeight" Value="Medium" />
-                        </MultiTrigger>
 
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
