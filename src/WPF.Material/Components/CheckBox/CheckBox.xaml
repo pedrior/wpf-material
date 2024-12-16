@@ -40,11 +40,11 @@
                                     Height="{TemplateBinding foundations:Layout.InnerHeight}"
                                     Foreground="{TemplateBinding Foreground}"
                                     ReleaseMode="Manual"
-                                    RippleOutline="{Binding ElementName=PART_Container, Path=RenderedGeometry}"
+                                    RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}"
                                     TriggerMode="Manual">
 
                                     <components:Container
-                                        x:Name="PART_Container"
+                                        x:Name="Container"
                                         Background="Transparent"
                                         Foreground="{TemplateBinding Foreground}"
                                         ShapeCorner="All"

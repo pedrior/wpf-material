@@ -7,7 +7,6 @@ namespace WPF.Material.Components;
 /// </summary>
 [TemplatePart(Name = PartPanel, Type = typeof(Panel))]
 [TemplatePart(Name = PartRipple, Type = typeof(Ripple))]
-[TemplatePart(Name = PartContainer, Type = typeof(Container))]
 public class CheckBox : System.Windows.Controls.CheckBox
 {
     /// <summary>
@@ -21,7 +20,6 @@ public class CheckBox : System.Windows.Controls.CheckBox
 
     private const string PartPanel = "PART_Panel";
     private const string PartRipple = "PART_Ripple";
-    private const string PartContainer = "PART_Container";
 
     private Panel? panel;
     private Ripple? ripple;
