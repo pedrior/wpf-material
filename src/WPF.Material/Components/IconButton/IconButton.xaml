@@ -24,7 +24,6 @@
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.Icon" Value="Add" />
-        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0, Size=24}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />

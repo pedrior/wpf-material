@@ -11,6 +11,8 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="Padding" Value="4" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -20,7 +22,6 @@
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="foundations:Layout.InnerWidth" Value="40" />
         <Setter Property="foundations:Layout.InnerHeight" Value="40" />
-        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
         <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />
@@ -87,7 +88,7 @@
                             <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
                         </Trigger>
 
-                        <Trigger Property="IsPanelHitTestVisible" Value="False">
+                        <Trigger Property="IsContentClickable" Value="False">
                             <Setter TargetName="PART_Panel" Property="Background" Value="{x:Null}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

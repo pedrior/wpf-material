@@ -54,6 +54,11 @@ public sealed class ThemeResources : ResourceDictionary
 
         runner = new ThemeRunner(this);
 
+        MergedDictionaries.Add(new ResourceDictionary
+        {
+            Source = Resources.PackUri("/Styles/Theme.xaml")
+        });
+
         MergeComponentResources();
 
         ThemeService.Instance.Initialize(this);
@@ -77,6 +82,7 @@ public sealed class ThemeResources : ResourceDictionary
             "SegmentedButtons/SegmentedButtons.xaml",
             "SideSheet/SideSheet.xaml",
             "SymbolIcon/SymbolIcon.xaml",
+            "TextBlock/TextBlock.xaml",
             "ToggleIconButton/ToggleIconButton.xaml",
             "ToolTip/ToolTip.xaml"
         };

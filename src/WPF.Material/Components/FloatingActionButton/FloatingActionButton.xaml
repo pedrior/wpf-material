@@ -18,12 +18,13 @@
         <Setter Property="Size" Value="Standard" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Padding" Value="16" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="IsExtended" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Appearance" Value="Surface" />
         <Setter Property="styles:Shape.Style" Value="Large" />
-        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.Icon" Value="Add" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
@@ -49,8 +50,6 @@
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     VerticalAlignment="Center"
-                                    Block.LineHeight="23"
-                                    Block.LineStackingStrategy="BlockLineHeight"
                                     FontSize="18"
                                     FontWeight="{TemplateBinding foundations:Icon.Weight}"
                                     Foreground="{TemplateBinding Foreground}"
@@ -61,8 +60,6 @@
                                 <ContentPresenter
                                     x:Name="Content"
                                     VerticalAlignment="Center"
-                                    Block.LineHeight="20"
-                                    Block.LineStackingStrategy="BlockLineHeight"
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     RecognizesAccessKey="True"

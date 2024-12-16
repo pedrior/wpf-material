@@ -5,8 +5,6 @@ namespace WPF.Material.Styles;
 
 internal sealed class ThemeRunner
 {
-    private const string TypefaceName = "Typefaces.Default";
-
     private readonly ResourceDictionary resources;
 
     private Theme? appliedTheme;
@@ -19,7 +17,6 @@ internal sealed class ThemeRunner
     public void ApplyTheme(Theme theme)
     {
         ApplyColorScheme(theme.Colors);
-        ApplyTypography(theme.Typeface);
 
         appliedTheme = theme;
     }
@@ -73,15 +70,7 @@ internal sealed class ThemeRunner
         UpdateColorResource(Colors.OutlineVariant, appliedTheme?.Colors.OutlineVariant);
         UpdateColorResource(Colors.Scrim, appliedTheme?.Colors.Scrim);
     }
-
-    private void ApplyTypography(string typeface)
-    {
-        if (typeface != appliedTheme?.Typeface)
-        {
-            resources[MakeResourceKey(TypefaceName)] = Typefaces.GetTypefaceOrDefault(typeface);
-        }
-    }
-
+    
     private void UpdateColorResource(Color @new, Color? old, [CallerArgumentExpression("new")] string name = "")
     {
         if (@new != old)

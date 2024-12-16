@@ -108,9 +108,10 @@
         <Setter Property="Height" Value="56" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="IsChecked" Value="False" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="DemiBold" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelMedium, Height=0, Weight=DemiBold}" />
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.FillOnPressing" Value="True" />
         <Setter Property="foundations:Icon.FillOnSelecting" Value="True" />
@@ -187,7 +188,7 @@
                                 <Condition Property="foundations:Interaction.IsPressed" Value="False" />
                                 <Condition Property="IsChecked" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelMedium, Height=0}" />
+                            <Setter Property="FontWeight" Value="Medium" />
                         </MultiTrigger>
 
                         <Trigger Property="IsChecked" Value="True">

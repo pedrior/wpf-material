@@ -12,10 +12,11 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Corner" Value="All" />
-        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
         <Setter Property="foundations:Icon.IconOnSelecting" Value="Check" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
@@ -37,8 +38,6 @@
                             <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
                                 <components:SymbolIcon
                                     x:Name="Icon"
-                                    Block.LineHeight="23"
-                                    Block.LineStackingStrategy="BlockLineHeight"
                                     FontSize="18"
                                     FontWeight="{TemplateBinding foundations:Icon.Weight}"
                                     Foreground="{TemplateBinding Foreground}"
@@ -49,8 +48,6 @@
                                 <ContentPresenter
                                     x:Name="Label"
                                     VerticalAlignment="Center"
-                                    Block.LineHeight="20"
-                                    Block.LineStackingStrategy="BlockLineHeight"
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     RecognizesAccessKey="True"

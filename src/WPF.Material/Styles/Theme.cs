@@ -9,26 +9,22 @@ public readonly record struct Theme
 {
     private static readonly Lazy<Theme> LazyLight = new(() => new Theme());
 
-    private static readonly Lazy<Theme> LazyDark = new(
-        () => new Theme(Typefaces.Default, ColorScheme.Dark()));
+    private static readonly Lazy<Theme> LazyDark = new(() => new Theme(ColorScheme.Dark()));
 
     /// <summary>
     /// Creates a new instance of the <see cref="Theme"/> class with the default light color scheme and Default typeface.
     /// </summary>
     public Theme()
     {
-        Typeface = Typefaces.Default;
         Colors = ColorScheme.Light();
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Theme"/> class with the specified color scheme and typeface.
     /// </summary>
-    /// <param name="typeface">The default typeface name of the theme.</param>
     /// <param name="colors">The color scheme of the theme.</param>
-    public Theme(string typeface, ColorScheme colors)
+    public Theme(ColorScheme colors)
     {
-        Typeface = typeface;
         Colors = colors;
     }
 
@@ -46,11 +42,6 @@ public readonly record struct Theme
     /// Gets the color scheme of the theme.
     /// </summary>
     public ColorScheme Colors { get; init; }
-
-    /// <summary>
-    /// Gets the default typeface name of the theme.
-    /// </summary>
-    public string Typeface { get; init; }
 
     /// <summary>
     /// Get the brightness of the theme. This is determined by the color scheme.

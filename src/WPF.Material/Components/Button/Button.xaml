@@ -18,10 +18,11 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Padding" Value="16,0,24,0" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="Full" />
-        <Setter Property="styles:Typography.Style" Value="{styles:TypeStyle Style=LabelLarge, Height=0}" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
@@ -44,8 +45,6 @@
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     VerticalAlignment="Center"
-                                    Block.LineHeight="23"
-                                    Block.LineStackingStrategy="BlockLineHeight"
                                     FontSize="18"
                                     FontWeight="{TemplateBinding foundations:Icon.Weight}"
                                     Foreground="{TemplateBinding Foreground}"
@@ -56,8 +55,6 @@
                                 <ContentPresenter
                                     x:Name="Content"
                                     VerticalAlignment="Center"
-                                    Block.LineHeight="20"
-                                    Block.LineStackingStrategy="BlockLineHeight"
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     RecognizesAccessKey="True"

@@ -17,7 +17,7 @@
     d:DesignHeight="1080"
     d:DesignWidth="1920"
     Background="{DynamicResource Material.Colors.SurfaceContainer}"
-    FontFamily="{DynamicResource Material.Typefaces.Default}"
+    FontFamily="{DynamicResource Material.Typefaces.Roboto}"
     SnapsToDevicePixels="True"
     UseLayoutRounding="True"
     WindowStartupLocation="CenterScreen"

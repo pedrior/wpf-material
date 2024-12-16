@@ -1,0 +1,149 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="Material.Styles.BaseStyleTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.DisplayLargeTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="57" />
+        <Setter Property="LineHeight" Value="64" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.DisplayMediumTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="45" />
+        <Setter Property="LineHeight" Value="52" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.DisplaySmallTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="36" />
+        <Setter Property="LineHeight" Value="44" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.HeadlineLargeTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="LineHeight" Value="40" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.HeadlineMediumTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="LineHeight" Value="36" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.HeadlineSmallTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="LineHeight" Value="32" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.TitleLargeTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="LineHeight" Value="24" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.TitleMediumTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="LineHeight" Value="24" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.TitleSmallTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineHeight" Value="20" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.LabelLargeTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineHeight" Value="20" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.LabelMediumTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="LineHeight" Value="16" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.LabelSmallTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="LineHeight" Value="16" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.BodyLargeTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="LineHeight" Value="24" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.BodyMediumTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineHeight" Value="20" />
+    </Style>
+
+    <Style
+        x:Key="Material.Styles.BodySmallTextBlock"
+        BasedOn="{StaticResource Material.Styles.BaseStyleTextBlock}"
+        TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="LineHeight" Value="16" />
+    </Style>
+</ResourceDictionary>

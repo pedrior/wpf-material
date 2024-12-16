@@ -10,10 +10,10 @@ namespace WPF.Material.Components;
 public class CheckBox : System.Windows.Controls.CheckBox
 {
     /// <summary>
-    /// Identifies the <see cref="IsPanelHitTestVisible"/> dependency property.
+    /// Identifies the <see cref="IsContentClickable"/> dependency property.
     /// </summary>
-    public static readonly DependencyProperty IsPanelHitTestVisibleProperty = DependencyProperty.Register(
-        nameof(IsPanelHitTestVisible),
+    public static readonly DependencyProperty IsContentClickableProperty = DependencyProperty.Register(
+        nameof(IsContentClickable),
         typeof(bool),
         typeof(CheckBox),
         new PropertyMetadata(true));
@@ -32,16 +32,16 @@ public class CheckBox : System.Windows.Controls.CheckBox
     }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the root panel is hit test visible. When set to <see langword="true"/>,
-    /// the state of the checkbox can be changed by clicking anywhere on the control. When set to <see langword="false"/>,
-    /// the state of the checkbox can only be changed by clicking on the checkbox itself.
+    /// Gets or sets a value indicating whether the content element should also change the checkbox state when clicked.
+    /// When <see langword="false"/>, the state will only change when the checkbox itself (i.e. the icon) is clicked.
+    /// The default value is <see langword="true"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Common)]
-    public bool IsPanelHitTestVisible
+    public bool IsContentClickable
     {
-        get => (bool)GetValue(IsPanelHitTestVisibleProperty);
-        set => SetValue(IsPanelHitTestVisibleProperty, value);
+        get => (bool)GetValue(IsContentClickableProperty);
+        set => SetValue(IsContentClickableProperty, value);
     }
 
     public override void OnApplyTemplate()
