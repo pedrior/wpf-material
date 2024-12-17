@@ -5,18 +5,16 @@
 
     <Style x:Key="ScrollBarLineButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OutlineVariant}" />
-        <Setter Property="Width" Value="12" />
-        <Setter Property="Height" Value="12" />
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Height" Value="18" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <components:SymbolIcon
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Brush="{TemplateBinding Foreground}"
-                        Symbol="{TemplateBinding Content}" />
+                    <components:SymbolIcon Brush="{TemplateBinding Foreground}" Symbol="{TemplateBinding Content}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -139,7 +137,6 @@
             <RepeatButton
                 x:Name="PART_ButtonScrollLeft"
                 Grid.Column="0"
-                VerticalAlignment="Center"
                 AutomationProperties.Name="Scroll Left"
                 Command="ScrollBar.LineLeftCommand"
                 Content="{x:Static components:Symbol.ArrowLeft}"
@@ -169,7 +166,6 @@
             <RepeatButton
                 x:Name="PART_ButtonScrollRight"
                 Grid.Column="2"
-                VerticalAlignment="Center"
                 AutomationProperties.Name="Scroll Right"
                 Command="ScrollBar.LineRightCommand"
                 Content="{x:Static components:Symbol.ArrowRight}"
