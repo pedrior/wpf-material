@@ -7,7 +7,6 @@
         <Setter Property="Brush" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="Width" Value="18" />
         <Setter Property="Height" Value="18" />
-        <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
     </Style>
 </ResourceDictionary>
