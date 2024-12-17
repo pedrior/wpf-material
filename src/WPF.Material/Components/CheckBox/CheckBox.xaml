@@ -53,8 +53,9 @@
 
                                         <components:SymbolIcon
                                             x:Name="Icon"
-                                            FontSize="24"
-                                            Foreground="{TemplateBinding Foreground}"
+                                            Width="24"
+                                            Height="24"
+                                            Brush="{TemplateBinding Foreground}"
                                             IsFilled="True"
                                             Symbol="CheckBoxOutlineBlank" />
                                     </components:Container>

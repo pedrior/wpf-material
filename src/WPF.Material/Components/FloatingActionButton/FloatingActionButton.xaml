@@ -50,12 +50,11 @@
                                 <components:SymbolIcon
                                     x:Name="Icon"
                                     VerticalAlignment="Center"
-                                    FontSize="18"
-                                    FontWeight="{TemplateBinding foundations:Icon.Weight}"
-                                    Foreground="{TemplateBinding Foreground}"
+                                    Brush="{TemplateBinding Foreground}"
                                     IsFilled="{TemplateBinding foundations:Icon.Fill}"
                                     Symbol="{TemplateBinding foundations:Icon.Icon}"
-                                    SymbolStyle="{TemplateBinding foundations:Icon.Style}" />
+                                    Type="{TemplateBinding foundations:Icon.Style}"
+                                    Weight="{TemplateBinding foundations:Icon.Weight}" />
 
                                 <ContentPresenter
                                     x:Name="Content"
@@ -86,13 +85,13 @@
                             <Setter TargetName="Container" Property="styles:Elevation.Level" Value="Level4" />
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
 
                         <Trigger Property="foundations:Interaction.IsPressed" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="FontWeight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -46,9 +46,9 @@ public static class Icon
     /// </summary>
     public static readonly DependencyProperty StyleProperty = DependencyProperty.RegisterAttached(
         "Style",
-        typeof(SymbolStyle),
+        typeof(SymbolType),
         typeof(Icon),
-        new FrameworkPropertyMetadata(SymbolStyle.Rounded, FrameworkPropertyMetadataOptions.Inherits));
+        new FrameworkPropertyMetadata(SymbolType.Rounded, FrameworkPropertyMetadataOptions.Inherits));
 
     /// <summary>
     /// Identifies the IconOnHovering attached property.
@@ -211,7 +211,7 @@ public static class Icon
     /// <returns>
     /// The current value of the <see cref="StyleProperty"/> attached property on the specified dependency object.
     /// </returns>
-    public static SymbolStyle GetStyle(DependencyObject element) => (SymbolStyle)element.GetValue(StyleProperty);
+    public static SymbolType GetStyle(DependencyObject element) => (SymbolType)element.GetValue(StyleProperty);
 
     /// <summary>
     /// Sets the value of the <see cref="StyleProperty"/> attached property for a specified dependency object.
@@ -220,7 +220,7 @@ public static class Icon
     /// The dependency object for which to set the value of the <see cref="StyleProperty"/> property.
     /// </param>
     /// <param name="value">The new value to set the property to.</param>
-    public static void SetStyle(DependencyObject element, SymbolStyle value) => element.SetValue(StyleProperty, value);
+    public static void SetStyle(DependencyObject element, SymbolType value) => element.SetValue(StyleProperty, value);
 
     /// <summary>
     /// Gets the value of the <see cref="IconOnHoveringProperty"/> attached property for a specified dependency object.

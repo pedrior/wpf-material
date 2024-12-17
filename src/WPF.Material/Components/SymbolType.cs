@@ -1,9 +1,9 @@
 ﻿namespace WPF.Material.Components;
 
 /// <summary>
-/// Represents the styles of a symbol.
+/// Specifies the symbol types.
 /// </summary>
-public enum SymbolStyle
+public enum SymbolType
 {
     /// <summary>
     /// Identifies the filled symbol style.
