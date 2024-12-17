@@ -10,8 +10,10 @@
     xmlns:viewModels="clr-namespace:WPF.Material.Gallery.ViewModels"
     xmlns:views="clr-namespace:WPF.Material.Gallery.Views"
     Title="WPF Material Gallery"
-    Width="896"
-    Height="504"
+    Width="1280"
+    Height="720"
+    MinWidth="896"
+    MinHeight="504"
     d:DataContext="{d:DesignInstance {x:Type viewModels:ShellViewModel},
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="1080"
