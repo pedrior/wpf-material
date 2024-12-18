@@ -6,15 +6,6 @@
 public static class Layout
 {
     /// <summary>
-    /// Identifies the IsDense attached property.
-    /// </summary>
-    public static readonly DependencyProperty IsDenseProperty = DependencyProperty.RegisterAttached(
-        "IsDense",
-        typeof(bool),
-        typeof(Layout),
-        new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.Inherits));
-
-    /// <summary>
     /// Identifies the Density attached property.
     /// </summary>
     public static readonly DependencyProperty DensityProperty = DependencyProperty.RegisterAttached(
@@ -49,28 +40,6 @@ public static class Layout
         typeof(double),
         typeof(Layout),
         new PropertyMetadata(0.0));
-
-    /// <summary>
-    /// Sets the value of the <see cref="IsDenseProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to set the value of the <see cref="IsDenseProperty"/> property.
-    /// </param>
-    /// <param name="value">The new value to set the property to.</param>
-    public static void SetIsDense(DependencyObject element, bool value) =>
-        element.SetValue(IsDenseProperty, value);
-
-    /// <summary>
-    /// Gets the value of the <see cref="IsDenseProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to retrieve the value of the <see cref="IsDenseProperty"/> property.
-    /// </param>
-    /// <returns>
-    /// The current value of the <see cref="IsDenseProperty"/> attached property on the specified dependency object.
-    /// </returns>
-    public static bool GetIsDense(DependencyObject element) =>
-        (bool)element.GetValue(IsDenseProperty);
 
     /// <summary>
     /// Sets the value of the <see cref="DensityProperty"/> attached property for a specified dependency object.
