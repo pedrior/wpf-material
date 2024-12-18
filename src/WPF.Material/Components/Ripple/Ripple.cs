@@ -69,8 +69,7 @@ public class Ripple : ContentControl
 
     private const string PartEllipse = "PART_Ellipse";
 
-    private static readonly Duration StartEffectDuration = TimeSpan.FromSeconds(0.4);
-    private static readonly Duration ReleaseEffectDuration = TimeSpan.FromSeconds(0.3);
+    private static readonly Duration AnimationDuration = TimeSpan.FromSeconds(0.3);
 
     private static readonly PropertyPath AnimationOpacityPropertyPath = new(OpacityProperty);
     private static readonly PropertyPath AnimationScaleXPropertyPath = new($"{ScaleTransform.ScaleXProperty.Name}");
@@ -370,7 +369,7 @@ public class Ripple : ContentControl
         {
             To = 1.0,
             From = 0.1,
-            Duration = StartEffectDuration
+            Duration = AnimationDuration
         };
 
         var scaleYAnimation = scaleXAnimation.Clone();
@@ -379,7 +378,7 @@ public class Ripple : ContentControl
         {
             To = EllipseOpacity,
             From = 0.05,
-            Duration = StartEffectDuration
+            Duration = AnimationDuration
         };
 
         startStoryboard = new Storyboard
@@ -412,7 +411,7 @@ public class Ripple : ContentControl
         var opacityAnimation = new DoubleAnimation
         {
             To = 0.0,
-            Duration = ReleaseEffectDuration
+            Duration = AnimationDuration
         };
 
         releaseStoryboard = new Storyboard
