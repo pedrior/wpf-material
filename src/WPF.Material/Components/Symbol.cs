@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated at: 22/09/2024 13:05:27 +00:00
+// Generated at: 18/12/2024 00:53:49 +00:00
 namespace WPF.Material.Components
 {
     
@@ -396,6 +396,10 @@ namespace WPF.Material.Components
         /// Identifies the 'add' symbol.
         /// </summary>
         Add = 57669,
+        /// <summary>
+        /// Identifies the 'add_2' symbol.
+        /// </summary>
+        Add2 = 62429,
         /// <summary>
         /// Identifies the 'add_a_photo' symbol.
         /// </summary>
@@ -1037,6 +1041,14 @@ namespace WPF.Material.Components
         /// </summary>
         ArrowLeftAlt = 61309,
         /// <summary>
+        /// Identifies the 'arrow_menu_close' symbol.
+        /// </summary>
+        ArrowMenuClose = 62419,
+        /// <summary>
+        /// Identifies the 'arrow_menu_open' symbol.
+        /// </summary>
+        ArrowMenuOpen = 62418,
+        /// <summary>
         /// Identifies the 'arrow_or_edge' symbol.
         /// </summary>
         ArrowOrEdge = 62934,
@@ -1093,6 +1105,10 @@ namespace WPF.Material.Components
         /// </summary>
         ArrowWarmUp = 62645,
         /// <summary>
+        /// Identifies the 'arrows_input' symbol.
+        /// </summary>
+        ArrowsInput = 62356,
+        /// <summary>
         /// Identifies the 'arrows_more_down' symbol.
         /// </summary>
         ArrowsMoreDown = 63659,
@@ -1100,6 +1116,10 @@ namespace WPF.Material.Components
         /// Identifies the 'arrows_more_up' symbol.
         /// </summary>
         ArrowsMoreUp = 63660,
+        /// <summary>
+        /// Identifies the 'arrows_output' symbol.
+        /// </summary>
+        ArrowsOutput = 62355,
         /// <summary>
         /// Identifies the 'arrows_outward' symbol.
         /// </summary>
@@ -1719,7 +1739,7 @@ namespace WPF.Material.Components
         /// <summary>
         /// Identifies the 'bedtime' symbol.
         /// </summary>
-        Bedtime = 61252,
+        Bedtime = 61785,
         /// <summary>
         /// Identifies the 'bedtime_off' symbol.
         /// </summary>
@@ -1845,6 +1865,14 @@ namespace WPF.Material.Components
         /// </summary>
         BlurShort = 59599,
         /// <summary>
+        /// Identifies the 'boat_bus' symbol.
+        /// </summary>
+        BoatBus = 62317,
+        /// <summary>
+        /// Identifies the 'boat_railway' symbol.
+        /// </summary>
+        BoatRailway = 62316,
+        /// <summary>
         /// Identifies the 'body_fat' symbol.
         /// </summary>
         BodyFat = 57496,
@@ -1877,13 +1905,25 @@ namespace WPF.Material.Components
         /// </summary>
         Book4 = 62780,
         /// <summary>
+        /// Identifies the 'book_4_spark' symbol.
+        /// </summary>
+        Book4Spark = 62432,
+        /// <summary>
         /// Identifies the 'book_5' symbol.
         /// </summary>
         Book5 = 62779,
         /// <summary>
+        /// Identifies the 'book_6' symbol.
+        /// </summary>
+        Book6 = 62431,
+        /// <summary>
         /// Identifies the 'book_online' symbol.
         /// </summary>
         BookOnline = 61975,
+        /// <summary>
+        /// Identifies the 'book_ribbon' symbol.
+        /// </summary>
+        BookRibbon = 62439,
         /// <summary>
         /// Identifies the 'bookmark' symbol.
         /// </summary>
@@ -1932,6 +1972,10 @@ namespace WPF.Material.Components
         /// Identifies the 'bookmarks' symbol.
         /// </summary>
         Bookmarks = 59787,
+        /// <summary>
+        /// Identifies the 'books_movies_and_music' symbol.
+        /// </summary>
+        BooksMoviesAndMusic = 61314,
         /// <summary>
         /// Identifies the 'border_all' symbol.
         /// </summary>
@@ -2056,6 +2100,10 @@ namespace WPF.Material.Components
         /// Identifies the 'breastfeeding' symbol.
         /// </summary>
         Breastfeeding = 63574,
+        /// <summary>
+        /// Identifies the 'brick' symbol.
+        /// </summary>
+        Brick = 62344,
         /// <summary>
         /// Identifies the 'brightness_1' symbol.
         /// </summary>
@@ -2188,6 +2236,10 @@ namespace WPF.Material.Components
         /// Identifies the 'bus_alert' symbol.
         /// </summary>
         BusAlert = 59791,
+        /// <summary>
+        /// Identifies the 'bus_railway' symbol.
+        /// </summary>
+        BusRailway = 62315,
         /// <summary>
         /// Identifies the 'business' symbol.
         /// </summary>
@@ -2437,6 +2489,10 @@ namespace WPF.Material.Components
         /// </summary>
         Cards = 59793,
         /// <summary>
+        /// Identifies the 'cards_star' symbol.
+        /// </summary>
+        CardsStar = 62325,
+        /// <summary>
         /// Identifies the 'carpenter' symbol.
         /// </summary>
         Carpenter = 61944,
@@ -2585,6 +2641,10 @@ namespace WPF.Material.Components
         /// </summary>
         ChatPasteGo = 63165,
         /// <summary>
+        /// Identifies the 'chat_paste_go_2' symbol.
+        /// </summary>
+        ChatPasteGo2 = 62411,
+        /// <summary>
         /// Identifies the 'check' symbol.
         /// </summary>
         Check = 58826,
@@ -2652,6 +2712,10 @@ namespace WPF.Material.Components
         /// Identifies the 'chess' symbol.
         /// </summary>
         Chess = 62951,
+        /// <summary>
+        /// Identifies the 'chess_pawn' symbol.
+        /// </summary>
+        ChessPawn = 62390,
         /// <summary>
         /// Identifies the 'chevron_backward' symbol.
         /// </summary>
@@ -2773,6 +2837,14 @@ namespace WPF.Material.Components
         /// </summary>
         ClinicalNotes = 57502,
         /// <summary>
+        /// Identifies the 'clock_arrow_down' symbol.
+        /// </summary>
+        ClockArrowDown = 62338,
+        /// <summary>
+        /// Identifies the 'clock_arrow_up' symbol.
+        /// </summary>
+        ClockArrowUp = 62337,
+        /// <summary>
         /// Identifies the 'clock_loader_10' symbol.
         /// </summary>
         ClockLoader10 = 63270,
@@ -2829,6 +2901,10 @@ namespace WPF.Material.Components
         /// </summary>
         Cloud = 61788,
         /// <summary>
+        /// Identifies the 'cloud_alert' symbol.
+        /// </summary>
+        CloudAlert = 62412,
+        /// <summary>
         /// Identifies the 'cloud_circle' symbol.
         /// </summary>
         CloudCircle = 58046,
@@ -2840,6 +2916,10 @@ namespace WPF.Material.Components
         /// Identifies the 'cloud_download' symbol.
         /// </summary>
         CloudDownload = 58048,
+        /// <summary>
+        /// Identifies the 'cloud_lock' symbol.
+        /// </summary>
+        CloudLock = 62342,
         /// <summary>
         /// Identifies the 'cloud_off' symbol.
         /// </summary>
@@ -2900,6 +2980,10 @@ namespace WPF.Material.Components
         /// Identifies the 'cognition' symbol.
         /// </summary>
         Cognition = 57503,
+        /// <summary>
+        /// Identifies the 'cognition_2' symbol.
+        /// </summary>
+        Cognition2 = 62389,
         /// <summary>
         /// Identifies the 'collapse_all' symbol.
         /// </summary>
@@ -3345,6 +3429,10 @@ namespace WPF.Material.Components
         /// </summary>
         Crowdsource = 60184,
         /// <summary>
+        /// Identifies the 'crown' symbol.
+        /// </summary>
+        Crown = 60595,
+        /// <summary>
         /// Identifies the 'cruelty_free' symbol.
         /// </summary>
         CrueltyFree = 59289,
@@ -3497,6 +3585,14 @@ namespace WPF.Material.Components
         /// </summary>
         DatabaseOff = 62484,
         /// <summary>
+        /// Identifies the 'database_search' symbol.
+        /// </summary>
+        DatabaseSearch = 62350,
+        /// <summary>
+        /// Identifies the 'database_upload' symbol.
+        /// </summary>
+        DatabaseUpload = 62428,
+        /// <summary>
         /// Identifies the 'dataset' symbol.
         /// </summary>
         Dataset = 63726,
@@ -3552,6 +3648,18 @@ namespace WPF.Material.Components
         /// Identifies the 'delete_sweep' symbol.
         /// </summary>
         DeleteSweep = 57708,
+        /// <summary>
+        /// Identifies the 'delivery_dining' symbol.
+        /// </summary>
+        DeliveryDining = 60200,
+        /// <summary>
+        /// Identifies the 'delivery_truck_bolt' symbol.
+        /// </summary>
+        DeliveryTruckBolt = 62370,
+        /// <summary>
+        /// Identifies the 'delivery_truck_speed' symbol.
+        /// </summary>
+        DeliveryTruckSpeed = 62369,
         /// <summary>
         /// Identifies the 'demography' symbol.
         /// </summary>
@@ -3624,6 +3732,14 @@ namespace WPF.Material.Components
         /// Identifies the 'desktop_access_disabled' symbol.
         /// </summary>
         DesktopAccessDisabled = 59805,
+        /// <summary>
+        /// Identifies the 'desktop_cloud' symbol.
+        /// </summary>
+        DesktopCloud = 62427,
+        /// <summary>
+        /// Identifies the 'desktop_cloud_stack' symbol.
+        /// </summary>
+        DesktopCloudStack = 62398,
         /// <summary>
         /// Identifies the 'desktop_landscape' symbol.
         /// </summary>
@@ -4001,6 +4117,10 @@ namespace WPF.Material.Components
         /// </summary>
         DockToRight = 63460,
         /// <summary>
+        /// Identifies the 'docs' symbol.
+        /// </summary>
+        Docs = 60029,
+        /// <summary>
         /// Identifies the 'docs_add_on' symbol.
         /// </summary>
         DocsAddOn = 61634,
@@ -4012,6 +4132,10 @@ namespace WPF.Material.Components
         /// Identifies the 'document_scanner' symbol.
         /// </summary>
         DocumentScanner = 58874,
+        /// <summary>
+        /// Identifies the 'document_search' symbol.
+        /// </summary>
+        DocumentSearch = 62341,
         /// <summary>
         /// Identifies the 'domain' symbol.
         /// </summary>
@@ -4292,6 +4416,14 @@ namespace WPF.Material.Components
         /// Identifies the 'edit' symbol.
         /// </summary>
         Edit = 61591,
+        /// <summary>
+        /// Identifies the 'edit_arrow_down' symbol.
+        /// </summary>
+        EditArrowDown = 62336,
+        /// <summary>
+        /// Identifies the 'edit_arrow_up' symbol.
+        /// </summary>
+        EditArrowUp = 62335,
         /// <summary>
         /// Identifies the 'edit_attributes' symbol.
         /// </summary>
@@ -4705,6 +4837,14 @@ namespace WPF.Material.Components
         /// </summary>
         ExpandMore = 58831,
         /// <summary>
+        /// Identifies the 'expansion_panels' symbol.
+        /// </summary>
+        ExpansionPanels = 61328,
+        /// <summary>
+        /// Identifies the 'expension_panels' symbol.
+        /// </summary>
+        ExpensionPanels = 61328,
+        /// <summary>
         /// Identifies the 'experiment' symbol.
         /// </summary>
         Experiment = 59014,
@@ -4989,13 +5129,29 @@ namespace WPF.Material.Components
         /// </summary>
         FileDownloadOff = 58622,
         /// <summary>
+        /// Identifies the 'file_export' symbol.
+        /// </summary>
+        FileExport = 62386,
+        /// <summary>
+        /// Identifies the 'file_json' symbol.
+        /// </summary>
+        FileJson = 62395,
+        /// <summary>
         /// Identifies the 'file_map' symbol.
         /// </summary>
         FileMap = 58053,
         /// <summary>
+        /// Identifies the 'file_map_stack' symbol.
+        /// </summary>
+        FileMapStack = 62434,
+        /// <summary>
         /// Identifies the 'file_open' symbol.
         /// </summary>
         FileOpen = 60147,
+        /// <summary>
+        /// Identifies the 'file_png' symbol.
+        /// </summary>
+        FilePng = 62396,
         /// <summary>
         /// Identifies the 'file_present' symbol.
         /// </summary>
@@ -5016,6 +5172,10 @@ namespace WPF.Material.Components
         /// Identifies the 'file_upload_off' symbol.
         /// </summary>
         FileUploadOff = 63622,
+        /// <summary>
+        /// Identifies the 'files' symbol.
+        /// </summary>
+        Files = 60037,
         /// <summary>
         /// Identifies the 'filter' symbol.
         /// </summary>
@@ -5068,6 +5228,10 @@ namespace WPF.Material.Components
         /// Identifies the 'filter_alt_off' symbol.
         /// </summary>
         FilterAltOff = 60210,
+        /// <summary>
+        /// Identifies the 'filter_arrow_right' symbol.
+        /// </summary>
+        FilterArrowRight = 62417,
         /// <summary>
         /// Identifies the 'filter_b_and_w' symbol.
         /// </summary>
@@ -5169,6 +5333,14 @@ namespace WPF.Material.Components
         /// </summary>
         FitPage = 63354,
         /// <summary>
+        /// Identifies the 'fit_page_height' symbol.
+        /// </summary>
+        FitPageHeight = 62359,
+        /// <summary>
+        /// Identifies the 'fit_page_width' symbol.
+        /// </summary>
+        FitPageWidth = 62358,
+        /// <summary>
         /// Identifies the 'fit_screen' symbol.
         /// </summary>
         FitScreen = 59920,
@@ -5192,6 +5364,10 @@ namespace WPF.Material.Components
         /// Identifies the 'flag_2' symbol.
         /// </summary>
         Flag2 = 62479,
+        /// <summary>
+        /// Identifies the 'flag_check' symbol.
+        /// </summary>
+        FlagCheck = 62424,
         /// <summary>
         /// Identifies the 'flag_circle' symbol.
         /// </summary>
@@ -5313,6 +5489,10 @@ namespace WPF.Material.Components
         /// </summary>
         Flourescent = 61565,
         /// <summary>
+        /// Identifies the 'flowchart' symbol.
+        /// </summary>
+        Flowchart = 62349,
+        /// <summary>
         /// Identifies the 'flowsheet' symbol.
         /// </summary>
         Flowsheet = 57518,
@@ -5365,6 +5545,18 @@ namespace WPF.Material.Components
         /// </summary>
         Folder = 58055,
         /// <summary>
+        /// Identifies the 'folder_check' symbol.
+        /// </summary>
+        FolderCheck = 62423,
+        /// <summary>
+        /// Identifies the 'folder_check_2' symbol.
+        /// </summary>
+        FolderCheck2 = 62422,
+        /// <summary>
+        /// Identifies the 'folder_code' symbol.
+        /// </summary>
+        FolderCode = 62408,
+        /// <summary>
         /// Identifies the 'folder_copy' symbol.
         /// </summary>
         FolderCopy = 60349,
@@ -5377,6 +5569,14 @@ namespace WPF.Material.Components
         /// </summary>
         FolderDelete = 60212,
         /// <summary>
+        /// Identifies the 'folder_eye' symbol.
+        /// </summary>
+        FolderEye = 62421,
+        /// <summary>
+        /// Identifies the 'folder_info' symbol.
+        /// </summary>
+        FolderInfo = 62357,
+        /// <summary>
         /// Identifies the 'folder_limited' symbol.
         /// </summary>
         FolderLimited = 62692,
@@ -5384,6 +5584,10 @@ namespace WPF.Material.Components
         /// Identifies the 'folder_managed' symbol.
         /// </summary>
         FolderManaged = 63349,
+        /// <summary>
+        /// Identifies the 'folder_match' symbol.
+        /// </summary>
+        FolderMatch = 62420,
         /// <summary>
         /// Identifies the 'folder_off' symbol.
         /// </summary>
@@ -5448,6 +5652,10 @@ namespace WPF.Material.Components
         /// Identifies the 'fork_right' symbol.
         /// </summary>
         ForkRight = 60332,
+        /// <summary>
+        /// Identifies the 'fork_spoon' symbol.
+        /// </summary>
+        ForkSpoon = 62436,
         /// <summary>
         /// Identifies the 'forklift' symbol.
         /// </summary>
@@ -5881,6 +6089,10 @@ namespace WPF.Material.Components
         /// </summary>
         GlobeAsia = 63385,
         /// <summary>
+        /// Identifies the 'globe_book' symbol.
+        /// </summary>
+        GlobeBook = 62409,
+        /// <summary>
         /// Identifies the 'globe_uk' symbol.
         /// </summary>
         GlobeUk = 63384,
@@ -5947,7 +6159,7 @@ namespace WPF.Material.Components
         /// <summary>
         /// Identifies the 'grade' symbol.
         /// </summary>
-        Grade = 59525,
+        Grade = 61594,
         /// <summary>
         /// Identifies the 'gradient' symbol.
         /// </summary>
@@ -5960,6 +6172,30 @@ namespace WPF.Material.Components
         /// Identifies the 'grain' symbol.
         /// </summary>
         Grain = 58346,
+        /// <summary>
+        /// Identifies the 'graph_1' symbol.
+        /// </summary>
+        Graph1 = 62368,
+        /// <summary>
+        /// Identifies the 'graph_2' symbol.
+        /// </summary>
+        Graph2 = 62367,
+        /// <summary>
+        /// Identifies the 'graph_3' symbol.
+        /// </summary>
+        Graph3 = 62366,
+        /// <summary>
+        /// Identifies the 'graph_4' symbol.
+        /// </summary>
+        Graph4 = 62365,
+        /// <summary>
+        /// Identifies the 'graph_5' symbol.
+        /// </summary>
+        Graph5 = 62364,
+        /// <summary>
+        /// Identifies the 'graph_6' symbol.
+        /// </summary>
+        Graph6 = 62363,
         /// <summary>
         /// Identifies the 'graphic_eq' symbol.
         /// </summary>
@@ -6020,6 +6256,10 @@ namespace WPF.Material.Components
         /// Identifies the 'group_remove' symbol.
         /// </summary>
         GroupRemove = 59309,
+        /// <summary>
+        /// Identifies the 'group_search' symbol.
+        /// </summary>
+        GroupSearch = 62414,
         /// <summary>
         /// Identifies the 'group_work' symbol.
         /// </summary>
@@ -6108,6 +6348,10 @@ namespace WPF.Material.Components
         /// Identifies the 'hangout_video_off' symbol.
         /// </summary>
         HangoutVideoOff = 57538,
+        /// <summary>
+        /// Identifies the 'hard_disk' symbol.
+        /// </summary>
+        HardDisk = 62426,
         /// <summary>
         /// Identifies the 'hard_drive' symbol.
         /// </summary>
@@ -6229,6 +6473,10 @@ namespace WPF.Material.Components
         /// </summary>
         HearingAid = 62564,
         /// <summary>
+        /// Identifies the 'hearing_aid_disabled' symbol.
+        /// </summary>
+        HearingAidDisabled = 62384,
+        /// <summary>
         /// Identifies the 'hearing_disabled' symbol.
         /// </summary>
         HearingDisabled = 61700,
@@ -6325,6 +6573,10 @@ namespace WPF.Material.Components
         /// </summary>
         Highlight = 57951,
         /// <summary>
+        /// Identifies the 'highlight_alt' symbol.
+        /// </summary>
+        HighlightAlt = 61266,
+        /// <summary>
         /// Identifies the 'highlight_keyboard_focus' symbol.
         /// </summary>
         HighlightKeyboardFocus = 62736,
@@ -6368,6 +6620,10 @@ namespace WPF.Material.Components
         /// Identifies the 'history' symbol.
         /// </summary>
         History = 59571,
+        /// <summary>
+        /// Identifies the 'history_2' symbol.
+        /// </summary>
+        History2 = 62438,
         /// <summary>
         /// Identifies the 'history_edu' symbol.
         /// </summary>
@@ -6469,6 +6725,10 @@ namespace WPF.Material.Components
         /// </summary>
         HorizontalSplit = 59719,
         /// <summary>
+        /// Identifies the 'host' symbol.
+        /// </summary>
+        Host = 62425,
+        /// <summary>
         /// Identifies the 'hot_tub' symbol.
         /// </summary>
         HotTub = 60230,
@@ -6485,6 +6745,14 @@ namespace WPF.Material.Components
         /// </summary>
         Hourglass = 60415,
         /// <summary>
+        /// Identifies the 'hourglass_arrow_down' symbol.
+        /// </summary>
+        HourglassArrowDown = 62334,
+        /// <summary>
+        /// Identifies the 'hourglass_arrow_up' symbol.
+        /// </summary>
+        HourglassArrowUp = 62333,
+        /// <summary>
         /// Identifies the 'hourglass_bottom' symbol.
         /// </summary>
         HourglassBottom = 59996,
@@ -6500,6 +6768,10 @@ namespace WPF.Material.Components
         /// Identifies the 'hourglass_full' symbol.
         /// </summary>
         HourglassFull = 59532,
+        /// <summary>
+        /// Identifies the 'hourglass_pause' symbol.
+        /// </summary>
+        HourglassPause = 62348,
         /// <summary>
         /// Identifies the 'hourglass_top' symbol.
         /// </summary>
@@ -6601,6 +6873,14 @@ namespace WPF.Material.Components
         /// </summary>
         IdCard = 62666,
         /// <summary>
+        /// Identifies the 'identity_aware_proxy' symbol.
+        /// </summary>
+        IdentityAwareProxy = 58077,
+        /// <summary>
+        /// Identifies the 'identity_platform' symbol.
+        /// </summary>
+        IdentityPlatform = 60343,
+        /// <summary>
         /// Identifies the 'ifl' symbol.
         /// </summary>
         Ifl = 57381,
@@ -6669,6 +6949,10 @@ namespace WPF.Material.Components
         /// </summary>
         InboxCustomize = 63577,
         /// <summary>
+        /// Identifies the 'inbox_text' symbol.
+        /// </summary>
+        InboxText = 62361,
+        /// <summary>
         /// Identifies the 'incomplete_circle' symbol.
         /// </summary>
         IncompleteCircle = 59291,
@@ -6716,6 +7000,10 @@ namespace WPF.Material.Components
         /// Identifies the 'ink_pen' symbol.
         /// </summary>
         InkPen = 59091,
+        /// <summary>
+        /// Identifies the 'ink_selection' symbol.
+        /// </summary>
+        InkSelection = 61266,
         /// <summary>
         /// Identifies the 'inpatient' symbol.
         /// </summary>
@@ -7181,6 +7469,10 @@ namespace WPF.Material.Components
         /// </summary>
         Laptop = 58142,
         /// <summary>
+        /// Identifies the 'laptop_car' symbol.
+        /// </summary>
+        LaptopCar = 62413,
+        /// <summary>
         /// Identifies the 'laptop_chromebook' symbol.
         /// </summary>
         LaptopChromebook = 58143,
@@ -7305,6 +7597,10 @@ namespace WPF.Material.Components
         /// </summary>
         Lightbulb = 59663,
         /// <summary>
+        /// Identifies the 'lightbulb_2' symbol.
+        /// </summary>
+        Lightbulb2 = 62435,
+        /// <summary>
         /// Identifies the 'lightbulb_circle' symbol.
         /// </summary>
         LightbulbCircle = 60414,
@@ -7416,6 +7712,10 @@ namespace WPF.Material.Components
         /// Identifies the 'list_alt_add' symbol.
         /// </summary>
         ListAltAdd = 63318,
+        /// <summary>
+        /// Identifies the 'list_alt_check' symbol.
+        /// </summary>
+        ListAltCheck = 62430,
         /// <summary>
         /// Identifies the 'lists' symbol.
         /// </summary>
@@ -7817,6 +8117,10 @@ namespace WPF.Material.Components
         /// </summary>
         Map = 58715,
         /// <summary>
+        /// Identifies the 'map_search' symbol.
+        /// </summary>
+        MapSearch = 62410,
+        /// <summary>
         /// Identifies the 'maps_home_work' symbol.
         /// </summary>
         MapsHomeWork = 61488,
@@ -7888,6 +8192,10 @@ namespace WPF.Material.Components
         /// Identifies the 'match_case' symbol.
         /// </summary>
         MatchCase = 63217,
+        /// <summary>
+        /// Identifies the 'match_case_off' symbol.
+        /// </summary>
+        MatchCaseOff = 62319,
         /// <summary>
         /// Identifies the 'match_word' symbol.
         /// </summary>
@@ -8004,6 +8312,10 @@ namespace WPF.Material.Components
         /// Identifies the 'mic' symbol.
         /// </summary>
         Mic = 58141,
+        /// <summary>
+        /// Identifies the 'mic_alert' symbol.
+        /// </summary>
+        MicAlert = 62354,
         /// <summary>
         /// Identifies the 'mic_double' symbol.
         /// </summary>
@@ -8177,6 +8489,10 @@ namespace WPF.Material.Components
         /// </summary>
         ModelTraining = 61647,
         /// <summary>
+        /// Identifies the 'modeling' symbol.
+        /// </summary>
+        Modeling = 62378,
+        /// <summary>
         /// Identifies the 'monetization_on' symbol.
         /// </summary>
         MonetizationOn = 57955,
@@ -8240,6 +8556,10 @@ namespace WPF.Material.Components
         /// Identifies the 'mop' symbol.
         /// </summary>
         Mop = 57997,
+        /// <summary>
+        /// Identifies the 'moped' symbol.
+        /// </summary>
+        Moped = 60200,
         /// <summary>
         /// Identifies the 'more' symbol.
         /// </summary>
@@ -8437,6 +8757,10 @@ namespace WPF.Material.Components
         /// </summary>
         MultimodalHandEye = 62491,
         /// <summary>
+        /// Identifies the 'multiple_airports' symbol.
+        /// </summary>
+        MultipleAirports = 61355,
+        /// <summary>
         /// Identifies the 'multiple_stop' symbol.
         /// </summary>
         MultipleStop = 61881,
@@ -8452,6 +8776,10 @@ namespace WPF.Material.Components
         /// Identifies the 'music_note' symbol.
         /// </summary>
         MusicNote = 58373,
+        /// <summary>
+        /// Identifies the 'music_note_add' symbol.
+        /// </summary>
+        MusicNoteAdd = 62353,
         /// <summary>
         /// Identifies the 'music_off' symbol.
         /// </summary>
@@ -8720,6 +9048,14 @@ namespace WPF.Material.Components
         /// Identifies the 'network_check' symbol.
         /// </summary>
         NetworkCheck = 58944,
+        /// <summary>
+        /// Identifies the 'network_intel_node' symbol.
+        /// </summary>
+        NetworkIntelNode = 62321,
+        /// <summary>
+        /// Identifies the 'network_intelligence' symbol.
+        /// </summary>
+        NetworkIntelligence = 61356,
         /// <summary>
         /// Identifies the 'network_intelligence_history' symbol.
         /// </summary>
@@ -9229,6 +9565,10 @@ namespace WPF.Material.Components
         /// </summary>
         OverviewKey = 63444,
         /// <summary>
+        /// Identifies the 'owl' symbol.
+        /// </summary>
+        Owl = 62388,
+        /// <summary>
         /// Identifies the 'oxygen_saturation' symbol.
         /// </summary>
         OxygenSaturation = 58590,
@@ -9260,6 +9600,14 @@ namespace WPF.Material.Components
         /// Identifies the 'page_control' symbol.
         /// </summary>
         PageControl = 59185,
+        /// <summary>
+        /// Identifies the 'page_footer' symbol.
+        /// </summary>
+        PageFooter = 62339,
+        /// <summary>
+        /// Identifies the 'page_header' symbol.
+        /// </summary>
+        PageHeader = 62340,
         /// <summary>
         /// Identifies the 'page_info' symbol.
         /// </summary>
@@ -9861,6 +10209,14 @@ namespace WPF.Material.Components
         /// </summary>
         PinInvoke = 59235,
         /// <summary>
+        /// Identifies the 'pinboard' symbol.
+        /// </summary>
+        Pinboard = 62379,
+        /// <summary>
+        /// Identifies the 'pinboard_unread' symbol.
+        /// </summary>
+        PinboardUnread = 62380,
+        /// <summary>
         /// Identifies the 'pinch' symbol.
         /// </summary>
         Pinch = 60216,
@@ -9885,10 +10241,6 @@ namespace WPF.Material.Components
         /// </summary>
         PivotTableChart = 59854,
         /// <summary>
-        /// Identifies the 'pixel_9_pro_fold' symbol.
-        /// </summary>
-        Pixel9ProFold = 62448,
-        /// <summary>
         /// Identifies the 'place' symbol.
         /// </summary>
         Place = 61915,
@@ -9900,6 +10252,10 @@ namespace WPF.Material.Components
         /// Identifies the 'plagiarism' symbol.
         /// </summary>
         Plagiarism = 59994,
+        /// <summary>
+        /// Identifies the 'planet' symbol.
+        /// </summary>
+        Planet = 62343,
         /// <summary>
         /// Identifies the 'planner_banner_ad_pt' symbol.
         /// </summary>
@@ -10319,11 +10675,11 @@ namespace WPF.Material.Components
         /// <summary>
         /// Identifies the 'quiet_time' symbol.
         /// </summary>
-        QuietTime = 57849,
+        QuietTime = 61785,
         /// <summary>
         /// Identifies the 'quiet_time_active' symbol.
         /// </summary>
-        QuietTimeActive = 58001,
+        QuietTimeActive = 60278,
         /// <summary>
         /// Identifies the 'quiz' symbol.
         /// </summary>
@@ -10400,6 +10756,10 @@ namespace WPF.Material.Components
         /// Identifies the 'rate_review' symbol.
         /// </summary>
         RateReview = 58720,
+        /// <summary>
+        /// Identifies the 'rate_review_rtl' symbol.
+        /// </summary>
+        RateReviewRtl = 59142,
         /// <summary>
         /// Identifies the 'raven' symbol.
         /// </summary>
@@ -10492,10 +10852,6 @@ namespace WPF.Material.Components
         /// Identifies the 'refresh' symbol.
         /// </summary>
         Refresh = 58837,
-        /// <summary>
-        /// Identifies the 'reg_logo_ift' symbol.
-        /// </summary>
-        RegLogoIft = 62447,
         /// <summary>
         /// Identifies the 'regular_expression' symbol.
         /// </summary>
@@ -10965,6 +11321,10 @@ namespace WPF.Material.Components
         /// </summary>
         SaveAs = 60256,
         /// <summary>
+        /// Identifies the 'save_clock' symbol.
+        /// </summary>
+        SaveClock = 62360,
+        /// <summary>
         /// Identifies the 'saved_search' symbol.
         /// </summary>
         SavedSearch = 59921,
@@ -11077,6 +11437,10 @@ namespace WPF.Material.Components
         /// </summary>
         ScreenshotFrame = 63095,
         /// <summary>
+        /// Identifies the 'screenshot_frame_2' symbol.
+        /// </summary>
+        ScreenshotFrame2 = 62324,
+        /// <summary>
         /// Identifies the 'screenshot_keyboard' symbol.
         /// </summary>
         ScreenshotKeyboard = 63443,
@@ -11128,6 +11492,10 @@ namespace WPF.Material.Components
         /// Identifies the 'search' symbol.
         /// </summary>
         Search = 59574,
+        /// <summary>
+        /// Identifies the 'search_activity' symbol.
+        /// </summary>
+        SearchActivity = 62437,
         /// <summary>
         /// Identifies the 'search_check' symbol.
         /// </summary>
@@ -11321,6 +11689,10 @@ namespace WPF.Material.Components
         /// </summary>
         Serif = 62636,
         /// <summary>
+        /// Identifies the 'server_person' symbol.
+        /// </summary>
+        ServerPerson = 62397,
+        /// <summary>
         /// Identifies the 'service_toolbox' symbol.
         /// </summary>
         ServiceToolbox = 59159,
@@ -11493,6 +11865,10 @@ namespace WPF.Material.Components
         /// </summary>
         Share = 59405,
         /// <summary>
+        /// Identifies the 'share_eta' symbol.
+        /// </summary>
+        ShareEta = 58871,
+        /// <summary>
         /// Identifies the 'share_location' symbol.
         /// </summary>
         ShareLocation = 61535,
@@ -11584,6 +11960,10 @@ namespace WPF.Material.Components
         /// Identifies the 'shopping_bag' symbol.
         /// </summary>
         ShoppingBag = 61900,
+        /// <summary>
+        /// Identifies the 'shopping_bag_speed' symbol.
+        /// </summary>
+        ShoppingBagSpeed = 62362,
         /// <summary>
         /// Identifies the 'shopping_basket' symbol.
         /// </summary>
@@ -11781,6 +12161,10 @@ namespace WPF.Material.Components
         /// </summary>
         SimCardDownload = 61544,
         /// <summary>
+        /// Identifies the 'simulation' symbol.
+        /// </summary>
+        Simulation = 62433,
+        /// <summary>
         /// Identifies the 'single_bed' symbol.
         /// </summary>
         SingleBed = 59976,
@@ -11788,6 +12172,22 @@ namespace WPF.Material.Components
         /// Identifies the 'sip' symbol.
         /// </summary>
         Sip = 61545,
+        /// <summary>
+        /// Identifies the 'siren' symbol.
+        /// </summary>
+        Siren = 62375,
+        /// <summary>
+        /// Identifies the 'siren_check' symbol.
+        /// </summary>
+        SirenCheck = 62374,
+        /// <summary>
+        /// Identifies the 'siren_open' symbol.
+        /// </summary>
+        SirenOpen = 62373,
+        /// <summary>
+        /// Identifies the 'siren_question' symbol.
+        /// </summary>
+        SirenQuestion = 62372,
         /// <summary>
         /// Identifies the 'skateboarding' symbol.
         /// </summary>
@@ -11816,6 +12216,10 @@ namespace WPF.Material.Components
         /// Identifies the 'skull' symbol.
         /// </summary>
         Skull = 63642,
+        /// <summary>
+        /// Identifies the 'skull_list' symbol.
+        /// </summary>
+        SkullList = 62320,
         /// <summary>
         /// Identifies the 'slab_serif' symbol.
         /// </summary>
@@ -12137,6 +12541,10 @@ namespace WPF.Material.Components
         /// </summary>
         Spellcheck = 59598,
         /// <summary>
+        /// Identifies the 'split_scene' symbol.
+        /// </summary>
+        SplitScene = 62399,
+        /// <summary>
         /// Identifies the 'splitscreen' symbol.
         /// </summary>
         Splitscreen = 61549,
@@ -12276,6 +12684,10 @@ namespace WPF.Material.Components
         /// Identifies the 'square' symbol.
         /// </summary>
         Square = 60214,
+        /// <summary>
+        /// Identifies the 'square_dot' symbol.
+        /// </summary>
+        SquareDot = 62387,
         /// <summary>
         /// Identifies the 'square_foot' symbol.
         /// </summary>
@@ -12793,6 +13205,14 @@ namespace WPF.Material.Components
         /// </summary>
         SyncAlt = 59928,
         /// <summary>
+        /// Identifies the 'sync_arrow_down' symbol.
+        /// </summary>
+        SyncArrowDown = 62332,
+        /// <summary>
+        /// Identifies the 'sync_arrow_up' symbol.
+        /// </summary>
+        SyncArrowUp = 62331,
+        /// <summary>
         /// Identifies the 'sync_desktop' symbol.
         /// </summary>
         SyncDesktop = 62490,
@@ -12845,6 +13265,10 @@ namespace WPF.Material.Components
         /// </summary>
         TabClose = 63301,
         /// <summary>
+        /// Identifies the 'tab_close_inactive' symbol.
+        /// </summary>
+        TabCloseInactive = 62416,
+        /// <summary>
         /// Identifies the 'tab_close_right' symbol.
         /// </summary>
         TabCloseRight = 63302,
@@ -12892,6 +13316,14 @@ namespace WPF.Material.Components
         /// Identifies the 'table_chart_view' symbol.
         /// </summary>
         TableChartView = 63215,
+        /// <summary>
+        /// Identifies the 'table_convert' symbol.
+        /// </summary>
+        TableConvert = 62407,
+        /// <summary>
+        /// Identifies the 'table_edit' symbol.
+        /// </summary>
+        TableEdit = 62406,
         /// <summary>
         /// Identifies the 'table_eye' symbol.
         /// </summary>
@@ -13024,6 +13456,10 @@ namespace WPF.Material.Components
         /// Identifies the 'text_ad' symbol.
         /// </summary>
         TextAd = 59176,
+        /// <summary>
+        /// Identifies the 'text_compare' symbol.
+        /// </summary>
+        TextCompare = 62405,
         /// <summary>
         /// Identifies the 'text_decrease' symbol.
         /// </summary>
@@ -13169,6 +13605,14 @@ namespace WPF.Material.Components
         /// </summary>
         Thermostat = 61558,
         /// <summary>
+        /// Identifies the 'thermostat_arrow_down' symbol.
+        /// </summary>
+        ThermostatArrowDown = 62330,
+        /// <summary>
+        /// Identifies the 'thermostat_arrow_up' symbol.
+        /// </summary>
+        ThermostatArrowUp = 62329,
+        /// <summary>
         /// Identifies the 'thermostat_auto' symbol.
         /// </summary>
         ThermostatAuto = 61559,
@@ -13184,6 +13628,10 @@ namespace WPF.Material.Components
         /// Identifies the 'thread_unread' symbol.
         /// </summary>
         ThreadUnread = 62713,
+        /// <summary>
+        /// Identifies the 'threat_intelligence' symbol.
+        /// </summary>
+        ThreatIntelligence = 60141,
         /// <summary>
         /// Identifies the 'thumb_down' symbol.
         /// </summary>
@@ -13245,6 +13693,18 @@ namespace WPF.Material.Components
         /// </summary>
         TibiaAlt = 63644,
         /// <summary>
+        /// Identifies the 'tile_large' symbol.
+        /// </summary>
+        TileLarge = 62403,
+        /// <summary>
+        /// Identifies the 'tile_medium' symbol.
+        /// </summary>
+        TileMedium = 62402,
+        /// <summary>
+        /// Identifies the 'tile_small' symbol.
+        /// </summary>
+        TileSmall = 62401,
+        /// <summary>
         /// Identifies the 'time_auto' symbol.
         /// </summary>
         TimeAuto = 61668,
@@ -13296,6 +13756,14 @@ namespace WPF.Material.Components
         /// Identifies the 'timer_5_shutter' symbol.
         /// </summary>
         Timer5Shutter = 62642,
+        /// <summary>
+        /// Identifies the 'timer_arrow_down' symbol.
+        /// </summary>
+        TimerArrowDown = 62328,
+        /// <summary>
+        /// Identifies the 'timer_arrow_up' symbol.
+        /// </summary>
+        TimerArrowUp = 62327,
         /// <summary>
         /// Identifies the 'timer_off' symbol.
         /// </summary>
@@ -13424,6 +13892,18 @@ namespace WPF.Material.Components
         /// Identifies the 'touch_app' symbol.
         /// </summary>
         TouchApp = 59667,
+        /// <summary>
+        /// Identifies the 'touch_double' symbol.
+        /// </summary>
+        TouchDouble = 62347,
+        /// <summary>
+        /// Identifies the 'touch_long' symbol.
+        /// </summary>
+        TouchLong = 62346,
+        /// <summary>
+        /// Identifies the 'touch_triple' symbol.
+        /// </summary>
+        TouchTriple = 62345,
         /// <summary>
         /// Identifies the 'touchpad_mouse' symbol.
         /// </summary>
@@ -13697,6 +14177,10 @@ namespace WPF.Material.Components
         /// </summary>
         TwoPager = 62751,
         /// <summary>
+        /// Identifies the 'two_pager_store' symbol.
+        /// </summary>
+        TwoPagerStore = 62404,
+        /// <summary>
         /// Identifies the 'two_wheeler' symbol.
         /// </summary>
         TwoWheeler = 59897,
@@ -13820,6 +14304,10 @@ namespace WPF.Material.Components
         /// Identifies the 'upgrade' symbol.
         /// </summary>
         Upgrade = 61691,
+        /// <summary>
+        /// Identifies the 'upi_pay' symbol.
+        /// </summary>
+        UpiPay = 62415,
         /// <summary>
         /// Identifies the 'upload' symbol.
         /// </summary>
@@ -13985,6 +14473,10 @@ namespace WPF.Material.Components
         /// </summary>
         Videocam = 57419,
         /// <summary>
+        /// Identifies the 'videocam_alert' symbol.
+        /// </summary>
+        VideocamAlert = 62352,
+        /// <summary>
         /// Identifies the 'videocam_off' symbol.
         /// </summary>
         VideocamOff = 57420,
@@ -14000,6 +14492,10 @@ namespace WPF.Material.Components
         /// Identifies the 'view_agenda' symbol.
         /// </summary>
         ViewAgenda = 59625,
+        /// <summary>
+        /// Identifies the 'view_apps' symbol.
+        /// </summary>
+        ViewApps = 62326,
         /// <summary>
         /// Identifies the 'view_array' symbol.
         /// </summary>
@@ -14456,6 +14952,18 @@ namespace WPF.Material.Components
         /// Identifies the 'where_to_vote' symbol.
         /// </summary>
         WhereToVote = 57719,
+        /// <summary>
+        /// Identifies the 'widget_medium' symbol.
+        /// </summary>
+        WidgetMedium = 62394,
+        /// <summary>
+        /// Identifies the 'widget_small' symbol.
+        /// </summary>
+        WidgetSmall = 62393,
+        /// <summary>
+        /// Identifies the 'widget_width' symbol.
+        /// </summary>
+        WidgetWidth = 62392,
         /// <summary>
         /// Identifies the 'widgets' symbol.
         /// </summary>
