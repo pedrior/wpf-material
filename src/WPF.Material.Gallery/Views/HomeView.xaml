@@ -14,4 +14,78 @@
     FontFamily="{DynamicResource Material.Typefaces.Roboto}"
     SnapsToDevicePixels="True"
     UseLayoutRounding="True"
-    mc:Ignorable="d" />
+    mc:Ignorable="d">
+
+    <md3:Container
+        Margin="24,24,24,0"
+        Padding="28,28,28,56"
+        Background="{DynamicResource Material.Colors.Surface}"
+        ShapeCorner="TopLeft, TopRight"
+        ShapeStyle="ExtraLarge">
+
+        <md3:NaivePanel HorizontalAlignment="Center">
+            <md3:SpacedPanel
+                Margin="0,0,0,140"
+                VerticalAlignment="Center"
+                Orientation="Vertical"
+                Spacing="24">
+
+                <TextBlock
+                    FontSize="72"
+                    FontWeight="DemiBold"
+                    Style="{DynamicResource Material.Styles.DisplayLargeTextBlock}"
+                    Text="WPF Material"
+                    TextAlignment="Center" />
+
+                <TextBlock
+                    FontWeight="Regular"
+                    Style="{DynamicResource Material.Styles.TitleMediumTextBlock}"
+                    TextAlignment="Center">
+
+                    <Run FontWeight="DemiBold" Text="WPF Material" />
+                    <Run Text="is a library that helps build beautiful desktop applications using Google's Material Design 3." />
+                </TextBlock>
+
+                <md3:SpacedPanel HorizontalAlignment="Center" Spacing="24">
+                    <md3:Button
+                        md3:Icon.Icon="Docs"
+                        Command="{Binding OpenInBrowserCommand}"
+                        CommandParameter="https://github.com/pedrior/wpf-material"
+                        Content="Read documentation" />
+
+                    <md3:Button
+                        md3:Icon.Icon="Code"
+                        Appearance="Outlined"
+                        Command="{Binding OpenInBrowserCommand}"
+                        CommandParameter="https://github.com/pedrior/wpf-material"
+                        Content="See repository" />
+                </md3:SpacedPanel>
+            </md3:SpacedPanel>
+
+            <TextBlock
+                VerticalAlignment="Bottom"
+                FontWeight="Regular"
+                Style="{DynamicResource Material.Styles.TitleMediumTextBlock}"
+                TextAlignment="Center">
+
+                <Run Text="Made with" />
+
+                <md3:SymbolIcon
+                    VerticalAlignment="Center"
+                    Brush="{DynamicResource Material.Colors.Error}"
+                    IsFilled="True"
+                    Symbol="Favorite" />
+
+                <Run Text="by" />
+
+                <Hyperlink
+                    Command="{Binding OpenInBrowserCommand}"
+                    CommandParameter="https://github.com/pedrior/"
+                    Foreground="{DynamicResource Material.Colors.Primary}"
+                    ToolTip="Open Pedro Júnior's GitHub profile.">
+                    Pedro Júnior
+                </Hyperlink>
+            </TextBlock>
+        </md3:NaivePanel>
+    </md3:Container>
+</UserControl>
