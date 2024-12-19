@@ -42,7 +42,7 @@
                     </components:NaivePanel>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsModal" Value="False">
+                        <Trigger Property="IsModal" Value="True">
                             <Setter TargetName="Divider" Property="Visibility" Value="Collapsed" />
                         </Trigger>
 
