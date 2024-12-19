@@ -8,7 +8,19 @@ namespace WPF.Material.Components;
 [ContentProperty(nameof(Sheet))]
 public class SheetPresenter : FrameworkElement
 {
+    /// <summary>
+    /// Identifies the <see cref="ScrimTint"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty ScrimTintProperty = DependencyProperty.Register(
+        nameof(ScrimTint),
+        typeof(Brush),
+        typeof(SheetPresenter),
+        new PropertyMetadata(Brushes.Black));
+
+    private const string ScrimResourceKey = "Material.Colors.Scrim";
+    
     private readonly NaivePanel panel;
+    private readonly Overlay overlay;
     private readonly Container container;
 
     private DependencyProperty? currentTargetSizeProperty;
@@ -18,7 +30,20 @@ public class SheetPresenter : FrameworkElement
     /// </summary>
     public SheetPresenter()
     {
-        panel = new NaivePanel();
+        SetResourceReference(ScrimTintProperty, ScrimResourceKey);
+        
+        overlay = new Overlay
+        {
+            Opacity = 0.0,
+            IsHitTestVisible = false
+        };
+        
+        overlay.SetBinding(Overlay.TintProperty, new Binding
+        {
+            Source = this,
+            Path = new PropertyPath(ScrimTintProperty)
+        });
+        
         container = new Container
         {
             Background = null,
@@ -26,7 +51,14 @@ public class SheetPresenter : FrameworkElement
             BorderThickness = default
         };
 
-        panel.Children.Add(container);
+        panel = new NaivePanel
+        {
+            Children =
+            {
+                overlay,
+                container
+            }
+        };
 
         AddVisualChild(panel);
     }
@@ -40,6 +72,17 @@ public class SheetPresenter : FrameworkElement
     {
         get => (Sheet?)container.Content;
         set => SetSheet(value);
+    }
+    
+    /// <summary>
+    /// Gets or sets the <see cref="Brush"/> that paints the scrim overlay when displaying a modal <see cref="Sheet"/>.
+    /// </summary>
+    [Bindable(false)]
+    [Category(UICategory.Appearance)]
+    public Brush ScrimTint
+    {
+        get => (Brush)GetValue(ScrimTintProperty);
+        set => SetValue(ScrimTintProperty, value);
     }
 
     protected override int VisualChildrenCount => 1;
@@ -57,6 +100,8 @@ public class SheetPresenter : FrameworkElement
         panel.Arrange(new Rect(constraints));
         return constraints;
     }
+    
+    internal Overlay GetOverlay() => overlay;
 
     internal Container GetContainer() => container;
 

@@ -42,6 +42,10 @@
                     </components:NaivePanel>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsModal" Value="False">
+                            <Setter TargetName="Divider" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
                         <Trigger Property="IsDocked" Value="False">
                             <Setter TargetName="Divider" Property="Visibility" Value="Collapsed" />
                         </Trigger>
@@ -63,6 +67,11 @@
         </Setter>
 
         <Style.Triggers>
+            <Trigger Property="IsModal" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerLow}" />
+                <Setter Property="styles:Elevation.Level" Value="Level1" />
+            </Trigger>
+
             <Trigger Property="IsDocked" Value="False">
                 <Setter Property="styles:Shape.Style" Value="Large" />
                 <Setter Property="styles:Shape.Corner" Value="All" />

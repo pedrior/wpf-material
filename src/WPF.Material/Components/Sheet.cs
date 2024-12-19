@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Animation;
+﻿using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace WPF.Material.Components;
 
@@ -16,6 +17,15 @@ public abstract class Sheet : ContentControl
         typeof(bool),
         typeof(Sheet),
         new PropertyMetadata(false, OnIsOpenChanged));
+
+    /// <summary>
+    /// Identifies the <see cref="IsModal"/> dependency property.
+    /// </summary>
+    public static readonly DependencyProperty IsModalProperty = DependencyProperty.Register(
+        nameof(IsModal),
+        typeof(bool),
+        typeof(Sheet),
+        new PropertyMetadata(false, OnIsModalChanged));
 
     /// <summary>
     /// Identifies the <see cref="IsDocked"/> dependency property.
@@ -40,6 +50,15 @@ public abstract class Sheet : ContentControl
     /// </summary>
     public static readonly RoutedEvent IsOpenChangedEvent = EventManager.RegisterRoutedEvent(
         nameof(IsOpenChanged),
+        RoutingStrategy.Direct,
+        typeof(RoutedPropertyChangedEventHandler<bool>),
+        typeof(Sheet));
+
+    /// <summary>
+    /// Identifies the <see cref="IsModalChanged"/> routed event.
+    /// </summary>
+    public static readonly RoutedEvent IsModalChangedEvent = EventManager.RegisterRoutedEvent(
+        nameof(IsModalChanged),
         RoutingStrategy.Direct,
         typeof(RoutedPropertyChangedEventHandler<bool>),
         typeof(Sheet));
@@ -89,9 +108,15 @@ public abstract class Sheet : ContentControl
         typeof(RoutedEventHandler),
         typeof(Sheet));
 
+    private const double ScrimOverlayOpacity = 0.4;
+
     private static readonly Duration AnimationDuration = TimeSpan.FromSeconds(0.3);
 
+    private static readonly AnimationTimeline openScrimAnimation = CreateBaseAnimation(ScrimOverlayOpacity);
+    private static readonly AnimationTimeline closeScrimAnimation = CreateBaseAnimation(0.0);
+
     private bool isOpen;
+    private bool isModal;
     private bool isDocked = true;
 
     /// <summary>
@@ -101,6 +126,15 @@ public abstract class Sheet : ContentControl
     {
         add => AddHandler(IsOpenChangedEvent, value);
         remove => RemoveHandler(IsOpenChangedEvent, value);
+    }
+
+    /// <summary>
+    /// Occurs when the <see cref="IsModal"/> property changes.
+    /// </summary>
+    public event RoutedPropertyChangedEventHandler<bool> IsModalChanged
+    {
+        add => AddHandler(IsModalChangedEvent, value);
+        remove => RemoveHandler(IsModalChangedEvent, value);
     }
 
     /// <summary>
@@ -168,6 +202,17 @@ public abstract class Sheet : ContentControl
     }
 
     /// <summary>
+    /// Gets or sets a value that indicates whether this <see cref="Sheet"/> should be presented in modal view.
+    /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Common)]
+    public bool IsModal
+    {
+        get => (bool)GetValue(IsModalProperty);
+        set => SetValue(IsModalProperty, value);
+    }
+
+    /// <summary>
     /// Gets or sets a value indicating whether this <see cref="Sheet"/> is docked to its parent. When undocked, the
     /// margin defined by the <see cref="UndockedMargin"/> property is applied.
     /// </summary>
@@ -200,9 +245,23 @@ public abstract class Sheet : ContentControl
 
     private SheetPresenter? currentHost;
 
-    internal void SetCurrentHost(SheetPresenter host) => currentHost = host;
+    internal void SetCurrentHost(SheetPresenter host)
+    {
+        var overlay = host.GetOverlay();
+        overlay.MouseLeftButtonDown += OnScrimOverlayMouseLeftButtonDown;
 
-    internal void RemoveCurrentHost() => currentHost = null;
+        currentHost = host;
+    }
+
+    internal void RemoveCurrentHost()
+    {
+        if (currentHost?.GetOverlay() is {} overlay)
+        {
+            overlay.MouseLeftButtonDown -= OnScrimOverlayMouseLeftButtonDown;
+        }
+        
+        currentHost = null;
+    }
 
     /// <summary>
     /// Invokes the <see cref="Opening"/> event.
@@ -231,9 +290,19 @@ public abstract class Sheet : ContentControl
     {
         RaiseEvent(new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue, IsOpenChangedEvent));
 
-        if (currentHost?.GetContainer() is { } container)
+        UpdateOpenState(newValue);
+    }
+
+    /// <summary>
+    /// Invoked when the <see cref="IsModal"/> property changes.
+    /// </summary>
+    protected virtual void OnIsModalChanged(bool oldValue, bool newValue)
+    {
+        RaiseEvent(new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue, IsModalChangedEvent));
+
+        if (isOpen)
         {
-            UpdateOpenState(container, newValue);
+            UpdateModalState(newValue);
         }
     }
 
@@ -244,14 +313,14 @@ public abstract class Sheet : ContentControl
     {
         RaiseEvent(new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue, IsDockedChangedEvent));
 
-        if (currentHost?.GetContainer() is { } container)
-        {
-            UpdateDockedState(container, newValue);
-        }
+        UpdateDockedState(newValue);
     }
 
     private static void OnIsOpenChanged(DependencyObject element, DependencyPropertyChangedEventArgs e) =>
         ((Sheet)element).OnIsOpenChanged((bool)e.OldValue, (bool)e.NewValue);
+
+    private static void OnIsModalChanged(DependencyObject element, DependencyPropertyChangedEventArgs e) =>
+        ((Sheet)element).OnIsModalChanged((bool)e.OldValue, (bool)e.NewValue);
 
     private static void OnIsDockedChanged(DependencyObject element, DependencyPropertyChangedEventArgs e) =>
         ((Sheet)element).OnIsDockedChanged((bool)e.OldValue, (bool)e.NewValue);
@@ -289,17 +358,73 @@ public abstract class Sheet : ContentControl
         return animation;
     }
 
-    private void UpdateDockedState(Container container, bool state)
+    private void OnScrimOverlayMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        if (isDocked == state)
+        if (isOpen)
+        {
+             SetCurrentValue(IsOpenProperty, false);
+        }
+    }
+    
+    private void UpdateModalState(bool setIsModal, bool isAnimate = true)
+    {
+        if (isModal == setIsModal)
         {
             return;
         }
 
-        if (state)
+        var overlay = currentHost?.GetOverlay();
+        if (overlay is null)
+        {
+            return;
+        }
+
+        isModal = setIsModal;
+        
+        overlay.IsHitTestVisible = setIsModal;
+
+        if (setIsModal)
+        {
+            if (isAnimate)
+            {
+                overlay.BeginAnimation(OpacityProperty, openScrimAnimation);
+            }
+            else
+            {
+                overlay.Opacity = ScrimOverlayOpacity;
+            }
+        }
+        else
+        {
+            if (isAnimate)
+            {
+                overlay.BeginAnimation(OpacityProperty, closeScrimAnimation);
+            }
+            else
+            {
+                overlay.Opacity = 0.0;
+            }
+        }
+    }
+
+    private void UpdateDockedState(bool setIsDocked)
+    {
+        if (isDocked == setIsDocked)
+        {
+            return;
+        }
+
+        var container = currentHost?.GetContainer();
+        if (container is null)
+        {
+            return;
+        }
+
+        isDocked = setIsDocked;
+
+        if (setIsDocked)
         {
             container.ClearValue(MarginProperty);
-            isDocked = true;
         }
         else
         {
@@ -308,19 +433,31 @@ public abstract class Sheet : ContentControl
                 Source = this,
                 Path = new PropertyPath(UndockedMarginProperty)
             });
-
-            isDocked = false;
         }
     }
 
-    private void UpdateOpenState(Container container, bool state, bool isAnimate = true)
+    private void UpdateOpenState(bool setIsOpen, bool isAnimate = true)
     {
-        if (!IsLoaded || isOpen == state)
+        if (isOpen == setIsOpen)
         {
             return;
         }
 
-        if (state)
+        var container = currentHost?.GetContainer();
+        if (container is null || !IsLoaded)
+        {
+            return;
+        }
+
+        isOpen = setIsOpen;
+
+        if (IsModal)
+        {
+            // We also need to update the modal state
+            UpdateModalState(setIsOpen, isAnimate);
+        }
+
+        if (setIsOpen)
         {
             OnOpening();
 
@@ -334,8 +471,6 @@ public abstract class Sheet : ContentControl
 
                 OnOpened();
             }
-
-            isOpen = true;
         }
         else
         {
@@ -351,21 +486,12 @@ public abstract class Sheet : ContentControl
 
                 OnClosed();
             }
-
-            isOpen = false;
         }
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        Loaded -= OnLoaded;
-
-        if (currentHost?.GetContainer() is not { } container)
-        {
-            return;
-        }
-
-        UpdateDockedState(container, IsDocked);
-        UpdateOpenState(container, IsOpen, isAnimate: false);
+        UpdateDockedState(IsDocked);
+        UpdateOpenState(IsOpen, isAnimate: false);
     }
 }
