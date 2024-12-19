@@ -24,7 +24,8 @@ public class Overlay : FrameworkElement
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
-    /// Gets or sets a <see cref="Brush"/> that describes the overlay's color.
+    /// Gets or sets a <see cref="Brush"/> that describes the overlay's color. The default value is
+    /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -35,7 +36,8 @@ public class Overlay : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets the <see cref="Geometry"/> that defines the overlay's region.
+    /// Gets or sets the <see cref="Geometry"/> that defines the overlay's region. The default value is
+    /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Common)]

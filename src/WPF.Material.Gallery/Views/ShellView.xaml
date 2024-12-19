@@ -58,7 +58,7 @@
 
             <md3:NavigationRail.TopActions>
                 <md3:NavigationRailActions>
-                    <md3:FloatingActionButton md3:Icon.Icon="Search" Appearance="Tertiary" />
+                    <md3:FloatingActionButton md3:Icon.Icon="Search" Type="Tertiary" />
                 </md3:NavigationRailActions>
             </md3:NavigationRail.TopActions>
 

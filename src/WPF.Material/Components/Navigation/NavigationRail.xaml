@@ -1,0 +1,213 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:WPF.Material.Components"
+    xmlns:foundations="clr-namespace:WPF.Material.Foundations">
+
+    <Style TargetType="{x:Type components:NavigationRail}">
+        <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
+        <Setter Property="DividerForeground" Value="{DynamicResource Material.Colors.OutlineVariant}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="Alignment" Value="Top" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ShowDivider" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="foundations:Layout.Spacing" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type components:NavigationRail}">
+                    <components:Container
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <components:NaivePanel>
+                            <components:Divider
+                                x:Name="Divider"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Brush="{TemplateBinding DividerForeground}"
+                                Orientation="Vertical"
+                                Visibility="Collapsed" />
+
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <components:SpacedPanel Orientation="Vertical">
+                                    <ContentPresenter
+                                        Margin="0,44,0,0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Content="{TemplateBinding TopActions}"
+                                        ContentTemplate="{TemplateBinding TopActionsTemplate}" />
+
+                                    <components:SpacedPanel
+                                        x:Name="Destinations"
+                                        Margin="0,40,0,0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="Top"
+                                        components:SpacedPanel.StretchVertically="True"
+                                        IsItemsHost="True"
+                                        Orientation="Vertical"
+                                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
+
+                                    <ContentPresenter
+                                        Margin="0,12,0,44"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Content="{TemplateBinding BottomActionsContent}"
+                                        ContentTemplate="{TemplateBinding BottomActionsTemplate}" />
+                                </components:SpacedPanel>
+                            </ScrollViewer>
+                        </components:NaivePanel>
+                    </components:Container>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowDivider" Value="True">
+                            <Setter TargetName="Divider" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="Alignment" Value="Middle">
+                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Center" />
+                        </Trigger>
+
+                        <Trigger Property="Alignment" Value="Bottom">
+                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Bottom" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type components:NavigationRailActions}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="foundations:Layout.Spacing" Value="4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type components:NavigationRailActions}">
+                    <components:SpacedPanel
+                        HorizontalAlignment="Center"
+                        IsItemsHost="True"
+                        Orientation="Vertical"
+                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type components:NavigationRailItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+        <Setter Property="Height" Value="56" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="IsChecked" Value="False" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="foundations:Icon.Size" Value="24" />
+        <Setter Property="foundations:Icon.FillOnPressing" Value="True" />
+        <Setter Property="foundations:Icon.FillOnSelecting" Value="True" />
+        <Setter Property="foundations:Icon.WeightOnHovering" Value="DemiBold" />
+        <Setter Property="foundations:Icon.WeightOnPressing" Value="Normal" />
+        <Setter Property="foundations:Icon.WeightOnSelecting" Value="DemiBold" />
+        <Setter Property="foundations:Layout.Spacing" Value="4" />
+        <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
+        <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
+        <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type components:NavigationRailItem}">
+                    <components:SpacedPanel
+                        Background="Transparent"
+                        Orientation="Vertical"
+                        Spacing="{TemplateBinding foundations:Layout.Spacing}">
+
+                        <components:Ripple
+                            x:Name="PART_Ripple"
+                            Width="56"
+                            HorizontalAlignment="Center"
+                            components:SpacedPanel.StretchVertically="True"
+                            Foreground="{TemplateBinding Foreground}"
+                            IsCentered="True"
+                            ReleaseMode="Manual"
+                            RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}"
+                            TriggerMode="Manual">
+
+                            <components:Container
+                                x:Name="Container"
+                                Background="Transparent"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Foreground="{TemplateBinding Foreground}"
+                                ShapeStyle="Full">
+
+                                <components:SymbolIcon
+                                    x:Name="Icon"
+                                    Width="{TemplateBinding foundations:Icon.Size}"
+                                    Height="{TemplateBinding foundations:Icon.Size}"
+                                    VerticalAlignment="Center"
+                                    foundations:Icon.Icon="{TemplateBinding foundations:Icon.Icon}"
+                                    foundations:Icon.IconOnSelecting="{TemplateBinding foundations:Icon.IconOnSelecting}"
+                                    Brush="{TemplateBinding Foreground}"
+                                    IsFilled="{TemplateBinding foundations:Icon.Fill}"
+                                    Symbol="{TemplateBinding foundations:Icon.Icon}"
+                                    Type="{TemplateBinding foundations:Icon.Style}"
+                                    Weight="{TemplateBinding foundations:Icon.Weight}" />
+                            </components:Container>
+                        </components:Ripple>
+
+                        <ContentPresenter
+                            x:Name="Label"
+                            Height="16"
+                            HorizontalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            RecognizesAccessKey="True"
+                            TextElement.Foreground="{TemplateBinding Foreground}" />
+                    </components:SpacedPanel>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="Label" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Container" Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+
+                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
+                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="foundations:Interaction.IsHovered" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </MultiTrigger>
+
+                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

@@ -55,10 +55,10 @@
 
                     <md3:Button
                         md3:Icon.Icon="Code"
-                        Appearance="Outlined"
                         Command="{Binding OpenInBrowserCommand}"
                         CommandParameter="https://github.com/pedrior/wpf-material"
-                        Content="See repository" />
+                        Content="See repository"
+                        Type="Outlined" />
                 </md3:SpacedPanel>
             </md3:SpacedPanel>
 

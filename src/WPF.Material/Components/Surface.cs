@@ -101,7 +101,8 @@ public class Surface : FrameworkElement
     public event EventHandler? Rendered;
 
     /// <summary>
-    /// Gets or sets a <see cref="Brush"/> that describes the background of the surface.
+    /// Gets or sets a <see cref="Brush"/> that describes the background of the surface. The default value is
+    /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -112,7 +113,8 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets a <see cref="Brush"/> that describes the border of the surface.
+    /// Gets or sets a <see cref="Brush"/> that describes the border of the surface. The default value is
+    /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -123,7 +125,8 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets the border thickness of the surface.
+    /// Gets or sets the border thickness of the surface. The default value is a <see cref="Thickness"/> with all values
+    /// set to 0.0.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -134,7 +137,7 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets the shape family of the surface.
+    /// Gets or sets the shape family of the surface. The default value is <see cref="ShapeFamily.Rounded"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -145,7 +148,8 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets the shape style of the surface. A style can be used to apply a predefined set of corner radii.
+    /// Gets or sets the shape style of the surface, which applies a predefined corner radius to the surface.
+    /// The default value is <see cref="ShapeStyle.None"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -156,7 +160,8 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets a value that specifies which corners of the surface should have a radius applied.
+    /// Gets or sets a value that specifies which corners of the surface should have a radius applied. The default value is
+    /// <see cref="ShapeCorner.All"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -167,10 +172,11 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets a custom radius for the surface. If set when <see cref="UseCornersOnRadiusOverride"/> is set to
-    /// <see cref="ShapeCorner.All"/>, the <see cref="ShapeStyle"/> will be  ignored; otherwise, the surface will have
-    /// a combination of the custom radius and the style radius. See <see cref="UseStyleOnRadiusOverride"/> and
-    /// <see cref="UseCornersOnRadiusOverride"/> properties for possible combinations.
+    /// Gets or sets a custom corner radius for the surface. If set when <see cref="UseCornersOnRadiusOverride"/> is
+    /// <see cref="ShapeCorner.All"/>, the <see cref="ShapeStyle"/> will not be applied; otherwise, the surface will
+    /// have a combination of the custom corner radius and the corner radius from the applied style. See
+    /// <see cref="UseStyleOnRadiusOverride"/> and <see cref="UseCornersOnRadiusOverride"/> for more information.
+    /// The default value is <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -181,9 +187,10 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets a value that specifies whether the <see cref="ShapeStyle"/> should be used when a custom radius is
-    /// set. If set to <see langword="true"/>, the style radius will be used in combination with the custom radius when
-    /// <see cref="UseCornersOnRadiusOverride"/> is not set to <see cref="ShapeCorner.All"/>.
+    /// Gets or sets a value indicating whether the <see cref="ShapeStyle"/> should be used when a custom corner
+    /// radius is set. If <see langword="true"/>, the applied style radius will be used in combination with the custom
+    /// radius when <see cref="UseCornersOnRadiusOverride"/> is not <see cref="ShapeCorner.All"/>. The default value is
+    /// <see langword="true"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
@@ -194,9 +201,10 @@ public class Surface : FrameworkElement
     }
 
     /// <summary>
-    /// Gets or sets a value that specifies which corners of the surface should have a radius applied when a custom
-    /// radius is set. If set to <see cref="ShapeCorner.All"/>, the custom radius will be applied to all corners; if
-    /// set to <see cref="ShapeCorner.None"/>, the custom radius will be ignored.
+    /// Gets or sets a value indicating which corners of the surface should have a radius applied when a custom
+    /// corner radius is set. If <see cref="ShapeCorner.All"/>, the custom corner radius will be applied to all corners;
+    /// if <see cref="ShapeCorner.None"/>, the custom corner radius will not be applied. The default value is
+    /// <see cref="ShapeCorner.All"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
