@@ -51,11 +51,12 @@ public class Overlay : FrameworkElement
         base.OnRender(context);
 
         var tint = Tint;
-        var geometry = DefiningGeometry;
-
-        if (tint is not null && geometry is not null)
+        if (tint is not null)
         {
-            context.DrawGeometry(tint, null, geometry);
+            context.DrawGeometry(
+                tint, 
+                pen: null,
+                DefiningGeometry ?? new RectangleGeometry(new Rect(RenderSize)));
         }
     }
 }
