@@ -84,6 +84,7 @@ public sealed class ThemeResources : ResourceDictionary
             "Scrolling/ScrollBar.xaml",
             "Scrolling/ScrollViewer.xaml",
             "Sheets/SideSheet.xaml",
+            "Sliders/Slider.xaml",
             "TextBlocks/TextBlock.xaml",
             "Tooltips/ToolTip.xaml"
         };
