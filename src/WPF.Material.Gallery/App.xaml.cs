@@ -35,6 +35,8 @@ public sealed partial class App
         services.AddSingleton<ShellViewModel>();
         services.AddTransient<HomeViewModel>();
         services.AddTransient<GetStartedViewModel>();
+        services.AddTransient<FoundationsViewModel>();
+        services.AddTransient<StylesViewModel>();
         services.AddTransient<ComponentsViewModel>();
         
         return services.BuildServiceProvider();
