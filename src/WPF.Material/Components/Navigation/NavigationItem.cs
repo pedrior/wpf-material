@@ -23,8 +23,7 @@ public class NavigationItem : System.Windows.Controls.RadioButton
     {
         base.OnApplyTemplate();
 
-        ripple = GetTemplateChild(PartRipple) as Ripple ??
-                 throw new NullReferenceException($"Missing required template part '{PartRipple}'.");
+        ripple = GetTemplateChild(PartRipple) as Ripple;
     }
 
     protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
