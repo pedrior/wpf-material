@@ -16,8 +16,8 @@ public class SideSheet : Sheet
         typeof(SideSheet),
         new PropertyMetadata(true));
 
-    private DoubleAnimationUsingKeyFrames? openSheetAnimation;
-    private DoubleAnimationUsingKeyFrames? closeSheetAnimation;
+    private AnimationTimeline? enterAnimation;
+    private AnimationTimeline? exitAnimation;
 
     static SideSheet()
     {
@@ -42,41 +42,41 @@ public class SideSheet : Sheet
 
     protected override double TargetSize => ActualWidth;
 
-    protected override AnimationTimeline OpenAnimation => GetOpenAnimation();
+    protected override AnimationTimeline EnterAnimation => GetEnterAnimation();
 
-    protected override AnimationTimeline CloseAnimation => GetCloseAnimation();
+    protected override AnimationTimeline ExitAnimation => GetExitAnimation();
 
     internal override DependencyProperty TargetSizeProperty => WidthProperty;
 
-    private DoubleAnimationUsingKeyFrames GetOpenAnimation()
+    private AnimationTimeline GetEnterAnimation()
     {
-        if (openSheetAnimation is not null)
+        if (enterAnimation is not null)
         {
-            return openSheetAnimation;
+            return enterAnimation;
         }
 
-        openSheetAnimation = CreateBaseAnimation(TargetSize, freeze: false);
-        openSheetAnimation.Completed += OnOpenAnimationCompleted;
+        enterAnimation = CreateBaseAnimation(TargetSize, freeze: false);
+        enterAnimation.Completed += OnEnterAnimationCompleted;
 
-        openSheetAnimation.Freeze();
-        return openSheetAnimation;
+        enterAnimation.Freeze();
+        return enterAnimation;
     }
 
-    private DoubleAnimationUsingKeyFrames GetCloseAnimation()
+    private AnimationTimeline GetExitAnimation()
     {
-        if (closeSheetAnimation is not null)
+        if (exitAnimation is not null)
         {
-            return closeSheetAnimation;
+            return exitAnimation;
         }
 
-        closeSheetAnimation = CreateBaseAnimation(0, freeze: false);
-        closeSheetAnimation.Completed += OnCloseAnimationCompleted;
+        exitAnimation = CreateBaseAnimation(0, freeze: false);
+        exitAnimation.Completed += OnExitAnimationCompleted;
 
-        closeSheetAnimation.Freeze();
-        return closeSheetAnimation;
+        exitAnimation.Freeze();
+        return exitAnimation;
     }
 
-    private void OnOpenAnimationCompleted(object? sender, EventArgs e) => OnOpened();
+    private void OnEnterAnimationCompleted(object? sender, EventArgs e) => OnOpened();
 
-    private void OnCloseAnimationCompleted(object? sender, EventArgs e) => OnClosed();
+    private void OnExitAnimationCompleted(object? sender, EventArgs e) => OnClosed();
 }

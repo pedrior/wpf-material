@@ -110,10 +110,8 @@ public abstract class Sheet : ContentControl
 
     private const double ScrimOverlayOpacity = 0.4;
 
-    private static readonly Duration AnimationDuration = TimeSpan.FromSeconds(0.3);
-
-    private static readonly AnimationTimeline openScrimAnimation = CreateBaseAnimation(ScrimOverlayOpacity);
-    private static readonly AnimationTimeline closeScrimAnimation = CreateBaseAnimation(0.0);
+    private static readonly AnimationTimeline enterScrimAnimation = CreateBaseAnimation(ScrimOverlayOpacity);
+    private static readonly AnimationTimeline exitScrimAnimation = CreateBaseAnimation(0.0);
 
     private bool isOpen;
     private bool isModal;
@@ -241,9 +239,9 @@ public abstract class Sheet : ContentControl
 
     protected abstract double TargetSize { get; }
 
-    protected abstract AnimationTimeline OpenAnimation { get; }
+    protected abstract AnimationTimeline EnterAnimation { get; }
 
-    protected abstract AnimationTimeline CloseAnimation { get; }
+    protected abstract AnimationTimeline ExitAnimation { get; }
 
     internal abstract DependencyProperty TargetSizeProperty { get; }
 
@@ -329,27 +327,16 @@ public abstract class Sheet : ContentControl
     private static void OnIsDockedChanged(DependencyObject element, DependencyPropertyChangedEventArgs e) =>
         ((Sheet)element).OnIsDockedChanged((bool)e.OldValue, (bool)e.NewValue);
 
-    protected static DoubleAnimationUsingKeyFrames CreateBaseAnimation(
+    protected static DoubleAnimation CreateBaseAnimation(
         double desiredValue,
         int desiredFrameRate = 60,
         bool freeze = true)
     {
-        var animation = new DoubleAnimationUsingKeyFrames
+        var animation = new DoubleAnimation
         {
-            Duration = AnimationDuration,
-            KeyFrames =
-            {
-                // Like an ease-in-out animation curve, but with a bit more ease at the beginning.
-                // The https://cubic-bezier.com/#.6,0,.2,1 is a good tool to visualize the curve.
-                new SplineDoubleKeyFrame(desiredValue, KeyTime.Paced)
-                {
-                    KeySpline = new KeySpline
-                    {
-                        ControlPoint1 = new Point(0.6, 0.0),
-                        ControlPoint2 = new Point(0.2, 1.0)
-                    }
-                }
-            }
+            To = desiredValue,
+            Duration = MotionDurations.Medium400,
+            EasingFunction = MotionEasings.Emphasized
         };
 
         Timeline.SetDesiredFrameRate(animation, desiredFrameRate);
@@ -391,7 +378,7 @@ public abstract class Sheet : ContentControl
         {
             if (isAnimate)
             {
-                overlay.BeginAnimation(OpacityProperty, openScrimAnimation);
+                overlay.BeginAnimation(OpacityProperty, enterScrimAnimation);
             }
             else
             {
@@ -402,7 +389,7 @@ public abstract class Sheet : ContentControl
         {
             if (isAnimate)
             {
-                overlay.BeginAnimation(OpacityProperty, closeScrimAnimation);
+                overlay.BeginAnimation(OpacityProperty, exitScrimAnimation);
             }
             else
             {
@@ -467,7 +454,7 @@ public abstract class Sheet : ContentControl
 
             if (isAnimate)
             {
-                container.BeginAnimation(TargetSizeProperty, OpenAnimation);
+                container.BeginAnimation(TargetSizeProperty, EnterAnimation);
             }
             else
             {
@@ -482,7 +469,7 @@ public abstract class Sheet : ContentControl
 
             if (isAnimate)
             {
-                container.BeginAnimation(TargetSizeProperty, CloseAnimation);
+                container.BeginAnimation(TargetSizeProperty, ExitAnimation);
             }
             else
             {
