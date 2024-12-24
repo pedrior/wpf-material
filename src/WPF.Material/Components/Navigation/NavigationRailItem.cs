@@ -47,4 +47,14 @@ public class NavigationRailItem : System.Windows.Controls.RadioButton
 
         ripple?.Release();
     }
+
+    protected override void OnChecked(RoutedEventArgs e)
+    {
+        base.OnChecked(e);
+
+        if (Parent is NavigationRail rail)
+        {
+            rail.SetItemIsSelected(this);
+        }
+    }
 }
