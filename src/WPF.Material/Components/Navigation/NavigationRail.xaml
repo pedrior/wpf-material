@@ -97,7 +97,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type components:NavigationRailItem}">
+    <Style TargetType="{x:Type components:NavigationItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
         <Setter Property="Height" Value="56" />
@@ -119,7 +119,7 @@
         <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type components:NavigationRailItem}">
+                <ControlTemplate TargetType="{x:Type components:NavigationItem}">
                     <components:SpacedPanel
                         Background="Transparent"
                         Orientation="Vertical"

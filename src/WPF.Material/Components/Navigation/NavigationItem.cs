@@ -6,17 +6,17 @@ namespace WPF.Material.Components;
 /// Represents an item in a <see cref="NavigationRail"/> component.
 /// </summary>
 [TemplatePart(Name = PartRipple, Type = typeof(Container))]
-public class NavigationRailItem : System.Windows.Controls.RadioButton
+public class NavigationItem : System.Windows.Controls.RadioButton
 {
     private const string PartRipple = "PART_Ripple";
 
     private Ripple? ripple;
 
-    static NavigationRailItem()
+    static NavigationItem()
     {
         DefaultStyleKeyProperty.OverrideMetadata(
-            typeof(NavigationRailItem),
-            new FrameworkPropertyMetadata(typeof(NavigationRailItem)));
+            typeof(NavigationItem),
+            new FrameworkPropertyMetadata(typeof(NavigationItem)));
     }
     
     public override void OnApplyTemplate()

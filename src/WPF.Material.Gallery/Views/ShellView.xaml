@@ -81,32 +81,32 @@
                 </md3:NavigationRailActions>
             </md3:NavigationRail.BottomActionsContent>
 
-            <md3:NavigationRailItem
+            <md3:NavigationItem
                 md3:Icon.Icon="Home"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:HomeViewModel}"
                 Content="Home"
                 IsChecked="True" />
 
-            <md3:NavigationRailItem
+            <md3:NavigationItem
                 md3:Icon.Icon="Apps"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:GetStartedViewModel}"
                 Content="Get started" />
 
-            <md3:NavigationRailItem
+            <md3:NavigationItem
                 md3:Icon.Icon="Book"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:FoundationsViewModel}"
                 Content="Foundations" />
 
-            <md3:NavigationRailItem
+            <md3:NavigationItem
                 md3:Icon.Icon="Palette"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:StylesViewModel}"
                 Content="Styles" />
 
-            <md3:NavigationRailItem
+            <md3:NavigationItem
                 md3:Icon.Icon="AddCircle"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:ComponentsViewModel}"

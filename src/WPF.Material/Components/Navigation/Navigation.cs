@@ -20,7 +20,7 @@ public abstract class Navigation : ItemsControl
 
     private static readonly DependencyPropertyKey SelectedItemPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(SelectedItem),
-        typeof(NavigationRailItem),
+        typeof(NavigationItem),
         typeof(Navigation),
         new PropertyMetadata(null));
 
@@ -39,7 +39,7 @@ public abstract class Navigation : ItemsControl
         typeof(Navigation));
 
     private int lastSelectedIndex = -1;
-    private NavigationRailItem? lazySelectedItem;
+    private NavigationItem? lazySelectedItem;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="NavigationRail"/> class.
@@ -73,13 +73,13 @@ public abstract class Navigation : ItemsControl
     /// Gets the currently selected item.
     /// </summary>
     [Category(UICategory.Common)]
-    public NavigationRailItem? SelectedItem
+    public NavigationItem? SelectedItem
     {
-        get => (NavigationRailItem?)GetValue(SelectedItemProperty);
+        get => (NavigationItem?)GetValue(SelectedItemProperty);
         private set => SetValue(SelectedItemPropertyKey, value);
     }
 
-    internal void SetItemIsSelected(NavigationRailItem? item)
+    internal void SetItemIsSelected(NavigationItem? item)
     {
         if (ReferenceEquals(Items.CurrentItem, item))
         {
@@ -111,7 +111,7 @@ public abstract class Navigation : ItemsControl
     private void OnCurrentChanged(object? sender, EventArgs e)
     {
         SelectedIndex = Items.CurrentPosition;
-        SelectedItem = (NavigationRailItem)Items.CurrentItem;
+        SelectedItem = (NavigationItem)Items.CurrentItem;
 
         RaiseEvent(new SelectionChangedEventArgs(
             SelectionChangedEvent,
