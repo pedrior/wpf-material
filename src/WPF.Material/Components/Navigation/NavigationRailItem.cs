@@ -6,7 +6,7 @@ namespace WPF.Material.Components;
 /// Represents an item in a <see cref="NavigationRail"/> component.
 /// </summary>
 [TemplatePart(Name = PartRipple, Type = typeof(Container))]
-public class NavigationRailItem : System.Windows.Controls.Primitives.ToggleButton
+public class NavigationRailItem : System.Windows.Controls.RadioButton
 {
     private const string PartRipple = "PART_Ripple";
 
@@ -46,17 +46,5 @@ public class NavigationRailItem : System.Windows.Controls.Primitives.ToggleButto
         base.OnMouseLeave(e);
 
         ripple?.Release();
-    }
-    
-    protected override void OnToggle()
-    {
-        if (Parent is NavigationRail rail)
-        {
-            rail.Toggle(this);
-        }
-        else
-        {
-            base.OnToggle();
-        }
     }
 }

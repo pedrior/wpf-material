@@ -78,31 +78,12 @@ public class NavigationRail : ItemsControl
     /// Identifies the <see cref="SelectedIndex"/> dependency property.
     /// </summary>
     public static readonly DependencyProperty SelectedIndexProperty = SelectedIndexPropertyKey.DependencyProperty;
-    
-    /// <summary>
-    /// Identifies the <see cref="SelectionChanged"/> routed event.
-    /// </summary>
-    public static readonly RoutedEvent SelectionChangedEvent = EventManager.RegisterRoutedEvent(
-        nameof(SelectionChanged),
-        RoutingStrategy.Bubble,
-        typeof(RoutedEventHandler),
-        typeof(NavigationRail));
 
     static NavigationRail()
     {
         DefaultStyleKeyProperty.OverrideMetadata(
             typeof(NavigationRail),
             new FrameworkPropertyMetadata(typeof(NavigationRail)));
-    }
-    
-    /// <summary>
-    /// Occurs when the selected destination item changes.
-    /// </summary>
-    [Category(UICategory.Behavior)]
-    public event RoutedEventHandler SelectionChanged
-    {
-        add => AddHandler(SelectionChangedEvent, value);
-        remove => RemoveHandler(SelectionChangedEvent, value);
     }
 
     /// <summary>
@@ -195,39 +176,5 @@ public class NavigationRail : ItemsControl
     {
         get => (int)GetValue(SelectedIndexProperty);
         private set => SetValue(SelectedIndexPropertyKey, value);
-    }
-
-    protected virtual void OnSelectionChanged(RoutedEventArgs e) => RaiseEvent(e);
-
-    internal void Toggle(NavigationRailItem navigationRailItem)
-    {
-        if (navigationRailItem.IsChecked is true)
-        {
-            return;
-        }
-
-        var items = Items
-            .OfType<NavigationRailItem>()
-            .ToArray();
-
-        var selectedIndex = -1;
-        for (var index = 0; index < items.Length; index++)
-        {
-            var item = items[index];
-
-            if (ReferenceEquals(item, navigationRailItem))
-            {
-                selectedIndex = index;
-            }
-            else
-            {
-                item.IsChecked = false;
-            }
-        }
-        
-        navigationRailItem.IsChecked = true;
-        
-        SelectedIndex = selectedIndex;
-        OnSelectionChanged(new RoutedEventArgs(SelectionChangedEvent, this));
     }
 }
