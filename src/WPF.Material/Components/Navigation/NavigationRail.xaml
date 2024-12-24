@@ -4,100 +4,7 @@
     xmlns:components="clr-namespace:WPF.Material.Components"
     xmlns:foundations="clr-namespace:WPF.Material.Foundations">
 
-    <Style TargetType="{x:Type components:NavigationRail}">
-        <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
-        <Setter Property="DividerForeground" Value="{DynamicResource Material.Colors.OutlineVariant}" />
-        <Setter Property="Width" Value="80" />
-        <Setter Property="MinWidth" Value="80" />
-        <Setter Property="Alignment" Value="Top" />
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="Focusable" Value="False" />
-        <Setter Property="ShowDivider" Value="False" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="foundations:Layout.Spacing" Value="12" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type components:NavigationRail}">
-                    <components:Container
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-
-                        <components:NaivePanel>
-                            <components:Divider
-                                x:Name="Divider"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Stretch"
-                                Brush="{TemplateBinding DividerForeground}"
-                                Orientation="Vertical"
-                                Visibility="Collapsed" />
-
-                            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <components:SpacedPanel Orientation="Vertical">
-                                    <ContentPresenter
-                                        Margin="0,44,0,0"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        Content="{TemplateBinding TopActions}"
-                                        ContentTemplate="{TemplateBinding TopActionsTemplate}" />
-
-                                    <components:SpacedPanel
-                                        x:Name="Destinations"
-                                        Margin="0,40,0,0"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        VerticalAlignment="Top"
-                                        components:SpacedPanel.StretchVertically="True"
-                                        IsItemsHost="True"
-                                        Orientation="Vertical"
-                                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
-
-                                    <ContentPresenter
-                                        Margin="0,12,0,44"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        Content="{TemplateBinding BottomActionsContent}"
-                                        ContentTemplate="{TemplateBinding BottomActionsTemplate}" />
-                                </components:SpacedPanel>
-                            </ScrollViewer>
-                        </components:NaivePanel>
-                    </components:Container>
-
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="ShowDivider" Value="True">
-                            <Setter TargetName="Divider" Property="Visibility" Value="Visible" />
-                        </Trigger>
-
-                        <Trigger Property="Alignment" Value="Middle">
-                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Center" />
-                        </Trigger>
-
-                        <Trigger Property="Alignment" Value="Bottom">
-                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Bottom" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type components:NavigationRailActions}">
-        <Setter Property="Focusable" Value="False" />
-        <Setter Property="foundations:Layout.Spacing" Value="4" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type components:NavigationRailActions}">
-                    <components:SpacedPanel
-                        HorizontalAlignment="Center"
-                        IsItemsHost="True"
-                        Orientation="Vertical"
-                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type components:NavigationItem}">
+    <Style x:Key="Material.Styles.NavigationRailItem" TargetType="{x:Type components:NavigationItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
         <Setter Property="Height" Value="56" />
@@ -209,5 +116,102 @@
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type components:NavigationRail}">
+        <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
+        <Setter Property="DividerForeground" Value="{DynamicResource Material.Colors.OutlineVariant}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="Alignment" Value="Top" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ShowDivider" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="foundations:Layout.Spacing" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type components:NavigationRail}">
+                    <ControlTemplate.Resources>
+                        <Style BasedOn="{StaticResource Material.Styles.NavigationRailItem}" TargetType="{x:Type components:NavigationItem}" />
+                    </ControlTemplate.Resources>
+
+                    <components:Container
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <components:NaivePanel>
+                            <components:Divider
+                                x:Name="Divider"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Brush="{TemplateBinding DividerForeground}"
+                                Orientation="Vertical"
+                                Visibility="Collapsed" />
+
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <components:SpacedPanel Orientation="Vertical">
+                                    <ContentPresenter
+                                        Margin="0,44,0,0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Content="{TemplateBinding TopActions}"
+                                        ContentTemplate="{TemplateBinding TopActionsTemplate}" />
+
+                                    <components:SpacedPanel
+                                        x:Name="Destinations"
+                                        Margin="0,40,0,0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="Top"
+                                        components:SpacedPanel.StretchVertically="True"
+                                        IsItemsHost="True"
+                                        Orientation="Vertical"
+                                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
+
+                                    <ContentPresenter
+                                        Margin="0,12,0,44"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Content="{TemplateBinding BottomActionsContent}"
+                                        ContentTemplate="{TemplateBinding BottomActionsTemplate}" />
+                                </components:SpacedPanel>
+                            </ScrollViewer>
+                        </components:NaivePanel>
+                    </components:Container>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowDivider" Value="True">
+                            <Setter TargetName="Divider" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="Alignment" Value="Middle">
+                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Center" />
+                        </Trigger>
+
+                        <Trigger Property="Alignment" Value="Bottom">
+                            <Setter TargetName="Destinations" Property="VerticalAlignment" Value="Bottom" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type components:NavigationRailActions}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="foundations:Layout.Spacing" Value="4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type components:NavigationRailActions}">
+                    <components:SpacedPanel
+                        HorizontalAlignment="Center"
+                        IsItemsHost="True"
+                        Orientation="Vertical"
+                        Spacing="{TemplateBinding foundations:Layout.Spacing}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
