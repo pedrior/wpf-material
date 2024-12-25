@@ -51,9 +51,9 @@ public class NavigationItem : System.Windows.Controls.RadioButton
     {
         base.OnChecked(e);
 
-        if (Parent is NavigationRail rail)
+        if (Parent is Navigation navigation)
         {
-            rail.SetItemIsSelected(this);
+            navigation.SetItemIsSelected(this);
         }
     }
 }
