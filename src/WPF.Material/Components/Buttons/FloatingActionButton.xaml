@@ -28,9 +28,6 @@
         <Setter Property="foundations:Icon.Size" Value="24" />
         <Setter Property="foundations:Icon.Icon" Value="Add" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
-        <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
-        <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsPressed}" />
-        <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:FloatingActionButton}">
@@ -40,6 +37,10 @@
                             Padding="{TemplateBinding Padding}"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
+                            foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
+                            foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
+                            foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
                             styles:Elevation.Level="Level3"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"

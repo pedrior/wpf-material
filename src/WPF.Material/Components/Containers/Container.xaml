@@ -54,6 +54,25 @@
         RenderingBias="Performance"
         ShadowDepth="6" />
 
+    <Style TargetType="{x:Type components:StateLayer}">
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Style.Triggers>
+            <Trigger Property="foundations:Interaction.IsHovered" Value="True">
+                <Setter Property="State" Value="Hovered" />
+            </Trigger>
+            <Trigger Property="foundations:Interaction.IsFocused" Value="True">
+                <Setter Property="State" Value="Focused" />
+            </Trigger>
+            <Trigger Property="foundations:Interaction.IsPressed" Value="True">
+                <Setter Property="State" Value="Pressed" />
+            </Trigger>
+            <Trigger Property="foundations:Interaction.IsDragged" Value="True">
+                <Setter Property="State" Value="Dragged" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style TargetType="{x:Type components:Container}">
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{x:Null}" />
@@ -74,9 +93,6 @@
         <Setter Property="UseStyleOnRadiusOverride" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Shape.UseStyleOnRadiusOverride)}" />
         <Setter Property="UseCornersOnRadiusOverride" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Shape.UseCornersOnRadiusOverride)}" />
         <Setter Property="styles:Elevation.Level" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(styles:Elevation.Level)}" />
-        <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsHovered)}" />
-        <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsPressed)}" />
-        <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsFocused)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Container}">
@@ -93,11 +109,13 @@
                             UseCornersOnRadiusOverride="{TemplateBinding UseCornersOnRadiusOverride}"
                             UseStyleOnRadiusOverride="{TemplateBinding UseStyleOnRadiusOverride}" />
 
-                        <components:Overlay
-                            x:Name="StateLayer"
-                            DefiningGeometry="{Binding ElementName=PART_Surface, Path=RenderedGeometry}"
-                            Opacity="0.0"
-                            Tint="{TemplateBinding Foreground}" />
+                        <components:StateLayer
+                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
+                            foundations:Interaction.IsFocused="{TemplateBinding foundations:Interaction.IsFocused}"
+                            foundations:Interaction.IsHovered="{TemplateBinding foundations:Interaction.IsHovered}"
+                            foundations:Interaction.IsPressed="{TemplateBinding foundations:Interaction.IsPressed}"
+                            Brush="{TemplateBinding Foreground}"
+                            OutlineGeometry="{TemplateBinding RenderedGeometry}" />
 
                         <ContentPresenter
                             x:Name="Content"
@@ -133,22 +151,6 @@
 
                         <Trigger Property="styles:Elevation.Level" Value="Level5">
                             <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
-                        </Trigger>
-
-                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
-                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.08" />
-                        </Trigger>
-
-                        <Trigger Property="foundations:Interaction.IsFocused" Value="True">
-                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
-                        </Trigger>
-
-                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
-                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
-                        </Trigger>
-
-                        <Trigger Property="foundations:Interaction.IsDragged" Value="True">
-                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.16" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
