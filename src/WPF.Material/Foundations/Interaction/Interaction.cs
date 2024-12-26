@@ -40,16 +40,7 @@ public static class Interaction
         typeof(bool),
         typeof(Interaction),
         new PropertyMetadata(false));
-
-    /// <summary>
-    /// Identifies the IsEnabled attached property.
-    /// </summary>
-    public static readonly DependencyProperty IsInteractiveProperty = DependencyProperty.RegisterAttached(
-        "IsInteractive",
-        typeof(bool),
-        typeof(Interaction),
-        new PropertyMetadata(true));
-
+    
     /// <summary>
     /// Identifies the IsRippleAnimated attached property.
     /// </summary>
@@ -156,27 +147,6 @@ public static class Interaction
     /// The current value of the <see cref="IsDraggedProperty"/> attached property on the specified dependency object.
     /// </returns>
     public static bool GetIsDragged(DependencyObject element) => (bool)element.GetValue(IsDraggedProperty);
-    
-    /// <summary>
-    /// Sets the value of the <see cref="IsInteractiveProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to set the value of the <see cref="IsInteractiveProperty"/> property.
-    /// </param>
-    /// <param name="value">The new value to set the property to.</param>
-    public static void SetIsInteractive(DependencyObject element, bool value) => 
-        element.SetValue(IsInteractiveProperty, value);
-
-    /// <summary>
-    /// Gets the value of the <see cref="IsInteractiveProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to retrieve the value of the <see cref="IsInteractiveProperty"/> property.
-    /// </param>
-    /// <returns>
-    /// The current value of the <see cref="IsInteractiveProperty"/> attached property on the specified dependency object.
-    /// </returns>
-    public static bool GetIsInteractive(DependencyObject element) => (bool)element.GetValue(IsInteractiveProperty);
     
     /// <summary>
     /// Sets the value of the <see cref="IsRippleAnimatedProperty"/> attached property for a specified dependency object.

@@ -77,7 +77,6 @@
         <Setter Property="foundations:Interaction.IsHovered" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsHovered)}" />
         <Setter Property="foundations:Interaction.IsPressed" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsPressed)}" />
         <Setter Property="foundations:Interaction.IsFocused" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsFocused)}" />
-        <Setter Property="foundations:Interaction.IsInteractive" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(foundations:Interaction.IsInteractive)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Container}">
@@ -136,37 +135,21 @@
                             <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
                         </Trigger>
 
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsHovered" Value="True" />
-                                <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
-                            </MultiTrigger.Conditions>
+                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.08" />
-                        </MultiTrigger>
+                        </Trigger>
 
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsPressed" Value="True" />
-                                <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
-                            </MultiTrigger.Conditions>
+                        <Trigger Property="foundations:Interaction.IsFocused" Value="True">
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
-                        </MultiTrigger>
+                        </Trigger>
 
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsDragged" Value="True" />
-                                <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
-                            </MultiTrigger.Conditions>
+                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
+                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
+                        </Trigger>
+
+                        <Trigger Property="foundations:Interaction.IsDragged" Value="True">
                             <Setter TargetName="StateLayer" Property="Opacity" Value="0.16" />
-                        </MultiTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsFocused" Value="True" />
-                                <Condition Property="foundations:Interaction.IsInteractive" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="StateLayer" Property="Opacity" Value="0.1" />
-                        </MultiTrigger>
+                        </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.38" />
