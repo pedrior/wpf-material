@@ -50,7 +50,6 @@
 
                             <components:SymbolIcon
                                 x:Name="Icon"
-                                Uid="Test"
                                 Width="{TemplateBinding foundations:Icon.Size}"
                                 Height="{TemplateBinding foundations:Icon.Size}"
                                 foundations:Icon.Icon="{TemplateBinding foundations:Icon.Icon}"
