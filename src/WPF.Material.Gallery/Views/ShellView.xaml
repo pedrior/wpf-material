@@ -63,7 +63,7 @@
 
             <md3:NavigationRail.TopActions>
                 <md3:NavigationRailActions>
-                    <md3:FloatingActionButton md3:Icon.Icon="Search" Type="Tertiary" />
+                    <md3:FloatingActionButton md3:Icon.RestSymbol="Search" Type="Tertiary" />
                 </md3:NavigationRailActions>
             </md3:NavigationRail.TopActions>
 
@@ -71,10 +71,10 @@
                 <md3:NavigationRailActions>
                     <md3:ToggleIconButton
                         x:Name="ThemeToggleButton"
-                        md3:Icon.FillOnHovering="True"
-                        md3:Icon.FillOnPressing="True"
-                        md3:Icon.Icon="DarkMode"
-                        md3:Icon.IconOnSelecting="LightMode"
+                        md3:Icon.IsHoverSymbolFilled="True"
+                        md3:Icon.IsPressSymbolFilled="True"
+                        md3:Icon.RestSymbol="DarkMode"
+                        md3:Icon.SelectionSymbol="LightMode"
                         Command="{Binding SwitchAppThemeCommand, Mode=OneTime}"
                         IsChecked="{Binding IsDarkTheme, Mode=OneTime}"
                         ToolTip="{Binding ElementName=ThemeToggleButton, Path=IsChecked, Converter={converters:ThemeToolTipConverter OnLightTooltip={StaticResource SwitchToDarkThemeTooltip}, OnDarkTooltip={StaticResource SwitchToLightThemeTooltip}}}" />
@@ -82,32 +82,32 @@
             </md3:NavigationRail.BottomActionsContent>
 
             <md3:NavigationItem
-                md3:Icon.Icon="Home"
+                md3:Icon.RestSymbol="Home"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:HomeViewModel}"
                 Content="Home"
                 IsChecked="True" />
 
             <md3:NavigationItem
-                md3:Icon.Icon="Apps"
+                md3:Icon.RestSymbol="Apps"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:GetStartedViewModel}"
                 Content="Get started" />
 
             <md3:NavigationItem
-                md3:Icon.Icon="Book"
+                md3:Icon.RestSymbol="Book"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:FoundationsViewModel}"
                 Content="Foundations" />
 
             <md3:NavigationItem
-                md3:Icon.Icon="Palette"
+                md3:Icon.RestSymbol="Palette"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:StylesViewModel}"
                 Content="Styles" />
 
             <md3:NavigationItem
-                md3:Icon.Icon="AddCircle"
+                md3:Icon.RestSymbol="AddCircle"
                 Command="{Binding NavigateCommand, Mode=OneTime}"
                 CommandParameter="{x:Type viewModels:ComponentsViewModel}"
                 Content="Components" />

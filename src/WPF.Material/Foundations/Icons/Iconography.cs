@@ -3,7 +3,7 @@
 /// <summary>
 /// Provides attached properties for managing the iconography aspects of a component.
 /// </summary>
-public static class Icon
+public static class Iconography
 {
     /// <summary>
     /// Identifies the Icon attached property.
@@ -11,7 +11,7 @@ public static class Icon
     public static readonly DependencyProperty IconProperty = DependencyProperty.RegisterAttached(
         "Icon",
         typeof(Symbol?),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(null));
 
     /// <summary>
@@ -20,16 +20,25 @@ public static class Icon
     public static readonly DependencyProperty SizeProperty = DependencyProperty.RegisterAttached(
         "Size",
         typeof(double),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(18.0));
 
+    /// <summary>
+    /// Identifies the Style attached property.
+    /// </summary>
+    public static readonly DependencyProperty StyleProperty = DependencyProperty.RegisterAttached(
+        "Style",
+        typeof(SymbolType),
+        typeof(Iconography),
+        new FrameworkPropertyMetadata(SymbolType.Rounded, FrameworkPropertyMetadataOptions.Inherits));
+    
     /// <summary>
     /// Identifies the Fill attached property.
     /// </summary>
     public static readonly DependencyProperty FillProperty = DependencyProperty.RegisterAttached(
         "Fill",
         typeof(bool),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(false));
 
     /// <summary>
@@ -38,25 +47,16 @@ public static class Icon
     public static readonly DependencyProperty WeightProperty = DependencyProperty.RegisterAttached(
         "Weight",
         typeof(FontWeight),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(FontWeights.Normal));
-
-    /// <summary>
-    /// Identifies the Style attached property.
-    /// </summary>
-    public static readonly DependencyProperty StyleProperty = DependencyProperty.RegisterAttached(
-        "Style",
-        typeof(SymbolType),
-        typeof(Icon),
-        new FrameworkPropertyMetadata(SymbolType.Rounded, FrameworkPropertyMetadataOptions.Inherits));
-
+    
     /// <summary>
     /// Identifies the IconOnHovering attached property.
     /// </summary>
     public static readonly DependencyProperty IconOnHoveringProperty = DependencyProperty.RegisterAttached(
         "IconOnHovering",
         typeof(Symbol?),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(null));
 
     /// <summary>
@@ -65,7 +65,7 @@ public static class Icon
     public static readonly DependencyProperty IconOnPressingProperty = DependencyProperty.RegisterAttached(
         "IconOnPressing",
         typeof(Symbol?),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(null));
 
     /// <summary>
@@ -74,7 +74,7 @@ public static class Icon
     public static readonly DependencyProperty IconOnSelectingProperty = DependencyProperty.RegisterAttached(
         "IconOnSelecting",
         typeof(Symbol?),
-        typeof(Icon),
+        typeof(Iconography),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 
     /// <summary>
@@ -83,7 +83,7 @@ public static class Icon
     public static readonly DependencyProperty FillOnHoveringProperty = DependencyProperty.RegisterAttached(
         "FillOnHovering",
         typeof(bool),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(false));
 
     /// <summary>
@@ -92,7 +92,7 @@ public static class Icon
     public static readonly DependencyProperty FillOnPressingProperty = DependencyProperty.RegisterAttached(
         "FillOnPressing",
         typeof(bool),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(false));
 
     /// <summary>
@@ -101,7 +101,7 @@ public static class Icon
     public static readonly DependencyProperty FillOnSelectingProperty = DependencyProperty.RegisterAttached(
         "FillOnSelecting",
         typeof(bool),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(false));
 
     /// <summary>
@@ -110,7 +110,7 @@ public static class Icon
     public static readonly DependencyProperty WeightOnHoveringProperty = DependencyProperty.RegisterAttached(
         "WeightOnHovering",
         typeof(FontWeight),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(FontWeights.Normal));
 
     /// <summary>
@@ -119,7 +119,7 @@ public static class Icon
     public static readonly DependencyProperty WeightOnPressingProperty = DependencyProperty.RegisterAttached(
         "WeightOnPressing",
         typeof(FontWeight),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(FontWeights.Normal));
 
     /// <summary>
@@ -128,7 +128,7 @@ public static class Icon
     public static readonly DependencyProperty WeightOnSelectingProperty = DependencyProperty.RegisterAttached(
         "WeightOnSelecting",
         typeof(FontWeight),
-        typeof(Icon),
+        typeof(Iconography),
         new PropertyMetadata(FontWeights.Normal));
 
     public static Symbol? GetIcon(DependencyObject element) => (Symbol?)element.GetValue(IconProperty);

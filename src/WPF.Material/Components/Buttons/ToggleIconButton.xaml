@@ -21,8 +21,7 @@
         <Setter Property="IsChecked" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="foundations:Icon.Icon" Value="Add" />
-        <Setter Property="foundations:Icon.Size" Value="24" />
+        <Setter Property="components:Icon.Size" Value="24" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="foundations:Layout.InnerWidth" Value="40" />
         <Setter Property="foundations:Layout.InnerHeight" Value="40" />
@@ -49,40 +48,33 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Foreground="{TemplateBinding Foreground}">
 
-                            <components:SymbolIcon
-                                x:Name="Icon"
-                                Width="{TemplateBinding foundations:Icon.Size}"
-                                Height="{TemplateBinding foundations:Icon.Size}"
-                                foundations:Icon.Icon="{TemplateBinding foundations:Icon.Icon}"
-                                foundations:Icon.IconOnSelecting="{TemplateBinding foundations:Icon.IconOnSelecting}"
-                                Brush="{TemplateBinding Foreground}"
-                                IsFilled="{TemplateBinding foundations:Icon.Fill}"
-                                Symbol="{TemplateBinding foundations:Icon.Icon}"
-                                Weight="{TemplateBinding foundations:Icon.Weight}" />
+                            <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
                         </components:Container>
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="State" Value="Select" />
                         </Trigger>
 
-                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="State" Value="Press" />
                         </Trigger>
 
-                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="State" Value="Hover" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="components:Icon.HoverSymbolFallback" Value="Select" />
+                <Setter Property="components:Icon.PressSymbolFallback" Value="Select" />
+            </Trigger>
+
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Type" Value="Standard" />

@@ -48,13 +48,13 @@
 
                 <md3:SpacedPanel HorizontalAlignment="Center" Spacing="24">
                     <md3:Button
-                        md3:Icon.Icon="Docs"
+                        md3:Icon.RestSymbol="Docs"
                         Command="{Binding OpenInBrowserCommand}"
                         CommandParameter="https://github.com/pedrior/wpf-material"
                         Content="Read documentation" />
 
                     <md3:Button
-                        md3:Icon.Icon="Code"
+                        md3:Icon.RestSymbol="Code"
                         Command="{Binding OpenInBrowserCommand}"
                         CommandParameter="https://github.com/pedrior/wpf-material"
                         Content="See repository"
@@ -70,11 +70,19 @@
 
                 <Run Text="Made with" />
 
-                <md3:SymbolIcon
+                <md3:Icon
+                    Width="18"
+                    Height="18"
                     VerticalAlignment="Center"
                     Brush="{DynamicResource Material.Colors.Error}"
                     IsFilled="True"
-                    Symbol="Favorite" />
+                    RenderTransformOrigin="0.5,0.5"
+                    Symbol="Favorite">
+
+                    <md3:Icon.RenderTransform>
+                        <TranslateTransform Y="4" />
+                    </md3:Icon.RenderTransform>
+                </md3:Icon>
 
                 <Run Text="by" />
 

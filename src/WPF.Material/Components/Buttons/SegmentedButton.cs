@@ -7,10 +7,10 @@
 public class SegmentedButton : System.Windows.Controls.Primitives.ToggleButton
 {
     /// <summary>
-    /// Identifies the <see cref="ShowIcon"/> dependency property.
+    /// Identifies the <see cref="IsIconVisible"/> dependency property.
     /// </summary>
-    public static readonly DependencyProperty ShowIconProperty = DependencyProperty.Register(
-        nameof(ShowIcon),
+    public static readonly DependencyProperty IsIconVisibleProperty = DependencyProperty.Register(
+        nameof(IsIconVisible),
         typeof(bool),
         typeof(SegmentedButton),
         new PropertyMetadata(true));
@@ -27,10 +27,10 @@ public class SegmentedButton : System.Windows.Controls.Primitives.ToggleButton
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
-    public bool ShowIcon
+    public bool IsIconVisible
     {
-        get => (bool)GetValue(ShowIconProperty);
-        set => SetValue(ShowIconProperty, value);
+        get => (bool)GetValue(IsIconVisibleProperty);
+        set => SetValue(IsIconVisibleProperty, value);
     }
     
     protected override void OnToggle()

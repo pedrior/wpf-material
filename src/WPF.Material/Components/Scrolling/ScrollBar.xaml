@@ -14,7 +14,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <components:SymbolIcon Brush="{TemplateBinding Foreground}" Symbol="{TemplateBinding Content}" />
+                    <components:Icon Brush="{TemplateBinding Foreground}" Symbol="{TemplateBinding Content}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

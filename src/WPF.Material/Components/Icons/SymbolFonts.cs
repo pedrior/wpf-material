@@ -1,28 +1,49 @@
-﻿using System.Collections.Concurrent;
-
-namespace WPF.Material.Components;
+﻿namespace WPF.Material.Components;
 
 internal static class SymbolFonts
 {
-    private const string SymbolFontFamilyFormat = "Material Symbols {0}{1}";
-    private const string SymbolFontSourceFormat = "pack://application:,,,/WPF.Material.Symbols.{0};component/Assets/";
+    private const string UriFormat = "pack://application:,,,/WPF.Material.Symbols.{0};component/Assets/";
+    private const string FontFamilyFormat = "./#Material Symbols {0}{1}";
+    
+    private static readonly FontFamily RoundedFont;
+    private static readonly FontFamily RoundedFilledFont;
+    private static readonly FontFamily SharpFont;
+    private static readonly FontFamily SharpFilledFont;
+    private static readonly FontFamily OutlinedFont;
+    private static readonly FontFamily OutlinedFilledFont;
 
-    private static readonly ConcurrentDictionary<(SymbolType, bool), FontFamily> Cache = new();
-
-    public static FontFamily GetFontWithCharacteristics(SymbolType symbolType, bool isFilled)
+    static SymbolFonts()
     {
-        if (Cache.TryGetValue((symbolType, isFilled), out var fontFamily))
-        {
-            return fontFamily;
-        }
+        RoundedFont = new FontFamily(
+            new Uri(string.Format(UriFormat, "Rounded")),
+            string.Format(FontFamilyFormat, "Rounded", string.Empty));
 
-        var familyName = string.Format(SymbolFontFamilyFormat, symbolType, isFilled ? " Filled" : string.Empty);
-        var fontSource = new Uri(string.Format(SymbolFontSourceFormat, symbolType));
+        RoundedFilledFont = new FontFamily(
+            new Uri(string.Format(UriFormat, "Rounded")),
+            string.Format(FontFamilyFormat, "Rounded", " Filled"));
 
-        fontFamily = new FontFamily(fontSource, $"./#{familyName}");
+        SharpFont = new FontFamily(
+            new Uri(string.Format(UriFormat, "Sharp")),
+            string.Format(FontFamilyFormat, "Sharp", string.Empty));
 
-        Cache.TryAdd((symbolType, isFilled), fontFamily);
-        
-        return fontFamily;
+        SharpFilledFont = new FontFamily(
+            new Uri(string.Format(UriFormat, "Sharp")),
+            string.Format(FontFamilyFormat, "Sharp", " Filled"));
+
+        OutlinedFont = new FontFamily(
+            new Uri(string.Format(UriFormat, "Outlined")),
+            string.Format(FontFamilyFormat, "Outlined", string.Empty));
+
+        OutlinedFilledFont = new FontFamily(
+            new Uri(string.Format(UriFormat, "Outlined")),
+            string.Format(FontFamilyFormat, "Outlined", " Filled"));
     }
+
+    public static FontFamily GetSymbolFont(SymbolType type, bool isFilled) => type switch
+    {
+        SymbolType.Rounded => isFilled ? RoundedFilledFont : RoundedFont,
+        SymbolType.Sharp => isFilled ? SharpFilledFont : SharpFont,
+        SymbolType.Outlined => isFilled ? OutlinedFilledFont : OutlinedFont,
+        _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+    };
 }

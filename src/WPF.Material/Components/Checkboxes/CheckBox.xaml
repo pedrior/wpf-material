@@ -52,7 +52,7 @@
                                         ShapeStyle="Full"
                                         UseCornersOnRadiusOverride="None">
 
-                                        <components:SymbolIcon
+                                        <components:Icon
                                             x:Name="Icon"
                                             Width="24"
                                             Height="24"

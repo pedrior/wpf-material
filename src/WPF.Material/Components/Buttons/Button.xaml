@@ -22,6 +22,7 @@
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="components:Icon.Size" Value="18" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="Template">
@@ -42,15 +43,8 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Foreground="{TemplateBinding Foreground}">
 
-                            <components:SpacedPanel Spacing="{TemplateBinding foundations:Layout.Spacing}">
-                                <components:SymbolIcon
-                                    x:Name="Icon"
-                                    VerticalAlignment="Center"
-                                    Brush="{TemplateBinding Foreground}"
-                                    IsFilled="{TemplateBinding foundations:Icon.Fill}"
-                                    Symbol="{TemplateBinding foundations:Icon.Icon}"
-                                    Type="{TemplateBinding foundations:Icon.Style}"
-                                    Weight="{TemplateBinding foundations:Icon.Weight}" />
+                            <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
+                                <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
 
                                 <ContentPresenter
                                     x:Name="Content"
@@ -64,6 +58,25 @@
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="State" Value="Press" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="State" Value="Hover" />
+                        </Trigger>
+
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
+                            <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="False">
+                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
+                            <Setter TargetName="Icon" Property="Width" Value="0" />
+                            <Setter TargetName="Panel" Property="Spacing" Value="0" />
+                        </DataTrigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="Type" Value="Tonal" />
@@ -83,28 +96,6 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Container" Property="styles:Elevation.Level" Value="Level2" />
                         </MultiTrigger>
-
-                        <Trigger Property="foundations:Icon.Icon" Value="{x:Null}">
-                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
-                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-
-                        <Trigger Property="Content" Value="{x:Null}">
-                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
-                            <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-
-                        <Trigger Property="foundations:Interaction.IsHovered" Value="True">
-                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
-                        </Trigger>
-
-                        <Trigger Property="foundations:Interaction.IsPressed" Value="True">
-                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
-                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

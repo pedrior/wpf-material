@@ -17,7 +17,8 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Corner" Value="All" />
-        <Setter Property="foundations:Icon.IconOnSelecting" Value="Check" />
+        <Setter Property="components:Icon.Size" Value="18" />
+        <Setter Property="components:Icon.SelectionSymbol" Value="Check" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="Template">
             <Setter.Value>
@@ -35,17 +36,15 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
 
-                            <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
-                                <components:SymbolIcon
-                                    x:Name="Icon"
-                                    Brush="{TemplateBinding Foreground}"
-                                    IsFilled="{TemplateBinding foundations:Icon.Fill}"
-                                    Symbol="{TemplateBinding foundations:Icon.Icon}"
-                                    Type="{TemplateBinding foundations:Icon.Style}"
-                                    Weight="{TemplateBinding foundations:Icon.Weight}" />
+                            <components:SpacedPanel
+                                x:Name="Panel"
+                                Margin="12,0"
+                                Spacing="{TemplateBinding foundations:Layout.Spacing}">
+
+                                <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
 
                                 <ContentPresenter
-                                    x:Name="Label"
+                                    x:Name="Content"
                                     VerticalAlignment="Center"
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -56,61 +55,47 @@
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsChecked" Value="True" />
-                                <Condition Property="ShowIcon" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Icon" Property="Symbol" Value="{Binding Path=(foundations:Icon.IconOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnSelecting), RelativeSource={RelativeSource TemplatedParent}}" />
-                        </MultiTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsHovered" Value="True" />
-                                <Condition Property="ShowIcon" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnHovering), RelativeSource={RelativeSource TemplatedParent}}" />
-                        </MultiTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Interaction.IsPressed" Value="True" />
-                                <Condition Property="ShowIcon" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Icon" Property="IsFilled" Value="{Binding Path=(foundations:Icon.FillOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Weight" Value="{Binding Path=(foundations:Icon.WeightOnPressing), RelativeSource={RelativeSource TemplatedParent}}" />
-                        </MultiTrigger>
-
-                        <Trigger Property="ShowIcon" Value="False">
+                        <Trigger Property="IsIconVisible" Value="False">
                             <Setter TargetName="Panel" Property="Margin" Value="16,0" />
                             <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
                         </Trigger>
 
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="foundations:Icon.Icon" Value="{x:Null}" />
-                                <Condition Property="ShowIcon" Value="True" />
-                                <Condition Property="foundations:Icon.IconOnSelecting" Value="{x:Null}" />
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="IsIconVisible" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Panel" Property="Margin" Value="29,0" />
-                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Icon" Property="State" Value="Select" />
                         </MultiTrigger>
 
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsChecked" Value="False" />
-                                <Condition Property="ShowIcon" Value="True" />
-                                <Condition Property="foundations:Icon.Icon" Value="{x:Null}" />
+                                <Condition Property="IsPressed" Value="True" />
+                                <Condition Property="IsIconVisible" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Panel" Property="Margin" Value="29,0" />
-                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Icon" Property="State" Value="Press" />
                         </MultiTrigger>
 
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsIconVisible" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="State" Value="Hover" />
+                        </MultiTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="False" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsIconVisible}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="Width" Value="0" />
+                            <Setter TargetName="Panel" Property="Spacing" Value="0" />
+                            <Setter TargetName="Panel" Property="Margin" Value="24,0" />
+                        </MultiDataTrigger>
+
                         <Trigger Property="Content" Value="{x:Null}">
-                            <Setter TargetName="Label" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -121,6 +106,15 @@
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
             </Trigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="True" />
+                    <Condition Property="IsIconVisible" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="components:Icon.HoverSymbolFallback" Value="Select" />
+                <Setter Property="components:Icon.PressSymbolFallback" Value="Select" />
+            </MultiTrigger>
 
             <Trigger Property="foundations:Layout.Density" Value="Level0">
                 <Setter Property="Height" Value="40" />
