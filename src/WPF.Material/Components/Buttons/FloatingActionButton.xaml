@@ -126,7 +126,7 @@
                 <Setter Property="Width" Value="96" />
                 <Setter Property="Height" Value="96" />
                 <Setter Property="styles:Shape.Style" Value="ExtraLarge" />
-                <Setter Property="foundations:Iconography.Size" Value="36" />
+                <Setter Property="components:Icon.Size" Value="36" />
             </MultiTrigger>
 
             <Trigger Property="IsEnabled" Value="False">
