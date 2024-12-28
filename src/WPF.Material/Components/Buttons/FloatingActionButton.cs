@@ -1,4 +1,4 @@
-﻿namespace WPF.Material.Components;
+namespace WPF.Material.Components;
 
 /// <summary>
 /// Represents a control that behaves like a <see cref="Button"/>, but is intended to float above the content to promote
@@ -57,7 +57,7 @@ public class FloatingActionButton : System.Windows.Controls.Button
     /// Gets or sets the size of the FAB. The default value is <see cref="FloatingActionButtonSize.Standard"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Layout)]
+    [Category(UICategory.Appearance)]
     public FloatingActionButtonSize Size
     {
         get => (FloatingActionButtonSize)GetValue(SizeProperty);
@@ -69,7 +69,7 @@ public class FloatingActionButton : System.Windows.Controls.Button
     /// specifying a <see cref="Size"/>. The default value is <see langword="false"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public bool IsExtended
     {
         get => (bool)GetValue(IsExtendedProperty);

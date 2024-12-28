@@ -150,7 +150,7 @@ public class Ripple : ContentControl
     /// will be started at the mouse position relative to this element. The default value is <see langword="false"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public bool IsCentered
     {
         get => (bool)GetValue(IsCenteredProperty);
@@ -163,7 +163,7 @@ public class Ripple : ContentControl
     /// element. The default value is <see langword="false"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public bool IsUnbounded
     {
         get => (bool)GetValue(IsUnboundedProperty);
@@ -174,6 +174,9 @@ public class Ripple : ContentControl
     /// Gets or sets a <see cref="Geometry"/> that defines the outline geometry of the ripple effect. If this property
     /// is set, the ripple effect will be bounded to this geometry. The default value is <see langword="null"/>.
     /// </summary>
+    [Bindable(true)]
+    [Category(UICategory.Common)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public Geometry? RippleOutline
     {
         get => (Geometry?)GetValue(RippleOutlineProperty);

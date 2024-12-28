@@ -38,6 +38,7 @@ public class CheckBox : System.Windows.Controls.CheckBox
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Common)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public bool IsContentClickable
     {
         get => (bool)GetValue(IsContentClickableProperty);

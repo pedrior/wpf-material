@@ -38,6 +38,7 @@ public class RadioButton : System.Windows.Controls.RadioButton
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Common)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public bool IsContentClickable
     {
         get => (bool)GetValue(IsContentClickableProperty);

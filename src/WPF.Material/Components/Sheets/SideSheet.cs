@@ -34,6 +34,7 @@ public class SideSheet : Sheet
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public bool ShowDivider
     {
         get => (bool)GetValue(ShowDividerProperty);

@@ -79,7 +79,7 @@ public class SheetPresenter : FrameworkElement
     /// The default value is <see cref="Brushes.Black"/>.
     /// </summary>
     [Bindable(false)]
-    [Category(UICategory.Appearance)]
+    [Category(UICategory.Brush)]
     public Brush ScrimTint
     {
         get => (Brush)GetValue(ScrimTintProperty);

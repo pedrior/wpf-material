@@ -105,7 +105,7 @@ public class Surface : FrameworkElement
     /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Appearance)]
+    [Category(UICategory.Brush)]
     public Brush? Background
     {
         get => (Brush?)GetValue(BackgroundProperty);
@@ -117,7 +117,7 @@ public class Surface : FrameworkElement
     /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Appearance)]
+    [Category(UICategory.Brush)]
     public Brush? BorderBrush
     {
         get => (Brush?)GetValue(BorderBrushProperty);
@@ -194,6 +194,7 @@ public class Surface : FrameworkElement
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public bool UseStyleOnRadiusOverride
     {
         get => (bool)GetValue(UseStyleOnRadiusOverrideProperty);
@@ -208,6 +209,7 @@ public class Surface : FrameworkElement
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public ShapeCorner UseCornersOnRadiusOverride
     {
         get => (ShapeCorner)GetValue(UseCornersOnRadiusOverrideProperty);
@@ -219,6 +221,7 @@ public class Surface : FrameworkElement
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Common)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public Geometry RenderedGeometry
     {
         get => (Geometry)GetValue(RenderedGeometryProperty);

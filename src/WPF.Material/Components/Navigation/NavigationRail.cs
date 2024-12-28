@@ -1,4 +1,4 @@
-﻿namespace WPF.Material.Components;
+namespace WPF.Material.Components;
 
 /// <summary>
 /// Represents a compact navigation control that provides a way to navigate between different destinations.
@@ -79,7 +79,7 @@ public class NavigationRail : Navigation
     /// Gets or sets the top actions of the navigation rail. The default value is <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Content)]
+    [Category(UICategory.Common)]
     public NavigationRailActions? TopActions
     {
         get => (NavigationRailActions?)GetValue(TopActionsProperty);
@@ -90,7 +90,7 @@ public class NavigationRail : Navigation
     /// Gets or sets the template used to display the top actions content. The default value is <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Content)]
+    [Category(UICategory.Miscellaneous)]
     public DataTemplate? TopActionsTemplate
     {
         get => (DataTemplate?)GetValue(TopActionsTemplateProperty);
@@ -101,7 +101,7 @@ public class NavigationRail : Navigation
     /// Gets or sets the bottom actions of the navigation rail. The default value is <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Content)]
+    [Category(UICategory.Common)]
     public NavigationRailActions? BottomActionsContent
     {
         get => (NavigationRailActions?)GetValue(BottomActionsContentProperty);
@@ -113,7 +113,7 @@ public class NavigationRail : Navigation
     /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Content)]
+    [Category(UICategory.Miscellaneous)]
     public DataTemplate? BottomActionsTemplate
     {
         get => (DataTemplate?)GetValue(BottomActionsTemplateProperty);

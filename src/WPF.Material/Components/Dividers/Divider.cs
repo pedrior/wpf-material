@@ -83,7 +83,7 @@ public class Divider : FrameworkElement
     /// Gets or sets the orientation of the line. The default value is <see cref="Orientation.Horizontal"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Appearance)]
+    [Category(UICategory.Layout)]
     public Orientation Orientation
     {
         get => (Orientation)GetValue(OrientationProperty);

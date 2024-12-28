@@ -154,6 +154,7 @@ public class Container : ContentControl
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public bool UseStyleOnRadiusOverride
     {
         get => (bool)GetValue(UseStyleOnRadiusOverrideProperty);
@@ -168,6 +169,7 @@ public class Container : ContentControl
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public ShapeCorner UseCornersOnRadiusOverride
     {
         get => (ShapeCorner)GetValue(UseCornersOnRadiusOverrideProperty);
@@ -181,6 +183,7 @@ public class Container : ContentControl
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Layout)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public bool IsContentAwareOfBorderThickness
     {
         get => (bool)GetValue(IsContentAwareOfBorderThicknessProperty);
@@ -192,6 +195,7 @@ public class Container : ContentControl
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Common)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public Geometry RenderedGeometry
     {
         get => (Geometry)GetValue(RenderedGeometryProperty);

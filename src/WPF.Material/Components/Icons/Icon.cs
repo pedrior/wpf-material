@@ -247,7 +247,7 @@ public class Icon : FrameworkElement
     /// Gets or sets the type of the symbol. The default value is <see cref="SymbolType.Rounded"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public SymbolType Type
     {
         get => (SymbolType)GetValue(TypeProperty);
@@ -259,7 +259,7 @@ public class Icon : FrameworkElement
     /// <see cref="FontWeights.Regular"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public FontWeight Weight
     {
         get => (FontWeight)GetValue(WeightProperty);
@@ -271,7 +271,7 @@ public class Icon : FrameworkElement
     /// value is <see langword="false"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public bool IsFilled
     {
         get => (bool)GetValue(IsFilledProperty);

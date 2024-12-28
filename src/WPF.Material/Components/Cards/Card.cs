@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 
 namespace WPF.Material.Components;
 
@@ -89,6 +89,7 @@ public class Card : ContentControl
     /// not clickable.
     /// </summary>
     [Bindable(true)]
+    [Category(UICategory.Miscellaneous)]
     public bool IsPressed
     {
         get => (bool)GetValue(IsPressedProperty);

@@ -28,7 +28,7 @@ public class Overlay : FrameworkElement
     /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Appearance)]
+    [Category(UICategory.Brush)]
     public Brush? Tint
     {
         get => (Brush?)GetValue(TintProperty);

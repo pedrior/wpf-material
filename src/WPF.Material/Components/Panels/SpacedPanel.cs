@@ -135,6 +135,7 @@ public class SpacedPanel : Panel
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Layout)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public bool JoinItemBorders
     {
         get => (bool)GetValue(JoinItemBordersProperty);
@@ -148,6 +149,7 @@ public class SpacedPanel : Panel
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Layout)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public double ItemBorderThickness
     {
         get => (double)GetValue(ItemBorderThicknessProperty);

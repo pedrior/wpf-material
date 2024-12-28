@@ -1,4 +1,4 @@
-﻿namespace WPF.Material.Components;
+namespace WPF.Material.Components;
 
 /// <summary>
 /// Renders an icon from the Google's Material Symbols font based on a specified state.
@@ -8,6 +8,7 @@
 /// in the <see cref="Icon"/> class.
 /// </remarks>
 /// </summary>
+[EditorBrowsable(EditorBrowsableState.Never)]
 public class InteractiveIcon : FrameworkElement
 {
     /// <summary>
@@ -104,7 +105,7 @@ public class InteractiveIcon : FrameworkElement
     /// Gets a value that indicates whether the symbol is currently visible or rendered.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Miscellaneous)]
     public bool IsSymbolVisible
     {
         get => (bool)GetValue(IsSymbolVisibleProperty);

@@ -205,7 +205,7 @@ public abstract class Sheet : ContentControl
     /// value is <see langword="false"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public bool IsModal
     {
         get => (bool)GetValue(IsModalProperty);
@@ -218,7 +218,7 @@ public abstract class Sheet : ContentControl
     /// <see langword="true"/>.
     /// </summary>
     [Bindable(true)]
-    [Category(UICategory.Common)]
+    [Category(UICategory.Appearance)]
     public bool IsDocked
     {
         get => (bool)GetValue(IsDockedProperty);
@@ -231,6 +231,7 @@ public abstract class Sheet : ContentControl
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Appearance)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public Thickness UndockedMargin
     {
         get => (Thickness)GetValue(UndockedMarginProperty);
