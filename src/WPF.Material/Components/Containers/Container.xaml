@@ -61,9 +61,6 @@
             <Trigger Property="foundations:Interaction.IsHovered" Value="True">
                 <Setter Property="State" Value="Hovered" />
             </Trigger>
-            <Trigger Property="foundations:Interaction.IsFocused" Value="True">
-                <Setter Property="State" Value="Focused" />
-            </Trigger>
             <Trigger Property="foundations:Interaction.IsPressed" Value="True">
                 <Setter Property="State" Value="Pressed" />
             </Trigger>
@@ -111,7 +108,6 @@
 
                         <components:StateLayer
                             foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                            foundations:Interaction.IsFocused="{TemplateBinding foundations:Interaction.IsFocused}"
                             foundations:Interaction.IsHovered="{TemplateBinding foundations:Interaction.IsHovered}"
                             foundations:Interaction.IsPressed="{TemplateBinding foundations:Interaction.IsPressed}"
                             Brush="{TemplateBinding Foreground}"

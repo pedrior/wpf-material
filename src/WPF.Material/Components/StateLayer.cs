@@ -97,7 +97,6 @@ public class StateLayer : FrameworkElement
     private static double GetStateOpacity(InteractionState state) => state switch
     {
         InteractionState.Hovered => 0.08,
-        InteractionState.Focused => 0.10,
         InteractionState.Pressed => 0.10,
         InteractionState.Dragged => 0.16,
         _ => 0.0

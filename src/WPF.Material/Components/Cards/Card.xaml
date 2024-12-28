@@ -17,25 +17,29 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="styles:Shape.Style" Value="Medium" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Card}">
                     <components:Ripple Foreground="{TemplateBinding Foreground}" RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
-                        <components:Container
-                            x:Name="Container"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            Foreground="{TemplateBinding Foreground}" />
+                        <components:KeyboardFocusIndicator BindToElementAppearance="True" Target="Parent">
+                            <components:Container
+                                x:Name="Container"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Foreground="{TemplateBinding Foreground}" />
+                        </components:KeyboardFocusIndicator>
                     </components:Ripple>
                 </ControlTemplate>
             </Setter.Value>
@@ -57,14 +61,6 @@
             <Trigger Property="foundations:Interaction.IsHovered" Value="True">
                 <Setter Property="styles:Elevation.Level" Value="Level1" />
             </Trigger>
-
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Type" Value="Outlined" />
-                    <Condition Property="foundations:Interaction.IsFocused" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
-            </MultiTrigger>
 
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -112,14 +108,6 @@
                     <Condition Property="IsClickable" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="foundations:Interaction.IsHovered" Value="True" />
-            </MultiTrigger>
-
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsKeyboardFocused" Value="True" />
-                    <Condition Property="IsClickable" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="foundations:Interaction.IsFocused" Value="True" />
             </MultiTrigger>
 
             <MultiTrigger>

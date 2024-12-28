@@ -20,8 +20,10 @@
         <Setter Property="MinWidth" Value="52" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="Template">
             <Setter.Value>
@@ -76,51 +78,53 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
 
-                    <components:NaivePanel>
-                        <components:Surface
-                            x:Name="TrackBackground"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            ShapeCorner="{TemplateBinding styles:Shape.Corner}"
-                            ShapeRadius="{TemplateBinding styles:Shape.Radius}"
-                            ShapeStyle="{TemplateBinding styles:Shape.Style}"
-                            UseCornersOnRadiusOverride="{TemplateBinding styles:Shape.UseCornersOnRadiusOverride}"
-                            UseStyleOnRadiusOverride="{TemplateBinding styles:Shape.UseStyleOnRadiusOverride}" />
+                    <components:KeyboardFocusIndicator BindToElementAppearance="True" Target="Parent">
+                        <components:NaivePanel>
+                            <components:Surface
+                                x:Name="TrackBackground"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                ShapeCorner="{TemplateBinding styles:Shape.Corner}"
+                                ShapeRadius="{TemplateBinding styles:Shape.Radius}"
+                                ShapeStyle="{TemplateBinding styles:Shape.Style}"
+                                UseCornersOnRadiusOverride="{TemplateBinding styles:Shape.UseCornersOnRadiusOverride}"
+                                UseStyleOnRadiusOverride="{TemplateBinding styles:Shape.UseStyleOnRadiusOverride}" />
 
-                        <Track x:Name="PART_Track" Margin="8,0">
-                            <Track.Thumb>
-                                <components:SwitchThumb x:Name="Handle">
-                                    <components:NaivePanel>
-                                        <components:Container
-                                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                                            foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
-                                            foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
-                                            foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
-                                            Foreground="{TemplateBinding Foreground}"
-                                            IsHitTestVisible="False"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            ShapeStyle="Full">
+                            <Track x:Name="PART_Track" Margin="8,0">
+                                <Track.Thumb>
+                                    <components:SwitchThumb x:Name="Handle">
+                                        <components:NaivePanel>
+                                            <components:Container
+                                                foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
+                                                foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
+                                                foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
+                                                Foreground="{TemplateBinding Foreground}"
+                                                IsHitTestVisible="False"
+                                                RenderTransformOrigin="0.5,0.5"
+                                                ShapeStyle="Full">
 
-                                            <components:Container.RenderTransform>
-                                                <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
-                                            </components:Container.RenderTransform>
-                                        </components:Container>
+                                                <components:Container.RenderTransform>
+                                                    <ScaleTransform ScaleX="2.5" ScaleY="2.5" />
+                                                </components:Container.RenderTransform>
+                                            </components:Container>
 
-                                        <components:Surface
-                                            Background="{TemplateBinding Foreground}"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            ShapeStyle="Full">
+                                            <components:Surface
+                                                Background="{TemplateBinding Foreground}"
+                                                RenderTransformOrigin="0.5,0.5"
+                                                ShapeStyle="Full">
 
-                                            <components:Surface.RenderTransform>
-                                                <ScaleTransform x:Name="HandleTransform" />
-                                            </components:Surface.RenderTransform>
-                                        </components:Surface>
-                                    </components:NaivePanel>
-                                </components:SwitchThumb>
-                            </Track.Thumb>
-                        </Track>
-                    </components:NaivePanel>
+                                                <components:Surface.RenderTransform>
+                                                    <ScaleTransform x:Name="HandleTransform" />
+                                                </components:Surface.RenderTransform>
+                                            </components:Surface>
+                                        </components:NaivePanel>
+                                    </components:SwitchThumb>
+                                </Track.Thumb>
+                            </Track>
+                        </components:NaivePanel>
+                    </components:KeyboardFocusIndicator>
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="TrackBackground" Property="Opacity" Value="0.12" />

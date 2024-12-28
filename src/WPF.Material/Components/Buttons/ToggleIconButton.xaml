@@ -19,6 +19,7 @@
         <Setter Property="Width" Value="48" />
         <Setter Property="IsThreeState" Value="False" />
         <Setter Property="IsChecked" Value="False" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="components:Icon.Size" Value="24" />
@@ -34,22 +35,23 @@
                         Foreground="{TemplateBinding Foreground}"
                         RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
 
-                        <components:Container
-                            x:Name="Container"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                            foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
-                            foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
-                            foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Foreground="{TemplateBinding Foreground}">
+                        <components:KeyboardFocusIndicator BindToElementAppearance="True" Target="Parent">
+                            <components:Container
+                                x:Name="Container"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
+                                foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
+                                foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Foreground="{TemplateBinding Foreground}">
 
-                            <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
-                        </components:Container>
+                                <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
+                            </components:Container>
+                        </components:KeyboardFocusIndicator>
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
@@ -81,6 +83,7 @@
                     <Condition Property="IsChecked" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -90,6 +93,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.Primary}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimary}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -99,6 +103,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -108,6 +113,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.InverseSurface}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.InverseOnSurface}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.InverseSurface}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -116,6 +122,7 @@
                     <Condition Property="IsChecked" Value="False" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -125,6 +132,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHighest}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -134,6 +142,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHighest}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -144,6 +153,7 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
                 <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
             </MultiTrigger>
 
             <MultiTrigger>

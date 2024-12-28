@@ -20,41 +20,44 @@
         <Setter Property="Padding" Value="16,0,24,0" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="components:Icon.Size" Value="18" />
+        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Button}">
                     <components:Ripple Foreground="{TemplateBinding Foreground}" RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
-                        <components:Container
-                            x:Name="Container"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                            foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
-                            foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
-                            foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Foreground="{TemplateBinding Foreground}">
+                        <components:KeyboardFocusIndicator BindToElementAppearance="True" Target="Parent">
+                            <components:Container
+                                x:Name="Container"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
+                                foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
+                                foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Foreground="{TemplateBinding Foreground}">
 
-                            <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
-                                <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
+                                <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
+                                    <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
 
-                                <ContentPresenter
-                                    x:Name="Content"
-                                    VerticalAlignment="Center"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    RecognizesAccessKey="True"
-                                    TextElement.Foreground="{TemplateBinding Foreground}" />
-                            </components:SpacedPanel>
-                        </components:Container>
+                                    <ContentPresenter
+                                        x:Name="Content"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        RecognizesAccessKey="True"
+                                        TextElement.Foreground="{TemplateBinding Foreground}" />
+                                </components:SpacedPanel>
+                            </components:Container>
+                        </components:KeyboardFocusIndicator>
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>

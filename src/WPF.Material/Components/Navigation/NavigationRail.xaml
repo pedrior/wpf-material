@@ -12,6 +12,7 @@
         <Setter Property="IsChecked" Value="False" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="components:Icon.Size" Value="24" />
@@ -20,50 +21,57 @@
         <Setter Property="components:Icon.HoverSymbolWeight" Value="DemiBold" />
         <Setter Property="components:Icon.PressSymbolWeight" Value="Normal" />
         <Setter Property="components:Icon.SelectionSymbolWeight" Value="DemiBold" />
+        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
         <Setter Property="foundations:Layout.Spacing" Value="4" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:NavigationItem}">
-                    <components:SpacedPanel
-                        Background="Transparent"
-                        Orientation="Vertical"
-                        Spacing="{TemplateBinding foundations:Layout.Spacing}">
+                    <components:NaivePanel>
+                        <components:KeyboardFocusIndicator
+                            Margin="8,0"
+                            ShapeStyle="Large"
+                            Target="Parent" />
 
-                        <components:Ripple
-                            x:Name="PART_Ripple"
-                            Width="56"
-                            HorizontalAlignment="Center"
-                            components:SpacedPanel.StretchVertically="True"
-                            Foreground="{TemplateBinding Foreground}"
-                            IsCentered="True"
-                            ReleaseMode="Manual"
-                            RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}"
-                            TriggerMode="Manual">
+                        <components:SpacedPanel
+                            Background="Transparent"
+                            Orientation="Vertical"
+                            Spacing="{TemplateBinding foundations:Layout.Spacing}">
 
-                            <components:Container
-                                x:Name="Container"
-                                foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
-                                foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
-                                foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
-                                Background="Transparent"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
+                            <components:Ripple
+                                x:Name="PART_Ripple"
+                                Width="56"
+                                HorizontalAlignment="Center"
+                                components:SpacedPanel.StretchVertically="True"
                                 Foreground="{TemplateBinding Foreground}"
-                                ShapeStyle="Full">
+                                IsCentered="True"
+                                ReleaseMode="Manual"
+                                RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}"
+                                TriggerMode="Manual">
 
-                                <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
-                            </components:Container>
-                        </components:Ripple>
+                                <components:Container
+                                    x:Name="Container"
+                                    foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
+                                    foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
+                                    Background="Transparent"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    ShapeStyle="Full">
 
-                        <ContentPresenter
-                            x:Name="Label"
-                            Height="16"
-                            HorizontalAlignment="Center"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            RecognizesAccessKey="True"
-                            TextElement.Foreground="{TemplateBinding Foreground}" />
-                    </components:SpacedPanel>
+                                    <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
+                                </components:Container>
+                            </components:Ripple>
+
+                            <ContentPresenter
+                                x:Name="Label"
+                                Height="16"
+                                HorizontalAlignment="Center"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                RecognizesAccessKey="True"
+                                TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </components:SpacedPanel>
+                    </components:NaivePanel>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="Content" Value="{x:Null}">

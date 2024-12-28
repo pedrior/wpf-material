@@ -14,44 +14,47 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="styles:Shape.Corner" Value="All" />
         <Setter Property="components:Icon.Size" Value="18" />
         <Setter Property="components:Icon.SelectionSymbol" Value="Check" />
+        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
+        <Setter Property="styles:Shape.Corner" Value="All" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:SegmentedButton}">
                     <components:Ripple Foreground="{TemplateBinding Foreground}" RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
-                        <components:Container
-                            x:Name="Container"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
-                            foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
-                            foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <components:KeyboardFocusIndicator Target="Parent">
+                            <components:Container
+                                x:Name="Container"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
+                                foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
 
-                            <components:SpacedPanel
-                                x:Name="Panel"
-                                Margin="12,0"
-                                Spacing="{TemplateBinding foundations:Layout.Spacing}">
+                                <components:SpacedPanel
+                                    x:Name="Panel"
+                                    Margin="12,0"
+                                    Spacing="{TemplateBinding foundations:Layout.Spacing}">
 
-                                <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
+                                    <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
 
-                                <ContentPresenter
-                                    x:Name="Content"
-                                    VerticalAlignment="Center"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    RecognizesAccessKey="True"
-                                    TextElement.Foreground="{TemplateBinding Foreground}" />
-                            </components:SpacedPanel>
-                        </components:Container>
+                                    <ContentPresenter
+                                        x:Name="Content"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        RecognizesAccessKey="True"
+                                        TextElement.Foreground="{TemplateBinding Foreground}" />
+                                </components:SpacedPanel>
+                            </components:Container>
+                        </components:KeyboardFocusIndicator>
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>

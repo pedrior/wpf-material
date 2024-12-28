@@ -21,44 +21,47 @@
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="IsExtended" Value="False" />
+        <Setter Property="Type" Value="Surface" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="Type" Value="Surface" />
-        <Setter Property="styles:Shape.Style" Value="Large" />
         <Setter Property="components:Icon.Size" Value="24" />
+        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+        <Setter Property="styles:Shape.Style" Value="Large" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:FloatingActionButton}">
                     <components:Ripple Foreground="{TemplateBinding Foreground}" RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}">
-                        <components:Container
-                            x:Name="Container"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                            foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
-                            foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
-                            foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
-                            styles:Elevation.Level="Level3"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Foreground="{TemplateBinding Foreground}">
+                        <components:KeyboardFocusIndicator BindToElementAppearance="True" Target="Parent">
+                            <components:Container
+                                x:Name="Container"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
+                                foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
+                                foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
+                                styles:Elevation.Level="Level3"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Foreground="{TemplateBinding Foreground}">
 
-                            <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
-                                <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
+                                <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
+                                    <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
 
-                                <ContentPresenter
-                                    x:Name="Content"
-                                    VerticalAlignment="Center"
-                                    Content="{TemplateBinding Content}"
-                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                    RecognizesAccessKey="True"
-                                    TextElement.Foreground="{TemplateBinding Foreground}"
-                                    Visibility="Collapsed" />
-                            </components:SpacedPanel>
-                        </components:Container>
+                                    <ContentPresenter
+                                        x:Name="Content"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        RecognizesAccessKey="True"
+                                        TextElement.Foreground="{TemplateBinding Foreground}"
+                                        Visibility="Collapsed" />
+                                </components:SpacedPanel>
+                            </components:Container>
+                        </components:KeyboardFocusIndicator>
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
@@ -95,16 +98,19 @@
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimaryContainer}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
             </Trigger>
 
             <Trigger Property="Type" Value="Secondary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
             </Trigger>
 
             <Trigger Property="Type" Value="Tertiary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.TertiaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnTertiaryContainer}" />
+                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.TertiaryContainer}" />
             </Trigger>
 
             <MultiTrigger>

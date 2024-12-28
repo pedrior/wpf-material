@@ -16,8 +16,10 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="foundations:Layout.InnerWidth" Value="40" />
         <Setter Property="foundations:Layout.InnerHeight" Value="40" />
@@ -27,7 +29,6 @@
                     <components:NaivePanel x:Name="PART_Panel" Background="Transparent">
                         <components:Container
                             foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
-                            foundations:Interaction.IsFocused="{TemplateBinding IsKeyboardFocused}"
                             foundations:Interaction.IsHovered="{TemplateBinding IsMouseOver}"
                             foundations:Interaction.IsPressed="{TemplateBinding IsPressed}"
                             Background="{TemplateBinding Background}"
@@ -44,22 +45,24 @@
                                     RippleOutline="{Binding ElementName=Container, Path=RenderedGeometry}"
                                     TriggerMode="Manual">
 
-                                    <components:Container
-                                        x:Name="Container"
-                                        Background="Transparent"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        ShapeCorner="All"
-                                        ShapeStyle="Full"
-                                        UseCornersOnRadiusOverride="None">
+                                    <components:KeyboardFocusIndicator ShapeStyle="Full" Target="Parent">
+                                        <components:Container
+                                            x:Name="Container"
+                                            Background="Transparent"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            ShapeCorner="All"
+                                            ShapeStyle="Full"
+                                            UseCornersOnRadiusOverride="None">
 
-                                        <components:Icon
-                                            x:Name="Icon"
-                                            Width="24"
-                                            Height="24"
-                                            Brush="{TemplateBinding Foreground}"
-                                            IsFilled="True"
-                                            Symbol="CheckBoxOutlineBlank" />
-                                    </components:Container>
+                                            <components:Icon
+                                                x:Name="Icon"
+                                                Width="24"
+                                                Height="24"
+                                                Brush="{TemplateBinding Foreground}"
+                                                IsFilled="True"
+                                                Symbol="CheckBoxOutlineBlank" />
+                                        </components:Container>
+                                    </components:KeyboardFocusIndicator>
                                 </components:Ripple>
 
                                 <ContentPresenter

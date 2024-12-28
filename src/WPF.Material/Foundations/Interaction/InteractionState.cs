@@ -16,11 +16,6 @@ public enum InteractionState
     Hovered,
     
     /// <summary>
-    /// Indicates that the user has focused on the element using any input device.
-    /// </summary>
-    Focused,
-    
-    /// <summary>
     /// Indicates that the user has pressed the element using the mouse or keyboard.
     /// </summary>
     Pressed,
