@@ -9,10 +9,10 @@ namespace WPF.Material.Components;
 public class SheetPresenter : FrameworkElement
 {
     /// <summary>
-    /// Identifies the <see cref="ScrimTint"/> dependency property.
+    /// Identifies the <see cref="ScrimBrush"/> dependency property.
     /// </summary>
-    public static readonly DependencyProperty ScrimTintProperty = DependencyProperty.Register(
-        nameof(ScrimTint),
+    public static readonly DependencyProperty ScrimBrushProperty = DependencyProperty.Register(
+        nameof(ScrimBrush),
         typeof(Brush),
         typeof(SheetPresenter),
         new PropertyMetadata(Brushes.Black));
@@ -30,7 +30,7 @@ public class SheetPresenter : FrameworkElement
     /// </summary>
     public SheetPresenter()
     {
-        SetResourceReference(ScrimTintProperty, ScrimResourceKey);
+        SetResourceReference(ScrimBrushProperty, ScrimResourceKey);
         
         overlay = new Overlay
         {
@@ -38,10 +38,10 @@ public class SheetPresenter : FrameworkElement
             IsHitTestVisible = false
         };
         
-        overlay.SetBinding(Overlay.TintProperty, new Binding
+        overlay.SetBinding(Overlay.BrushProperty, new Binding
         {
             Source = this,
-            Path = new PropertyPath(ScrimTintProperty)
+            Path = new PropertyPath(ScrimBrushProperty)
         });
         
         container = new Container
@@ -80,10 +80,10 @@ public class SheetPresenter : FrameworkElement
     /// </summary>
     [Bindable(false)]
     [Category(UICategory.Brush)]
-    public Brush ScrimTint
+    public Brush ScrimBrush
     {
-        get => (Brush)GetValue(ScrimTintProperty);
-        set => SetValue(ScrimTintProperty, value);
+        get => (Brush)GetValue(ScrimBrushProperty);
+        set => SetValue(ScrimBrushProperty, value);
     }
 
     protected override int VisualChildrenCount => 1;

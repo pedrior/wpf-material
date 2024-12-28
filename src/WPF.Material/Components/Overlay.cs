@@ -6,33 +6,33 @@
 public class Overlay : FrameworkElement
 {
     /// <summary>
-    /// Identifies the <see cref="Tint"/> dependency property.
+    /// Identifies the <see cref="Brush"/> dependency property.
     /// </summary>
-    public static readonly DependencyProperty TintProperty = DependencyProperty.Register(
-        nameof(Tint),
+    public static readonly DependencyProperty BrushProperty = DependencyProperty.Register(
+        nameof(Brush),
         typeof(Brush),
         typeof(Overlay),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
-    /// Identifies the <see cref="DefiningGeometry"/> dependency property.
+    /// Identifies the <see cref="OutlineGeometry"/> dependency property.
     /// </summary>
-    public static readonly DependencyProperty DefiningGeometryProperty = DependencyProperty.Register(
-        nameof(DefiningGeometry),
+    public static readonly DependencyProperty OutlineGeometryProperty = DependencyProperty.Register(
+        nameof(OutlineGeometry),
         typeof(Geometry),
         typeof(Overlay),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
-    /// Gets or sets a <see cref="Brush"/> that describes the overlay's color. The default value is
+    /// Gets or sets a <see cref="System.Windows.Media.Brush"/> that describes the overlay's color. The default value is
     /// <see langword="null"/>.
     /// </summary>
     [Bindable(true)]
     [Category(UICategory.Brush)]
-    public Brush? Tint
+    public Brush? Brush
     {
-        get => (Brush?)GetValue(TintProperty);
-        set => SetValue(TintProperty, value);
+        get => (Brush?)GetValue(BrushProperty);
+        set => SetValue(BrushProperty, value);
     }
 
     /// <summary>
@@ -42,23 +42,23 @@ public class Overlay : FrameworkElement
     [Bindable(true)]
     [Category(UICategory.Common)]
     [TypeConverter(typeof(GeometryConverter))]
-    public Geometry? DefiningGeometry
+    public Geometry? OutlineGeometry
     {
-        get => (Geometry?)GetValue(DefiningGeometryProperty);
-        set => SetValue(DefiningGeometryProperty, value);
+        get => (Geometry?)GetValue(OutlineGeometryProperty);
+        set => SetValue(OutlineGeometryProperty, value);
     }
 
     protected override void OnRender(DrawingContext context)
     {
         base.OnRender(context);
 
-        var tint = Tint;
+        var tint = Brush;
         if (tint is not null)
         {
             context.DrawGeometry(
                 tint, 
                 pen: null,
-                DefiningGeometry ?? new RectangleGeometry(new Rect(RenderSize)));
+                OutlineGeometry ?? new RectangleGeometry(new Rect(RenderSize)));
         }
     }
 }
