@@ -3,6 +3,7 @@
 /// <summary>
 /// Renders a surface with a customizable shape, background, and border.
 /// </summary>
+[EditorBrowsable(EditorBrowsableState.Never)]
 public class Surface : FrameworkElement
 {
     /// <summary>

@@ -4,6 +4,7 @@
 /// Expresses the interaction state of a UI element through a semi-transparent layer. The layer can be applied to
 /// elements of any shape.
 /// </summary>
+[EditorBrowsable(EditorBrowsableState.Never)]
 public class StateLayer : FrameworkElement
 {
     /// <summary>

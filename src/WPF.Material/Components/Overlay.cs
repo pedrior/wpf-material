@@ -3,6 +3,7 @@
 /// <summary>
 /// Displays a tinted overlay over a region bounded by a <see cref="Geometry"/>.
 /// </summary>
+[EditorBrowsable(EditorBrowsableState.Never)]
 public class Overlay : FrameworkElement
 {
     /// <summary>
