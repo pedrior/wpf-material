@@ -71,10 +71,16 @@
                 <md3:NavigationRailActions>
                     <md3:ToggleIconButton
                         x:Name="ThemeToggleButton"
+                        Width="58"
+                        Height="58"
                         md3:Icon.IsHoverSymbolFilled="True"
                         md3:Icon.IsPressSymbolFilled="True"
                         md3:Icon.RestSymbol="DarkMode"
                         md3:Icon.SelectionSymbol="LightMode"
+                        md3:Layout.InnerHeight="50"
+                        md3:Layout.InnerWidth="50"
+                        BorderBrush="{DynamicResource Material.Colors.Outline}"
+                        BorderThickness="1"
                         Command="{Binding SwitchAppThemeCommand, Mode=OneTime}"
                         IsChecked="{Binding IsDarkTheme, Mode=OneTime}"
                         ToolTip="{Binding ElementName=ThemeToggleButton, Path=IsChecked, Converter={converters:ThemeToolTipConverter OnLightTooltip={StaticResource SwitchToDarkThemeTooltip}, OnDarkTooltip={StaticResource SwitchToLightThemeTooltip}}}" />
