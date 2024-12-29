@@ -20,7 +20,7 @@ public class SheetPresenter : FrameworkElement
     private const string ScrimResourceKey = "Material.Colors.Scrim";
     
     private readonly NaivePanel panel;
-    private readonly Overlay overlay;
+    private readonly System.Windows.Shapes.Rectangle overlay;
     private readonly Container container;
 
     private DependencyProperty? currentTargetSizeProperty;
@@ -32,13 +32,13 @@ public class SheetPresenter : FrameworkElement
     {
         SetResourceReference(ScrimBrushProperty, ScrimResourceKey);
         
-        overlay = new Overlay
+        overlay = new System.Windows.Shapes.Rectangle
         {
             Opacity = 0.0,
             IsHitTestVisible = false
         };
         
-        overlay.SetBinding(Overlay.BrushProperty, new Binding
+        overlay.SetBinding(System.Windows.Shapes.Shape.FillProperty, new Binding
         {
             Source = this,
             Path = new PropertyPath(ScrimBrushProperty)
@@ -102,7 +102,7 @@ public class SheetPresenter : FrameworkElement
         return constraints;
     }
     
-    internal Overlay GetOverlay() => overlay;
+    internal System.Windows.Shapes.Rectangle GetOverlay() => overlay;
 
     internal Container GetContainer() => container;
 
