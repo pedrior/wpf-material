@@ -21,7 +21,7 @@ public static class Layout
         "InnerWidth",
         typeof(double),
         typeof(Layout),
-        new PropertyMetadata(default(double)));
+        new PropertyMetadata(0.0));
 
     /// <summary>
     /// Identifies the InnerHeight attached property.
@@ -30,7 +30,7 @@ public static class Layout
         "InnerHeight",
         typeof(double),
         typeof(Layout),
-        new PropertyMetadata(default(double)));
+        new PropertyMetadata(0.0));
 
     /// <summary>
     /// Identifies the Spacing attached property.
