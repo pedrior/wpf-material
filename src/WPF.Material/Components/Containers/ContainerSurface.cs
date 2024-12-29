@@ -1,10 +1,10 @@
 ﻿namespace WPF.Material.Components;
 
 /// <summary>
-/// Renders a surface with a customizable shape, background, and border.
+/// Draws a container surface with a background, a border and a shape.
 /// </summary>
 [EditorBrowsable(EditorBrowsableState.Never)]
-public class Surface : FrameworkElement
+public class ContainerSurface : FrameworkElement
 {
     /// <summary>
     /// Identifies the <see cref="Background"/> dependency property.
@@ -12,7 +12,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty BackgroundProperty = DependencyProperty.Register(
         nameof(Background),
         typeof(Brush),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -21,7 +21,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty BorderBrushProperty = DependencyProperty.Register(
         nameof(BorderBrush),
         typeof(Brush),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -30,7 +30,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty BorderThicknessProperty = DependencyProperty.Register(
         nameof(BorderThickness),
         typeof(Thickness),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty ShapeFamilyProperty = DependencyProperty.Register(
         nameof(ShapeFamily),
         typeof(ShapeFamily),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(ShapeFamily.Rounded, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -48,7 +48,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty ShapeStyleProperty = DependencyProperty.Register(
         nameof(ShapeStyle),
         typeof(ShapeStyle),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(ShapeStyle.None, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -57,7 +57,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty ShapeCornerProperty = DependencyProperty.Register(
         nameof(ShapeCorner),
         typeof(ShapeCorner),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(ShapeCorner.All, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty ShapeRadiusProperty = DependencyProperty.Register(
         nameof(ShapeRadius),
         typeof(CornerRadius?),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -75,7 +75,7 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty UseStyleOnRadiusOverrideProperty = DependencyProperty.Register(
         nameof(UseStyleOnRadiusOverride),
         typeof(bool),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.AffectsRender));
 
     /// <summary>
@@ -84,13 +84,13 @@ public class Surface : FrameworkElement
     public static readonly DependencyProperty UseCornersOnRadiusOverrideProperty = DependencyProperty.Register(
         nameof(UseCornersOnRadiusOverride),
         typeof(ShapeCorner),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(ShapeCorner.All, FrameworkPropertyMetadataOptions.AffectsRender));
 
     private static readonly DependencyPropertyKey RenderedGeometryPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(RenderedGeometry),
         typeof(Geometry),
-        typeof(Surface),
+        typeof(ContainerSurface),
         new FrameworkPropertyMetadata(Geometry.Empty));
 
     /// <summary>

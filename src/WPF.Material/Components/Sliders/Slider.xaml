@@ -30,7 +30,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <components:Surface
+                    <components:ContainerSurface
                         x:Name="Rectangle"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -55,14 +55,14 @@
                 ShapeStyle="Full">
 
                 <Canvas Margin="-5,0">
-                    <components:Surface
+                    <components:ContainerSurface
                         x:Name="PART_SelectionRange"
                         Height="16"
                         Background="{DynamicResource Material.Colors.Primary}"
                         ShapeStyle="Full"
                         Visibility="Hidden" />
 
-                    <components:Surface
+                    <components:ContainerSurface
                         x:Name="PART_SelectedRange"
                         Height="16"
                         Background="{DynamicResource Material.Colors.Primary}"
@@ -136,14 +136,14 @@
                 ShapeStyle="Full">
 
                 <Canvas Margin="0,-5">
-                    <components:Surface
+                    <components:ContainerSurface
                         x:Name="PART_SelectionRange"
                         Width="16"
                         Background="{DynamicResource Material.Colors.Primary}"
                         ShapeStyle="Full"
                         Visibility="Hidden" />
 
-                    <components:Surface
+                    <components:ContainerSurface
                         x:Name="PART_SelectedRange"
                         Width="16"
                         Background="{DynamicResource Material.Colors.Primary}"

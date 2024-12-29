@@ -43,7 +43,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <components:Surface Background="{TemplateBinding Background}" ShapeStyle="Full" />
+                    <components:ContainerSurface Background="{TemplateBinding Background}" ShapeStyle="Full" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

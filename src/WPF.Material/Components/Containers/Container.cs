@@ -3,7 +3,7 @@
 /// <summary>
 /// Provides a container for a single content.
 /// </summary>
-[TemplatePart(Name = "PART_Surface", Type = typeof(Surface))]
+[TemplatePart(Name = "PART_Surface", Type = typeof(ContainerSurface))]
 public class Container : ContentControl
 {
     /// <summary>
@@ -83,7 +83,7 @@ public class Container : ContentControl
 
     private const string PartSurface = "PART_Surface";
 
-    private Surface surface = null!;
+    private ContainerSurface surface = null!;
 
     static Container()
     {
@@ -206,7 +206,7 @@ public class Container : ContentControl
     {
         base.OnApplyTemplate();
 
-        surface = GetTemplateChild(PartSurface) as Surface
+        surface = GetTemplateChild(PartSurface) as ContainerSurface
                   ?? throw new NullReferenceException($"Missing required template part: {PartSurface}");
 
         surface.Rendered -= OnSurfaceRendered;

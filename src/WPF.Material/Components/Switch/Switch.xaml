@@ -80,7 +80,7 @@
 
                     <components:KeyboardFocusIndicator BindToElementAppearance="True" Target="Parent">
                         <components:NaivePanel>
-                            <components:Surface
+                            <components:ContainerSurface
                                 x:Name="TrackBackground"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -109,15 +109,15 @@
                                                 </components:Container.RenderTransform>
                                             </components:Container>
 
-                                            <components:Surface
+                                            <components:ContainerSurface
                                                 Background="{TemplateBinding Foreground}"
                                                 RenderTransformOrigin="0.5,0.5"
                                                 ShapeStyle="Full">
 
-                                                <components:Surface.RenderTransform>
+                                                <components:ContainerSurface.RenderTransform>
                                                     <ScaleTransform x:Name="HandleTransform" />
-                                                </components:Surface.RenderTransform>
-                                            </components:Surface>
+                                                </components:ContainerSurface.RenderTransform>
+                                            </components:ContainerSurface>
                                         </components:NaivePanel>
                                     </components:SwitchThumb>
                                 </Track.Thumb>
