@@ -5,6 +5,9 @@
     xmlns:foundations="clr-namespace:WPF.Material.Foundations"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
+    <!--  https://m3.material.io/components/floating-action-button/overview  -->
+    <!--  https://m3.material.io/components/extended-fab/overview  -->
+
     <Style TargetType="{x:Type components:FloatingActionButton}">
         <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHigh}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />

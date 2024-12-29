@@ -5,6 +5,8 @@
     xmlns:foundations="clr-namespace:WPF.Material.Foundations"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
+    <!--  https://m3.material.io/components/tooltips/overview  -->
+
     <Style TargetType="{x:Type ToolTip}">
         <Setter Property="Background" Value="{DynamicResource Material.Colors.InverseSurface}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.InverseOnSurface}" />

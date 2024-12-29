@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:WPF.Material.Components">
 
+    <!--  https://m3.material.io/components/divider/overview  -->
+
     <Style TargetType="{x:Type components:Divider}">
         <Setter Property="Brush" Value="{DynamicResource Material.Colors.Outline}" />
         <Setter Property="Thickness" Value="1" />

@@ -8,6 +8,8 @@
     xmlns:styles="clr-namespace:WPF.Material.Styles"
     mc:Ignorable="po">
 
+    <!--  https://m3.material.io/components/switch/overview  -->
+
     <Style TargetType="{x:Type components:Switch}">
         <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHighest}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Outline}" />

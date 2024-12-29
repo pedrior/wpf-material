@@ -6,6 +6,8 @@
     xmlns:foundations="clr-namespace:WPF.Material.Foundations"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
+    <!--  https://m3.material.io/components/segmented-buttons/overview  -->
+
     <Style TargetType="{x:Type components:SegmentedButton}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />

@@ -4,6 +4,8 @@
     xmlns:components="clr-namespace:WPF.Material.Components"
     xmlns:foundations="clr-namespace:WPF.Material.Foundations">
 
+    <!--  https://m3.material.io/components/navigation-rail/overview  -->
+
     <Style x:Key="Material.Styles.NavigationRailItem" TargetType="{x:Type components:NavigationItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />

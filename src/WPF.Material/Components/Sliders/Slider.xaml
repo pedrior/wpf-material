@@ -4,6 +4,8 @@
     xmlns:components="clr-namespace:WPF.Material.Components"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
+    <!--  https://m3.material.io/components/sliders/overview  -->
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/WPF.Material;component/Components/Tooltips/ToolTip.xaml" />
     </ResourceDictionary.MergedDictionaries>

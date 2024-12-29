@@ -5,6 +5,8 @@
     xmlns:foundations="clr-namespace:WPF.Material.Foundations"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
+    <!--  https://m3.material.io/components/cards/overview  -->
+
     <Style TargetType="{x:Type components:Card}">
         <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />

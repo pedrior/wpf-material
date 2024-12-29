@@ -5,6 +5,8 @@
     xmlns:components="clr-namespace:WPF.Material.Components"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
+    <!--  https://m3.material.io/components/side-sheets/overview  -->
+
     <Style TargetType="{x:Type components:SideSheet}">
         <Setter Property="Background" Value="{DynamicResource Material.Colors.Surface}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />

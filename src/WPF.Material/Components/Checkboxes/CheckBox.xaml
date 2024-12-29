@@ -4,6 +4,8 @@
     xmlns:components="clr-namespace:WPF.Material.Components"
     xmlns:foundations="clr-namespace:WPF.Material.Foundations">
 
+    <!--  https://m3.material.io/components/checkbox/overview  -->
+
     <Style TargetType="{x:Type components:CheckBox}">
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="Height" Value="48" />

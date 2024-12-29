@@ -5,6 +5,8 @@
     xmlns:foundations="clr-namespace:WPF.Material.Foundations"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
+    <!--  https://m3.material.io/components/buttons/overview  -->
+
     <Style TargetType="{x:Type components:Button}">
         <Setter Property="Background" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimary}" />
