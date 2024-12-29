@@ -3,6 +3,7 @@
 /// <summary>
 /// Provides attached properties for managing the interaction aspects of a component.
 /// </summary>
+[EditorBrowsable(EditorBrowsableState.Never)]
 public static class Interaction
 {
     /// <summary>

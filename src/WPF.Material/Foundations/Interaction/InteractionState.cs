@@ -3,6 +3,7 @@
 /// <summary>
 /// Specifies the interaction state of a UI element.
 /// </summary>
+[EditorBrowsable(EditorBrowsableState.Never)]
 public enum InteractionState
 {
     /// <summary>
