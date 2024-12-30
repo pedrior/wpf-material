@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:common="clr-namespace:WPF.Material.Common"
     xmlns:components="clr-namespace:WPF.Material.Components"
     xmlns:foundations="clr-namespace:WPF.Material.Foundations"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -152,17 +151,6 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Content" Property="Opacity" Value="0.38" />
                             <Setter TargetName="PART_Surface" Property="Opacity" Value="0.12" />
-                        </Trigger>
-
-                        <Trigger Property="IsContentAwareOfBorderThickness" Value="True">
-                            <Setter TargetName="Content" Property="Margin">
-                                <Setter.Value>
-                                    <MultiBinding Converter="{common:ThicknessAdderConverter}">
-                                        <Binding Path="Padding" RelativeSource="{RelativeSource TemplatedParent}" />
-                                        <Binding Path="BorderThickness" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    </MultiBinding>
-                                </Setter.Value>
-                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

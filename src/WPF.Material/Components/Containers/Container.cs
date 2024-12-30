@@ -60,16 +60,6 @@ public class Container : ContentControl
         typeof(Container),
         new FrameworkPropertyMetadata(ShapeCorner.All, FrameworkPropertyMetadataOptions.AffectsRender));
 
-    /// <summary>
-    /// Identifies the <see cref="IsContentAwareOfBorderThickness"/> dependency property.
-    /// </summary>
-    public static readonly DependencyProperty IsContentAwareOfBorderThicknessProperty = DependencyProperty
-        .Register(
-            nameof(IsContentAwareOfBorderThickness),
-            typeof(bool),
-            typeof(Container),
-            new PropertyMetadata(false));
-
     private static readonly DependencyPropertyKey RenderedGeometryPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(RenderedGeometry),
         typeof(Geometry),
@@ -175,21 +165,7 @@ public class Container : ContentControl
         get => (ShapeCorner)GetValue(UseCornersOnRadiusOverrideProperty);
         set => SetValue(UseCornersOnRadiusOverrideProperty, value);
     }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether the content is aware of the border thickness of the container. If
-    /// <see langword="true"/>, the content will be rendered inside the border thickness; otherwise, the content will be
-    /// rendered at the edge of the container. The default value is <see langword="false"/>.
-    /// </summary>
-    [Bindable(true)]
-    [Category(UICategory.Layout)]
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
-    public bool IsContentAwareOfBorderThickness
-    {
-        get => (bool)GetValue(IsContentAwareOfBorderThicknessProperty);
-        set => SetValue(IsContentAwareOfBorderThicknessProperty, value);
-    }
-
+    
     /// <summary>
     /// Gets a <see cref="Geometry"/> that represents the rendered container.
     /// </summary>
