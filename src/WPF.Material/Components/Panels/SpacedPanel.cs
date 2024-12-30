@@ -273,13 +273,8 @@ public class SpacedPanel : Panel
         for (var i = 0; i < childrenCount; i++)
         {
             var child = children[i];
-            if (child.Visibility is Visibility.Collapsed)
-            {
-                continue;
-            }
-
-            // Let the child measure itself.
             child.Measure(availableSize);
+            
             var childSize = GetChildDesiredSize(child);
 
             // Calculate the total size of the panel and prepare children for stretching if needed.
@@ -316,7 +311,9 @@ public class SpacedPanel : Panel
                 }
             }
 
-            nonCollapsedChildrenCount++;
+            nonCollapsedChildrenCount = child.Visibility is Visibility.Collapsed 
+                ? nonCollapsedChildrenCount 
+                : nonCollapsedChildrenCount + 1;
         }
 
         var totalSpacing = spacing * (nonCollapsedChildrenCount - 1);

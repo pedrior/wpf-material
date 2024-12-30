@@ -20,11 +20,6 @@ public class NaivePanel : Panel
         for (var i = 0; i < children.Count; i++)
         {
             var child = children[i];
-            if (child.Visibility is Visibility.Collapsed)
-            {
-                continue;
-            }
-            
             child.Measure(availableSize);
             
             var childSize = child.DesiredSize;
