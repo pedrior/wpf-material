@@ -2,7 +2,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:WPF.Material.Components"
-    xmlns:foundations="clr-namespace:WPF.Material.Foundations"
     xmlns:styles="clr-namespace:WPF.Material.Styles">
 
     <!--  https://m3.material.io/components/tooltips/overview  -->
