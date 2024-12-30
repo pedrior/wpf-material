@@ -61,6 +61,15 @@ public static class Interaction
         new PropertyMetadata(false));
 
     /// <summary>
+    /// Identifies the FocusBrush attached property.
+    /// </summary>
+    public static readonly DependencyProperty FocusBrushProperty = DependencyProperty.RegisterAttached(
+        "FocusBrush",
+        typeof(Brush),
+        typeof(Interaction),
+        new PropertyMetadata(Brushes.Black));
+
+    /// <summary>
     /// Sets the value of the <see cref="IsHoveredProperty"/> attached property for a specified dependency object.
     /// </summary>
     /// <param name="element">
@@ -119,6 +128,27 @@ public static class Interaction
     /// The current value of the <see cref="IsDraggedProperty"/> attached property on the specified dependency object.
     /// </returns>
     public static bool GetIsDragged(DependencyObject element) => (bool)element.GetValue(IsDraggedProperty);
+    
+    /// <summary>
+    /// Sets the value of the <see cref="FocusBrushProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to set the value of the <see cref="FocusBrushProperty"/> property.
+    /// </param>
+    /// <param name="value">The new value to set the property to.</param>
+    public static void SetFocusBrush(DependencyObject element, Brush value) => 
+        element.SetValue(FocusBrushProperty, value);
+
+    /// <summary>
+    /// Gets the value of the <see cref="FocusBrushProperty"/> attached property for a specified dependency object.
+    /// </summary>
+    /// <param name="element">
+    /// The dependency object for which to retrieve the value of the <see cref="FocusBrushProperty"/> property.
+    /// </param>
+    /// <returns>
+    /// The current value of the <see cref="FocusBrushProperty"/> attached property on the specified dependency object.
+    /// </returns>
+    public static Brush GetFocusBrush(DependencyObject element) => (Brush)element.GetValue(FocusBrushProperty);
     
     /// <summary>
     /// Sets the value of the <see cref="IsRippleAnimatedProperty"/> attached property for a specified dependency object.

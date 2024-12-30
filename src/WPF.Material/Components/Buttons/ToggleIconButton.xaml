@@ -89,7 +89,7 @@
                     <Condition Property="IsChecked" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -99,7 +99,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.Primary}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimary}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -109,7 +109,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -119,7 +119,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.InverseSurface}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.InverseOnSurface}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.InverseSurface}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.InverseSurface}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -128,7 +128,7 @@
                     <Condition Property="IsChecked" Value="False" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -138,7 +138,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHighest}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -148,7 +148,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SurfaceContainerHighest}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
             </MultiTrigger>
 
             <MultiTrigger>
@@ -159,7 +159,7 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
                 <Setter Property="BorderThickness" Value="1" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
             </MultiTrigger>
 
             <MultiTrigger>

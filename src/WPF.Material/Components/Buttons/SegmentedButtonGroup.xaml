@@ -21,7 +21,7 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="components:Icon.Size" Value="18" />
         <Setter Property="components:Icon.SelectionSymbol" Value="Check" />
-        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
+        <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="styles:Shape.Corner" Value="All" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="Template">

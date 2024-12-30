@@ -107,15 +107,6 @@ public abstract class FocusIndicator : FrameworkElement
         typeof(FocusIndicator),
         new PropertyMetadata(false));
 
-    /// <summary>
-    /// Identifies the IndicatorBrush attached property.
-    /// </summary>
-    public static readonly DependencyProperty IndicatorBrushProperty = DependencyProperty.RegisterAttached(
-        "IndicatorBrush",
-        typeof(Brush),
-        typeof(FocusIndicator),
-        new PropertyMetadata(Brushes.Black));
-
     private readonly VisualCollection visuals;
     private readonly ContentPresenter presenter = new();
 
@@ -297,28 +288,6 @@ public abstract class FocusIndicator : FrameworkElement
     private FrameworkElement? TargetElement => Target is FocusTarget.Parent ? parent : Child;
 
     /// <summary>
-    /// Sets the value of the <see cref="IndicatorBrushProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to set the value of the <see cref="IndicatorBrushProperty"/> property.
-    /// </param>
-    /// <param name="value">The new value to set the property to.</param>
-    public static void SetIndicatorBrush(DependencyObject element, Brush value) =>
-        element.SetValue(IndicatorBrushProperty, value);
-
-    /// <summary>
-    /// Gets the value of the <see cref="IndicatorBrushProperty"/> attached property for a specified dependency object.
-    /// </summary>
-    /// <param name="element">
-    /// The dependency object for which to retrieve the value of the <see cref="IndicatorBrushProperty"/> property.
-    /// </param>
-    /// <returns>
-    /// The current value of the <see cref="IndicatorBrushProperty"/> attached property on the specified dependency
-    /// object.
-    /// </returns>
-    public static Brush GetIndicatorBrush(DependencyObject element) => (Brush)element.GetValue(IndicatorBrushProperty);
-
-    /// <summary>
     /// Notifies the focus indicator to draw or remove the focus indicator based on the specified value.
     /// </summary>
     /// <param name="focus">A value indicating whether to draw or remove the focus indicator.</param>
@@ -432,7 +401,7 @@ public abstract class FocusIndicator : FrameworkElement
 
         SetBinding(BrushProperty, new Binding
         {
-            Path = new PropertyPath(IndicatorBrushProperty),
+            Path = new PropertyPath(Interaction.FocusBrushProperty),
             RelativeSource = new RelativeSource(RelativeSourceMode.TemplatedParent)
         });
 

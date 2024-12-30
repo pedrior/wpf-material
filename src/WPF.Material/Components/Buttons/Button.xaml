@@ -25,8 +25,8 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
+        <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="components:Icon.Size" Value="18" />
-        <Setter Property="components:FocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Button}">

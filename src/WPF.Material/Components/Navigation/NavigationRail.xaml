@@ -23,7 +23,7 @@
         <Setter Property="components:Icon.HoverSymbolWeight" Value="DemiBold" />
         <Setter Property="components:Icon.PressSymbolWeight" Value="Normal" />
         <Setter Property="components:Icon.SelectionSymbolWeight" Value="DemiBold" />
-        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
+        <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSurfaceVariant}" />
         <Setter Property="foundations:Layout.Spacing" Value="4" />
         <Setter Property="Template">
             <Setter.Value>

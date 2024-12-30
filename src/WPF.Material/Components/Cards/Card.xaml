@@ -22,7 +22,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
+        <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
         <Setter Property="styles:Shape.Style" Value="Medium" />
         <Setter Property="Template">
             <Setter.Value>

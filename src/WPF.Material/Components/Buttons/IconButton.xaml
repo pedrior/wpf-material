@@ -72,26 +72,26 @@
         <Style.Triggers>
             <Trigger Property="Type" Value="Standard">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </Trigger>
 
             <Trigger Property="Type" Value="Filled">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.Primary}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimary}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </Trigger>
 
             <Trigger Property="Type" Value="Tonal">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
             </Trigger>
 
             <Trigger Property="Type" Value="Outlined">
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">

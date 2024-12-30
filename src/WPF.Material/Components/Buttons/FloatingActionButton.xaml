@@ -28,7 +28,7 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="components:Icon.Size" Value="24" />
-        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
+        <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="styles:Shape.Style" Value="Large" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
         <Setter Property="Template">
@@ -108,19 +108,19 @@
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimaryContainer}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
             </Trigger>
 
             <Trigger Property="Type" Value="Secondary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSecondaryContainer}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.SecondaryContainer}" />
             </Trigger>
 
             <Trigger Property="Type" Value="Tertiary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.TertiaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnTertiaryContainer}" />
-                <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.TertiaryContainer}" />
+                <Setter Property="foundations:Interaction.FocusBrush" Value="{DynamicResource Material.Colors.TertiaryContainer}" />
             </Trigger>
 
             <MultiTrigger>
