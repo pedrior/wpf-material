@@ -57,7 +57,7 @@ public class Icon : FrameworkElement
         "Size",
         typeof(double),
         typeof(Icon),
-        new PropertyMetadata(18.0));
+        new PropertyMetadata(18.0, null, CoerceSize));
 
     /// <summary>
     /// Identifies the DefaultStyle attached property.
@@ -729,4 +729,6 @@ public class Icon : FrameworkElement
             IsFilled,
             VisualTreeHelper.GetDpi(this).PixelsPerDip);
     }
+    
+    private static object CoerceSize(DependencyObject element, object value) => Math.Max(0.0, (double)value);
 }
