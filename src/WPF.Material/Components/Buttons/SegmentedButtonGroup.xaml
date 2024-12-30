@@ -84,6 +84,7 @@
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsPressed" Value="False" />
                                 <Condition Property="IsIconVisible" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Icon" Property="State" Value="Hover" />

@@ -63,12 +63,16 @@
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="State" Value="Hover" />
+                        </MultiTrigger>
+
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Icon" Property="State" Value="Press" />
-                        </Trigger>
-
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Icon" Property="State" Value="Hover" />
                         </Trigger>
 
                         <Trigger Property="Content" Value="{x:Null}">
