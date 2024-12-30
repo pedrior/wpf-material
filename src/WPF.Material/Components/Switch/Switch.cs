@@ -23,16 +23,16 @@ public class Switch : System.Windows.Controls.CheckBox
     {
         To = CheckedPosition,
         FillBehavior = FillBehavior.Stop,
-        Duration = MotionDurations.Short200,
-        EasingFunction = MotionEasings.Standard
+        Duration = AnimationDurations.Short200,
+        EasingFunction = AnimationEasings.Standard
     };
 
     private readonly DoubleAnimation uncheckedAnimation = new()
     {
         To = UncheckedPosition,
         FillBehavior = FillBehavior.Stop,
-        Duration = MotionDurations.Short200,
-        EasingFunction = MotionEasings.Standard
+        Duration = AnimationDurations.Short200,
+        EasingFunction = AnimationEasings.Standard
     };
 
     private Track? track;

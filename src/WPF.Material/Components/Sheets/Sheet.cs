@@ -336,8 +336,8 @@ public abstract class Sheet : ContentControl
         var animation = new DoubleAnimation
         {
             To = desiredValue,
-            Duration = MotionDurations.Medium400,
-            EasingFunction = MotionEasings.Emphasized
+            Duration = AnimationDurations.Medium400,
+            EasingFunction = AnimationEasings.Emphasized
         };
 
         Timeline.SetDesiredFrameRate(animation, desiredFrameRate);

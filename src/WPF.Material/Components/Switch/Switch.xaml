@@ -36,15 +36,15 @@
                             po:Freeze="True"
                             TargetName="HandleTransform">
                             <DoubleAnimation
-                                EasingFunction="{x:Static styles:MotionEasings.Standard}"
+                                EasingFunction="{x:Static styles:AnimationEasings.Standard}"
                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
                                 To="1.75"
-                                Duration="{x:Static styles:MotionDurations.Short200}" />
+                                Duration="{x:Static styles:AnimationDurations.Short200}" />
                             <DoubleAnimation
-                                EasingFunction="{x:Static styles:MotionEasings.Standard}"
+                                EasingFunction="{x:Static styles:AnimationEasings.Standard}"
                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
                                 To="1.75"
-                                Duration="{x:Static styles:MotionDurations.Short200}" />
+                                Duration="{x:Static styles:AnimationDurations.Short200}" />
                         </Storyboard>
 
                         <Storyboard
@@ -52,15 +52,15 @@
                             po:Freeze="True"
                             TargetName="HandleTransform">
                             <DoubleAnimation
-                                EasingFunction="{x:Static styles:MotionEasings.Standard}"
+                                EasingFunction="{x:Static styles:AnimationEasings.Standard}"
                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
                                 To="1.5"
-                                Duration="{x:Static styles:MotionDurations.Short200}" />
+                                Duration="{x:Static styles:AnimationDurations.Short200}" />
                             <DoubleAnimation
-                                EasingFunction="{x:Static styles:MotionEasings.Standard}"
+                                EasingFunction="{x:Static styles:AnimationEasings.Standard}"
                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
                                 To="1.5"
-                                Duration="{x:Static styles:MotionDurations.Short200}" />
+                                Duration="{x:Static styles:AnimationDurations.Short200}" />
                         </Storyboard>
 
                         <Storyboard
@@ -68,15 +68,15 @@
                             po:Freeze="True"
                             TargetName="HandleTransform">
                             <DoubleAnimation
-                                EasingFunction="{x:Static styles:MotionEasings.Standard}"
+                                EasingFunction="{x:Static styles:AnimationEasings.Standard}"
                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
                                 To="1"
-                                Duration="{x:Static styles:MotionDurations.Short200}" />
+                                Duration="{x:Static styles:AnimationDurations.Short200}" />
                             <DoubleAnimation
-                                EasingFunction="{x:Static styles:MotionEasings.Standard}"
+                                EasingFunction="{x:Static styles:AnimationEasings.Standard}"
                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
                                 To="1"
-                                Duration="{x:Static styles:MotionDurations.Short200}" />
+                                Duration="{x:Static styles:AnimationDurations.Short200}" />
                         </Storyboard>
                     </ControlTemplate.Resources>
 

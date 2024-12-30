@@ -48,8 +48,8 @@ public class FloatingActionButton : System.Windows.Controls.Button
 
     private const string PartContent = "PART_Content";
 
-    private static readonly Duration AnimationDuration = MotionDurations.Short200;
-    private static readonly IEasingFunction AnimationEasingFunction = MotionEasings.StandardDecelerated;
+    private static readonly Duration AnimationDuration = AnimationDurations.Short200;
+    private static readonly IEasingFunction AnimationEasingFunction = AnimationEasings.StandardDecelerated;
 
     private Storyboard? extendStoryboard;
     private Storyboard? shrinkStoryboard;
