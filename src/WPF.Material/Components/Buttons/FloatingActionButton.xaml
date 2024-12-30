@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:WPF.Material.Components"
@@ -17,14 +17,13 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Width" Value="56" />
-        <Setter Property="Height" Value="56" />
-        <Setter Property="Size" Value="Standard" />
+        <Setter Property="MinWidth" Value="56" />
+        <Setter Property="MinHeight" Value="56" />
+        <Setter Property="MaxHeight" Value="56" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Padding" Value="16" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Medium" />
-        <Setter Property="IsExtended" Value="False" />
-        <Setter Property="Type" Value="Surface" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -51,11 +50,15 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Foreground="{TemplateBinding Foreground}">
 
-                                <components:SpacedPanel x:Name="Panel" Spacing="{TemplateBinding foundations:Layout.Spacing}">
+                                <components:SpacedPanel
+                                    x:Name="Panel"
+                                    ClipToBounds="True"
+                                    Spacing="{TemplateBinding foundations:Layout.Spacing}">
+
                                     <components:InteractiveIcon x:Name="Icon" Brush="{TemplateBinding Foreground}" />
 
                                     <ContentPresenter
-                                        x:Name="Content"
+                                        x:Name="PART_Content"
                                         VerticalAlignment="Center"
                                         Content="{TemplateBinding Content}"
                                         ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -68,10 +71,6 @@
                     </components:Ripple>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsExtended" Value="True">
-                            <Setter TargetName="Content" Property="Visibility" Value="Visible" />
-                        </Trigger>
-
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Icon" Property="State" Value="Press" />
                         </Trigger>
@@ -86,18 +85,19 @@
                             <Setter TargetName="Panel" Property="Spacing" Value="0" />
                         </DataTrigger>
 
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsExtended" Value="True" />
-                                <Condition Property="Content" Value="{x:Null}" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
-                        </MultiTrigger>
+                        <Trigger Property="CanExtend" Value="True">
+                            <Setter TargetName="PART_Content" Property="Visibility" Value="Visible" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
+                <Setter Property="Background" Value="{DynamicResource Material.Colors.OnSurface}" />
+            </Trigger>
+
             <Trigger Property="Type" Value="Primary">
                 <Setter Property="Background" Value="{DynamicResource Material.Colors.PrimaryContainer}" />
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimaryContainer}" />
@@ -119,10 +119,12 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Size" Value="Small" />
-                    <Condition Property="IsExtended" Value="False" />
+                    <Condition Property="CanExtend" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Width" Value="40" />
-                <Setter Property="Height" Value="40" />
+                <Setter Property="MinWidth" Value="40" />
+                <Setter Property="MaxWidth" Value="40" />
+                <Setter Property="MinHeight" Value="40" />
+                <Setter Property="MaxHeight" Value="40" />
                 <Setter Property="Padding" Value="8" />
                 <Setter Property="styles:Shape.Style" Value="Medium" />
             </MultiTrigger>
@@ -130,25 +132,23 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Size" Value="Large" />
-                    <Condition Property="IsExtended" Value="False" />
+                    <Condition Property="CanExtend" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Width" Value="96" />
-                <Setter Property="Height" Value="96" />
-                <Setter Property="styles:Shape.Style" Value="ExtraLarge" />
+                <Setter Property="MinWidth" Value="96" />
+                <Setter Property="MaxWidth" Value="96" />
+                <Setter Property="MinHeight" Value="96" />
+                <Setter Property="MaxHeight" Value="96" />
                 <Setter Property="components:Icon.Size" Value="36" />
+                <Setter Property="styles:Shape.Style" Value="ExtraLarge" />
             </MultiTrigger>
 
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
-                <Setter Property="Background" Value="{DynamicResource Material.Colors.OnSurface}" />
-            </Trigger>
-
-            <Trigger Property="IsExtended" Value="True">
-                <Setter Property="Width" Value="Auto" />
-                <Setter Property="MinWidth" Value="80" />
-                <Setter Property="Height" Value="56" />
-                <Setter Property="styles:Shape.Style" Value="Large" />
-            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Size" Value="Standard" />
+                    <Condition Property="CanExtend" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="MaxWidth" Value="56" />
+            </MultiTrigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
