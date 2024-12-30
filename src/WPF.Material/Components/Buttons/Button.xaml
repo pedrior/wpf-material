@@ -10,8 +10,7 @@
     <Style TargetType="{x:Type components:Button}">
         <Setter Property="Background" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnPrimary}" />
-        <Setter Property="BorderBrush" Value="{x:Null}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -19,16 +18,15 @@
         <Setter Property="Type" Value="Filled" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="40" />
-        <Setter Property="Padding" Value="16,0,24,0" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="components:Icon.Size" Value="18" />
-        <Setter Property="components:KeyboardFocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="styles:Shape.Style" Value="Full" />
         <Setter Property="foundations:Layout.Spacing" Value="8" />
+        <Setter Property="components:Icon.Size" Value="18" />
+        <Setter Property="components:FocusIndicator.IndicatorBrush" Value="{DynamicResource Material.Colors.Primary}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type components:Button}">
@@ -36,7 +34,7 @@
                         <components:KeyboardFocusIndicator BindToElementAppearance="True" Target="Parent">
                             <components:Container
                                 x:Name="Container"
-                                Padding="{TemplateBinding Padding}"
+                                Padding="24,0"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 foundations:Interaction.IsDragged="{TemplateBinding foundations:Interaction.IsDragged}"
@@ -65,31 +63,8 @@
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsPressed" Value="False" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Icon" Property="State" Value="Hover" />
-                        </MultiTrigger>
-
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Icon" Property="State" Value="Press" />
-                        </Trigger>
-
-                        <Trigger Property="Content" Value="{x:Null}">
-                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
-                            <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-
-                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="False">
-                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
-                            <Setter TargetName="Icon" Property="Width" Value="0" />
-                            <Setter TargetName="Panel" Property="Spacing" Value="0" />
-                        </DataTrigger>
-
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
                                 <Condition Property="Type" Value="Tonal" />
-                                <Condition Property="foundations:Interaction.IsHovered" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Container" Property="styles:Elevation.Level" Value="Level1" />
                         </MultiTrigger>
@@ -101,10 +76,37 @@
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="Type" Value="Elevated" />
-                                <Condition Property="foundations:Interaction.IsHovered" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Container" Property="styles:Elevation.Level" Value="Level2" />
                         </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="State" Value="Hover" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Icon" Property="State" Value="Press" />
+                        </Trigger>
+
+                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="False">
+                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
+                            <Setter TargetName="Icon" Property="Width" Value="0" />
+                            <Setter TargetName="Panel" Property="Spacing" Value="0" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="True">
+                            <Setter TargetName="Container" Property="Padding" Value="16,0,24,0" />
+                        </DataTrigger>
+
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="Container" Property="Padding" Value="24,0" />
+                            <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -121,19 +123,14 @@
             </Trigger>
 
             <Trigger Property="Type" Value="Outlined">
-                <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.Outline}" />
-                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
                 <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
                 <Setter Property="BorderThickness" Value="1" />
             </Trigger>
 
             <Trigger Property="Type" Value="Text">
                 <Setter Property="Foreground" Value="{DynamicResource Material.Colors.Primary}" />
                 <Setter Property="Background" Value="Transparent" />
-            </Trigger>
-
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
             </Trigger>
 
             <MultiTrigger>
@@ -167,6 +164,10 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="BorderBrush" Value="{DynamicResource Material.Colors.OnSurface}" />
             </MultiTrigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Material.Colors.OnSurface}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
