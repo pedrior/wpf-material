@@ -126,7 +126,7 @@ public class KeyboardFocusIndicator : FrameworkElement
     private readonly VisualCollection visuals;
     private readonly ContentPresenter presenter = new();
 
-    private UIElement? parent;
+    private FrameworkElement? parent;
 
     private bool hasKeyboardFocus;
     private bool isIndicatorRendered;
@@ -154,17 +154,17 @@ public class KeyboardFocusIndicator : FrameworkElement
     /// </summary>
     [Bindable(false)]
     [Category(UICategory.Common)]
-    public UIElement? Child
+    public FrameworkElement? Child
     {
-        get => (UIElement?)presenter.Content;
+        get => (FrameworkElement?)presenter.Content;
         set
         {
             if (Target is FocusTarget.Child)
             {
                 TryRedrawIndicator();
 
-                UnsubscribeFocusEvents(presenter.Content as UIElement);
-                SubscribeFocusEvents(value);
+                UnsubscribeFromTargetElementEvents(presenter.Content as FrameworkElement);
+                SubscribeToTargetElementEvents(value);
             }
 
             presenter.Content = value;
@@ -308,7 +308,7 @@ public class KeyboardFocusIndicator : FrameworkElement
     
     protected override int VisualChildrenCount => visuals.Count;
 
-    private UIElement? TargetElement => Target is FocusTarget.Parent ? parent : Child;
+    private FrameworkElement? TargetElement => Target is FocusTarget.Parent ? parent : Child;
 
     /// <summary>
     /// Sets the value of the <see cref="IndicatorBrushProperty"/> attached property for a specified dependency object.
@@ -348,14 +348,14 @@ public class KeyboardFocusIndicator : FrameworkElement
 
     protected override void OnVisualParentChanged(DependencyObject? oldParent)
     {
-        parent = (TemplatedParent ?? Parent) as UIElement;
+        parent = (TemplatedParent ?? Parent) as FrameworkElement;
 
         if (Target is FocusTarget.Parent)
         {
             TryRedrawIndicator();
 
-            UnsubscribeFocusEvents(oldParent as UIElement);
-            SubscribeFocusEvents(parent);
+            UnsubscribeFromTargetElementEvents(oldParent as FrameworkElement);
+            SubscribeToTargetElementEvents(parent);
         }
 
         base.OnVisualParentChanged(oldParent);
@@ -366,13 +366,13 @@ public class KeyboardFocusIndicator : FrameworkElement
         var indicator = (KeyboardFocusIndicator)element;
         if (e.NewValue is FocusTarget.Parent)
         {
-            indicator.UnsubscribeFocusEvents(indicator.Child);
-            indicator.SubscribeFocusEvents(indicator.TargetElement);
+            indicator.UnsubscribeFromTargetElementEvents(indicator.Child);
+            indicator.SubscribeToTargetElementEvents(indicator.TargetElement);
         }
         else
         {
-            indicator.UnsubscribeFocusEvents(indicator.TargetElement);
-            indicator.SubscribeFocusEvents(indicator.Child);
+            indicator.UnsubscribeFromTargetElementEvents(indicator.TargetElement);
+            indicator.SubscribeToTargetElementEvents(indicator.Child);
         }
         
         // Rebind the shape properties to the new target.
@@ -420,8 +420,8 @@ public class KeyboardFocusIndicator : FrameworkElement
     {
         Unloaded -= OnUnloaded;
 
-        UnsubscribeFocusEvents(parent);
-        UnsubscribeFocusEvents(Child);
+        UnsubscribeFromTargetElementEvents(parent);
+        UnsubscribeFromTargetElementEvents(Child);
     }
 
     private void BindShapeProperties(bool bind)
@@ -515,7 +515,7 @@ public class KeyboardFocusIndicator : FrameworkElement
         }
     }
 
-    private void SubscribeFocusEvents(UIElement? element)
+    private void SubscribeToTargetElementEvents(FrameworkElement? element)
     {
         if (element is null)
         {
@@ -524,9 +524,10 @@ public class KeyboardFocusIndicator : FrameworkElement
 
         element.GotFocus += OnTargetGotFocus;
         element.LostFocus += OnTargetLostFocus;
+        element.SizeChanged += OnTargetSizeChanged;
     }
 
-    private void UnsubscribeFocusEvents(UIElement? element)
+    private void UnsubscribeFromTargetElementEvents(FrameworkElement? element)
     {
         if (element is null)
         {
@@ -535,6 +536,7 @@ public class KeyboardFocusIndicator : FrameworkElement
 
         element.GotFocus -= OnTargetGotFocus;
         element.LostFocus -= OnTargetLostFocus;
+        element.SizeChanged -= OnTargetSizeChanged;
     }
 
     private void OnTargetGotFocus(object sender, RoutedEventArgs e) =>
@@ -542,6 +544,8 @@ public class KeyboardFocusIndicator : FrameworkElement
 
     private void OnTargetLostFocus(object sender, RoutedEventArgs e) => DrawIndicator(false);
 
+    private void OnTargetSizeChanged(object sender, SizeChangedEventArgs e) => TryRedrawIndicator();
+    
     private void TryRedrawIndicator()
     {
         if (hasKeyboardFocus && isIndicatorRendered)
