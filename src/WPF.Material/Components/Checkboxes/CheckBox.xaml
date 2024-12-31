@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:WPF.Material.Components"
-    xmlns:foundations="clr-namespace:WPF.Material.Foundations">
+    xmlns:foundations="clr-namespace:WPF.Material.Foundations"
+    xmlns:styles="clr-namespace:WPF.Material.Styles">
 
     <!--  https://m3.material.io/components/checkbox/overview  -->
 
@@ -56,13 +57,23 @@
                                             ShapeStyle="Full"
                                             UseCornersOnRadiusOverride="None">
 
-                                            <components:Icon
-                                                x:Name="Icon"
-                                                Width="24"
-                                                Height="24"
-                                                Brush="{TemplateBinding Foreground}"
-                                                IsFilled="True"
-                                                Symbol="CheckBoxOutlineBlank" />
+                                            <components:NaivePanel>
+                                                <components:Icon
+                                                    Width="24"
+                                                    Height="24"
+                                                    Brush="{TemplateBinding Foreground}"
+                                                    IsFilled="True"
+                                                    Symbol="CheckBoxOutlineBlank" />
+
+                                                <components:Icon
+                                                    x:Name="Icon"
+                                                    Width="24"
+                                                    Height="24"
+                                                    Brush="{TemplateBinding Foreground}"
+                                                    IsFilled="True"
+                                                    Opacity="0.0"
+                                                    Symbol="CheckBoxOutlineBlank" />
+                                            </components:NaivePanel>
                                         </components:Container>
                                     </components:KeyboardFocusIndicator>
                                 </components:Ripple>
@@ -82,6 +93,29 @@
                     </components:NaivePanel>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsContentClickable" Value="False">
+                            <Setter TargetName="PART_Panel" Property="Background" Value="{x:Null}" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="Icon" Property="Symbol" Value="CheckBoxOutlineBlank" />
+                            <Trigger.EnterActions>
+                                <StopStoryboard BeginStoryboardName="CheckMarkStoryboard" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Name="CheckMarkStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            EasingFunction="{x:Static styles:AnimationEasings.Standard}"
+                                            Storyboard.TargetName="Icon"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1.0"
+                                            Duration="{x:Static styles:AnimationDurations.Short200}" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="Icon" Property="Symbol" Value="CheckBox" />
                         </Trigger>
@@ -92,10 +126,6 @@
 
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter TargetName="Content" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-
-                        <Trigger Property="IsContentClickable" Value="False">
-                            <Setter TargetName="PART_Panel" Property="Background" Value="{x:Null}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
