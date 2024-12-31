@@ -92,7 +92,7 @@
 
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="False" />
+                                <Condition Binding="{Binding ElementName=Icon, Path=IsRendered}" Value="False" />
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsIconVisible}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="Icon" Property="Width" Value="0" />

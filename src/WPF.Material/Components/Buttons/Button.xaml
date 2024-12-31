@@ -93,13 +93,13 @@
                             <Setter TargetName="Icon" Property="State" Value="Press" />
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="False">
+                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsRendered}" Value="False">
                             <Setter TargetName="Container" Property="Padding" Value="24,0" />
                             <Setter TargetName="Icon" Property="Width" Value="0" />
                             <Setter TargetName="Panel" Property="Spacing" Value="0" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="True">
+                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsRendered}" Value="True">
                             <Setter TargetName="Container" Property="Padding" Value="16,0,24,0" />
                         </DataTrigger>
 

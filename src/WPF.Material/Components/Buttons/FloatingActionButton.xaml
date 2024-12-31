@@ -87,7 +87,7 @@
                             <Setter TargetName="Container" Property="styles:Elevation.Level" Value="Level4" />
                         </Trigger>
 
-                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsSymbolVisible}" Value="False">
+                        <DataTrigger Binding="{Binding ElementName=Icon, Path=IsRendered}" Value="False">
                             <Setter TargetName="Icon" Property="Width" Value="0" />
                             <Setter TargetName="Panel" Property="Spacing" Value="0" />
                         </DataTrigger>

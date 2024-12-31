@@ -9,7 +9,7 @@ namespace WPF.Material.Components;
 /// </remarks>
 /// </summary>
 [EditorBrowsable(EditorBrowsableState.Never)]
-public class InteractiveIcon : FrameworkElement
+public class InteractiveIcon : IconElement
 {
     /// <summary>
     /// Identifies the <see cref="Brush"/> dependency property.
@@ -18,7 +18,7 @@ public class InteractiveIcon : FrameworkElement
         nameof(Brush),
         typeof(Brush),
         typeof(InteractiveIcon),
-        new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
+        new PropertyMetadata(Brushes.Black, (e, _) => ((InteractiveIcon)e).InvalidateRender()));
 
     /// <summary>
     /// Identifies the <see cref="State"/> dependency property.
@@ -27,20 +27,31 @@ public class InteractiveIcon : FrameworkElement
         nameof(State),
         typeof(SymbolState),
         typeof(InteractiveIcon),
-        new FrameworkPropertyMetadata(SymbolState.Rest, FrameworkPropertyMetadataOptions.AffectsRender));
+        new PropertyMetadata(SymbolState.Rest, (e, _) => ((InteractiveIcon)e).InvalidateRender()));
 
-    private static readonly DependencyPropertyKey IsSymbolVisiblePropertyKey = DependencyProperty.RegisterReadOnly(
-        nameof(IsSymbolVisible),
-        typeof(bool),
-        typeof(InteractiveIcon),
-        new PropertyMetadata(false));
+    private static readonly DependencyProperty[] IconProperties =
+    {
+        Icon.RestSymbolProperty,
+        Icon.HoverSymbolProperty,
+        Icon.PressSymbolProperty,
+        Icon.SelectionSymbolProperty,
+        Icon.RestSymbolFallbackProperty,
+        Icon.HoverSymbolFallbackProperty,
+        Icon.PressSymbolFallbackProperty,
+        Icon.SelectionSymbolFallbackProperty,
+        Icon.RestSymbolWeightProperty,
+        Icon.HoverSymbolWeightProperty,
+        Icon.PressSymbolWeightProperty,
+        Icon.SelectionSymbolWeightProperty,
+        Icon.IsRestSymbolFilledProperty,
+        Icon.IsHoverSymbolFilledProperty,
+        Icon.IsPressSymbolFilledProperty,
+        Icon.IsSelectionSymbolFilledProperty
+    };
 
-    /// <summary>
-    /// Identifies the <see cref="IsSymbolVisible"/> dependency property.
-    /// </summary>
-    public static readonly DependencyProperty IsSymbolVisibleProperty = IsSymbolVisiblePropertyKey.DependencyProperty;
-
-    private readonly HashSet<SymbolState> visitedStates = new(5);
+    // These variables hold the symbol and state that is about to be rendered
+    private Symbol renderingSymbol = Icon.NotDefSymbol;
+    private SymbolState renderingSymbolState = SymbolState.None;
 
     static InteractiveIcon()
     {
@@ -48,34 +59,7 @@ public class InteractiveIcon : FrameworkElement
             typeof(InteractiveIcon),
             new FrameworkPropertyMetadata(typeof(InteractiveIcon)));
 
-        DependencyProperty[] IconProperties =
-        {
-            Icon.RestSymbolProperty,
-            Icon.HoverSymbolProperty,
-            Icon.PressSymbolProperty,
-            Icon.SelectionSymbolProperty,
-            Icon.RestSymbolFallbackProperty,
-            Icon.HoverSymbolFallbackProperty,
-            Icon.PressSymbolFallbackProperty,
-            Icon.SelectionSymbolFallbackProperty,
-            Icon.RestSymbolWeightProperty,
-            Icon.HoverSymbolWeightProperty,
-            Icon.PressSymbolWeightProperty,
-            Icon.SelectionSymbolWeightProperty,
-            Icon.IsRestSymbolFilledProperty,
-            Icon.IsHoverSymbolFilledProperty,
-            Icon.IsPressSymbolFilledProperty,
-            Icon.IsSelectionSymbolFilledProperty
-        };
-        
-        foreach (var property in IconProperties)
-        {
-            property.OverrideMetadata(
-                typeof(InteractiveIcon),
-                new FrameworkPropertyMetadata(
-                    property.DefaultMetadata.DefaultValue,
-                    FrameworkPropertyMetadataOptions.AffectsRender));
-        }
+        OverrideIconAttachedProperties();
     }
 
     /// <summary>
@@ -101,42 +85,40 @@ public class InteractiveIcon : FrameworkElement
         set => SetValue(StateProperty, value);
     }
 
-    /// <summary>
-    /// Gets a value that indicates whether the symbol is currently visible or rendered.
-    /// </summary>
-    [Bindable(true)]
-    [Category(UICategory.Miscellaneous)]
-    public bool IsSymbolVisible
+    protected override bool ValidateRender()
     {
-        get => (bool)GetValue(IsSymbolVisibleProperty);
-        private set => SetValue(IsSymbolVisiblePropertyKey, value);
+        renderingSymbolState = State;
+        renderingSymbol = GetSymbol(renderingSymbolState)
+                          ?? ResolveSymbolFallbacks(renderingSymbolState);
+
+        return renderingSymbol is not Icon.NotDefSymbol;
     }
 
-    protected override void OnRender(DrawingContext context)
+    protected override void Render(DrawingContext context)
     {
-        base.OnRender(context);
-
-        var state = State;
-        var symbol = GetSymbol(state) ?? ResolveSymbolFallbacks(state);
-
-        if (symbol is Icon.NotDefSymbol)
-        {
-            IsSymbolVisible = false;
-            return;
-        }
-
         SymbolRender.RenderSymbolAsGlyph(
             context,
             ActualWidth,
             ActualHeight,
-            symbol,
+            renderingSymbol,
             Icon.GetDefaultStyle(this),
-            GetSymbolWeight(state),
+            GetSymbolWeight(renderingSymbolState),
             Brush,
-            GetSymbolIsFilled(state),
+            GetSymbolIsFilled(renderingSymbolState),
             VisualTreeHelper.GetDpi(this).PixelsPerDip);
+    }
 
-        IsSymbolVisible = true;
+    private static void OverrideIconAttachedProperties()
+    {
+        // Override the metadata of the Icon attached properties to invalidate the rendering when they change.
+        foreach (var property in IconProperties)
+        {
+            property.OverrideMetadata(
+                typeof(InteractiveIcon),
+                new FrameworkPropertyMetadata(
+                    property.DefaultMetadata.DefaultValue,
+                    (e, _) => ((InteractiveIcon)e).InvalidateRender()));
+        }
     }
 
     private FontWeight GetSymbolWeight(SymbolState state) => state switch
@@ -159,21 +141,27 @@ public class InteractiveIcon : FrameworkElement
 
     private Symbol ResolveSymbolFallbacks(SymbolState state)
     {
-        visitedStates.Clear();
+        var visited = new HashSet<SymbolState>(5);
+
         while (true)
         {
-            // Avoid infinite loop
-            if (!visitedStates.Add(state))
+            // Keep track of the visited states to avoid circular fallbacks
+            if (!visited.Add(state))
             {
                 return Icon.NotDefSymbol;
             }
 
             if (GetSymbol(state) is { } symbol)
             {
+                // Found! Return it.
                 return symbol;
             }
 
+            // Try finding a fallback for the current state
             state = GetSymbolFallbackState(state);
+
+            // We found a state that has no fallbacks, so we return the NotDefSymbol, the render validation will
+            // handle this case by skipping the rendering.
             if (state is SymbolState.None)
             {
                 return Icon.NotDefSymbol;

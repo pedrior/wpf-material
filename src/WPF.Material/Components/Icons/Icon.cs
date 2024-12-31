@@ -3,7 +3,7 @@
 /// <summary>
 /// Renders an icon from the Google's Material Symbols font.
 /// </summary>
-public class Icon : FrameworkElement
+public class Icon : IconElement
 {
     /// <summary>
     /// Identifies the <see cref="Brush"/> dependency property.
@@ -12,7 +12,7 @@ public class Icon : FrameworkElement
         nameof(Brush),
         typeof(Brush),
         typeof(Icon),
-        new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
+        new PropertyMetadata(Brushes.Black, (e, _) => ((Icon)e).InvalidateRender()));
 
     /// <summary>
     /// Identifies the <see cref="Symbol"/> dependency property.
@@ -21,7 +21,7 @@ public class Icon : FrameworkElement
         nameof(Symbol),
         typeof(Symbol?),
         typeof(Icon),
-        new FrameworkPropertyMetadata(NotDefSymbol, FrameworkPropertyMetadataOptions.AffectsRender));
+        new PropertyMetadata(NotDefSymbol, (e, _) => ((Icon)e).InvalidateRender()));
 
     /// <summary>
     /// Identifies the <see cref="Type"/> dependency property.
@@ -30,7 +30,7 @@ public class Icon : FrameworkElement
         nameof(Type),
         typeof(SymbolType),
         typeof(Icon),
-        new FrameworkPropertyMetadata(SymbolType.Rounded, FrameworkPropertyMetadataOptions.AffectsRender));
+        new PropertyMetadata(SymbolType.Rounded, (e, _) => ((Icon)e).InvalidateRender()));
 
     /// <summary>
     /// Identifies the <see cref="Weight"/> dependency property.
@@ -39,7 +39,7 @@ public class Icon : FrameworkElement
         nameof(Weight),
         typeof(FontWeight),
         typeof(Icon),
-        new FrameworkPropertyMetadata(FontWeights.Regular, FrameworkPropertyMetadataOptions.AffectsRender));
+        new PropertyMetadata(FontWeights.Regular, (e, _) => ((Icon)e).InvalidateRender()));
 
     /// <summary>
     /// Identifies the <see cref="IsFilled"/> dependency property.
@@ -48,7 +48,7 @@ public class Icon : FrameworkElement
         nameof(IsFilled),
         typeof(bool),
         typeof(Icon),
-        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender));
+        new PropertyMetadata(false, (e, _) => ((Icon)e).InvalidateRender()));
 
     /// <summary>
     /// Identifies the Size attached property.
@@ -714,10 +714,8 @@ public class Icon : FrameworkElement
     public static FontWeight GetSelectionSymbolWeight(DependencyObject element) =>
         (FontWeight)element.GetValue(SelectionSymbolWeightProperty);
 
-    protected override void OnRender(DrawingContext context)
+    protected override void Render(DrawingContext context)
     {
-        base.OnRender(context);
-
         SymbolRender.RenderSymbolAsGlyph(
             context,
             ActualWidth,
@@ -729,6 +727,6 @@ public class Icon : FrameworkElement
             IsFilled,
             VisualTreeHelper.GetDpi(this).PixelsPerDip);
     }
-    
+
     private static object CoerceSize(DependencyObject element, object value) => Math.Max(0.0, (double)value);
 }
