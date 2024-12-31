@@ -3,55 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:WPF.Material.Components"
     xmlns:foundations="clr-namespace:WPF.Material.Foundations"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
-    xmlns:styles="clr-namespace:WPF.Material.Styles"
-    mc:Ignorable="po">
-
-    <DropShadowEffect
-        x:Key="Material.Internal.Elevation1"
-        po:Freeze="True"
-        BlurRadius="3"
-        Direction="270"
-        Opacity="0.3"
-        RenderingBias="Performance"
-        ShadowDepth="1" />
-
-    <DropShadowEffect
-        x:Key="Material.Internal.Elevation2"
-        po:Freeze="True"
-        BlurRadius="6"
-        Direction="270"
-        Opacity="0.3"
-        RenderingBias="Performance"
-        ShadowDepth="2" />
-
-    <DropShadowEffect
-        x:Key="Material.Internal.Elevation3"
-        po:Freeze="True"
-        BlurRadius="8"
-        Direction="270"
-        Opacity="0.3"
-        RenderingBias="Performance"
-        ShadowDepth="3" />
-
-    <DropShadowEffect
-        x:Key="Material.Internal.Elevation4"
-        po:Freeze="True"
-        BlurRadius="10"
-        Direction="270"
-        Opacity="0.3"
-        RenderingBias="Performance"
-        ShadowDepth="4" />
-
-    <DropShadowEffect
-        x:Key="Material.Internal.Elevation5"
-        po:Freeze="True"
-        BlurRadius="12"
-        Direction="270"
-        Opacity="0.3"
-        RenderingBias="Performance"
-        ShadowDepth="6" />
+    xmlns:styles="clr-namespace:WPF.Material.Styles">
 
     <Style TargetType="{x:Type components:StateLayer}">
         <Setter Property="IsHitTestVisible" Value="False" />
@@ -129,23 +81,23 @@
                         </Trigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="Level1">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation1}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Static styles:Elevations.Level1Shadow}" />
                         </Trigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="Level2">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation2}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Static styles:Elevations.Level2Shadow}" />
                         </Trigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="Level3">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation3}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Static styles:Elevations.Level3Shadow}" />
                         </Trigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="Level4">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation4}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Static styles:Elevations.Level4Shadow}" />
                         </Trigger>
 
                         <Trigger Property="styles:Elevation.Level" Value="Level5">
-                            <Setter TargetName="PART_Surface" Property="Effect" Value="{StaticResource Material.Internal.Elevation5}" />
+                            <Setter TargetName="PART_Surface" Property="Effect" Value="{x:Static styles:Elevations.Level5Shadow}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
